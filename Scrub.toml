@@ -1,0 +1,13 @@
+[info]
+name = "clean-base"
+version = "0.0.1"
+authors = [ "Tim Steenvoorden <tim.steenvoorden@gmail.com>" ]
+
+[[dependencies]]
+name = "clean-stdenv"
+version = "2.4.0"
+path = "../clean-stdenv"
+
+[library]
+modules = []
+
