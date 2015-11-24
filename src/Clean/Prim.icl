@@ -131,8 +131,8 @@ prim_negInt :: !Int -> Int
 prim_negInt a = ~ a
 
 //TODO Does not exist!
-// prim_modInt :: !Int !Int -> Int
-// prim_modInt a b = (mod) a b
+prim_modInt :: !Int !Int -> Int
+prim_modInt a b = prim_undefined //(mod) a b
 
 /// ## Integer Arithmetic
 
@@ -167,11 +167,11 @@ prim_xorInt a b = (bitxor) a b
 prim_notInt :: !Int -> Int
 prim_notInt a = bitnot a
 
-prim_lshiftInt :: !Int !Int -> Int
-prim_lshiftInt a b = (<<) a b
+prim_shlInt :: !Int !Int -> Int
+prim_shlInt a b = (<<) a b
 
-prim_rshiftInt :: !Int !Int -> Int
-prim_rshiftInt a b = (>>) a b
+prim_shrInt :: !Int !Int -> Int
+prim_shrInt a b = (>>) a b
 
 /// # Reals
 

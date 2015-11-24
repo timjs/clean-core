@@ -1,5 +1,10 @@
 definition module Clean.Prim
 
+// TODO
+// - implement primitives in inlined ABC code
+// - add primitives for gt, le, ge, ne
+// - add primitives for files
+
 /// # Miscellaneous
 
 prim_abort :: !String -> a
