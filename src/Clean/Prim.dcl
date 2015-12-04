@@ -1,4 +1,4 @@
-definition module Clean.Prim
+system module Clean.Prim
 
 // TODO
 // - implement primitives in inlined ABC code
@@ -8,7 +8,6 @@ definition module Clean.Prim
 /// # Miscellaneous
 
 prim_abort :: !String -> a
-prim_undefined :: a
 
 /// # Booleans
 
@@ -21,6 +20,9 @@ prim_notBool :: !Bool -> Bool
 
 prim_eqChar :: !Char !Char -> Bool
 prim_ltChar :: !Char !Char -> Bool
+prim_gtChar :: !Char !Char -> Bool
+prim_minChar :: !Char !Char -> Char
+prim_maxChar :: !Char !Char-> Char
 
 prim_digitToInt :: !Char -> Int
 prim_toUpperChar :: !Char -> Char
@@ -42,19 +44,26 @@ prim_isAsciiChar :: !Char -> Bool
 
 prim_eqInt :: !Int !Int -> Bool
 prim_ltInt :: !Int !Int -> Bool
+prim_gtInt :: !Int !Int -> Bool
+prim_minInt :: !Int !Int -> Int
+prim_maxInt :: !Int !Int-> Int
 
 prim_addInt :: !Int !Int -> Int
 prim_subInt :: !Int !Int -> Int
 prim_mulInt :: !Int !Int -> Int
-prim_divInt :: !Int !Int -> Int
 prim_powInt :: !Int !Int -> Int
 
 prim_absInt :: !Int -> Int
 prim_signInt :: !Int -> Int
 prim_negInt :: !Int -> Int
 
-//TODO prim_modInt :: !Int !Int -> Int
+prim_quotInt :: !Int !Int -> Int
 prim_remInt :: !Int !Int -> Int
+prim_divInt :: !Int !Int -> Int
+prim_modInt :: !Int !Int -> Int
+prim_quotRemInt :: !Int !Int -> (!Int,!Int)
+prim_divModInt :: !Int !Int -> (!Int,!Int)
+
 prim_gcdInt :: !Int !Int -> Int
 prim_lcmInt :: !Int !Int -> Int
 
@@ -65,13 +74,16 @@ prim_andInt :: !Int !Int -> Int
 prim_orInt :: !Int !Int -> Int
 prim_xorInt :: !Int !Int -> Int
 prim_notInt :: !Int -> Int
-prim_lshiftInt :: !Int !Int -> Int
-prim_rshiftInt :: !Int !Int -> Int
+prim_shlInt :: !Int !Int -> Int
+prim_shrInt :: !Int !Int -> Int
 
 /// # Reals
 
 prim_eqReal :: !Real !Real -> Bool
 prim_ltReal :: !Real !Real -> Bool
+prim_gtReal :: !Real !Real -> Bool
+prim_minReal :: !Real !Real -> Real
+prim_maxReal :: !Real !Real -> Real
 
 prim_addReal :: !Real !Real -> Real
 prim_subReal :: !Real !Real -> Real
@@ -80,8 +92,12 @@ prim_divReal :: !Real !Real -> Real
 prim_powReal :: !Real !Real -> Real
 
 prim_absReal :: !Real -> Real
-prim_signReal :: !Real -> Int
 prim_negReal :: !Real -> Real
+
+prim_roundReal :: !Real -> Int
+prim_truncateReal :: !Real -> Int
+prim_floorReal :: !Real -> Int
+prim_ceilReal :: !Real -> Int
 
 prim_lnReal :: !Real -> Real
 prim_logReal :: !Real -> Real
@@ -94,12 +110,6 @@ prim_tanReal :: !Real -> Real
 prim_asinReal :: !Real -> Real
 prim_acosReal :: !Real -> Real
 prim_atanReal :: !Real -> Real
-prim_sinhReal :: !Real -> Real
-prim_coshReal :: !Real -> Real
-prim_tanhReal :: !Real -> Real
-prim_asinhReal :: !Real -> Real
-prim_acoshReal :: !Real -> Real
-prim_atanhReal :: !Real -> Real
 
 /// # Strings
 
