@@ -9,14 +9,13 @@ from Control.Compare import class Eq, class Ord
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
+chr :: Int -> Char
+ord :: Char -> Int
+
 /// # Instances
 
 instance Eq Char
 instance Ord Char
-
-instance Cast Char Nat
-instance Cast Char Int
-instance Cast Char String
 
 /// # Classification
 
@@ -45,8 +44,3 @@ toLower :: !Char -> Char
 //TODO rename?
 digitToInt :: !Char -> Int
 //TODO intToDigit :: Int -> Char
-
-/// # Representation
-
-chr :: Int -> Char
-ord :: Char -> Int

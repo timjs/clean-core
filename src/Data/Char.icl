@@ -12,6 +12,13 @@ import Clean.Prim
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
+
+chr :: Int -> Char
+chr i = prim_intToChar i
+
+ord :: Char -> Int
+ord c = prim_charToInt c
+
 /// # Instances
 
 instance Eq Char where
@@ -19,17 +26,6 @@ instance Eq Char where
 
 instance Ord Char where
     (<) x y = prim_ltChar x y
-
-/// ## Casts
-
-instance Cast Char Nat where
-    cast x = nat $ prim_charToInt x
-
-instance Cast Char Int where
-    cast x = prim_charToInt x
-
-instance Cast Char String where
-    cast x = prim_charToString x
 
 /// # Classification
 
@@ -82,11 +78,3 @@ digitToInt :: !Char -> Int
 digitToInt c = prim_digitToInt c
 
 //TODO intToDigit :: Int -> Char
-
-/// # Representation
-
-chr :: Int -> Char
-chr i = prim_intToChar i
-
-ord :: Char -> Int
-ord c = prim_charToInt c

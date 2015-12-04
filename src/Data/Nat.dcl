@@ -4,7 +4,6 @@ from Data.Ratio import :: Ratio
 from Data.Complex import :: Complex
 
 from Control.Compare import class Eq, class Ord
-from Control.Cast import class Cast
 
 from Algebra.Group import class Semigroup, class Monoid
 from Algebra.Ring import class Semiring
