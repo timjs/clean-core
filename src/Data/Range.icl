@@ -24,7 +24,7 @@ import Algebra.Group
     // | n < 0 = abort "Data.Range.(..<): start smaller than zero"
     // | m < 0 = abort "Data.Range.(..<): end smaller than zero"
     | n > m = abort "Data.Range.(..<): start bigger than end"
-    | otherwise = { Pair | x = nat n, y = nat m}
+    | otherwise = { Pair | x = nat n, y = nat m }
 
 (...) infix 5 :: !Int !Int -> Range
 (...) n m = n ..< m + 1

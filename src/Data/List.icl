@@ -6,7 +6,7 @@ import Data.Range
 
 import Control.Eq
 import Control.Ord
-import Control.Cast
+import Control.Function
 
 import Control.Functor
 import Control.Applicative
@@ -95,7 +95,7 @@ instance Traversable [] where
 
 instance Sliceable [] where
     (%) xs r
-        = go r.start r.end xs
+        = go (int $ start r) (int $ end r) xs
         where
             go _ _ [] = []
             go 0 0 _ = []
