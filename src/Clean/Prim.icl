@@ -1,11 +1,6 @@
 implementation module Clean.Prim
 
-import StdMisc
-
-import StdBool
 import StdChar
-import StdInt
-import StdReal
 
 import StdArray
 import StdString
@@ -13,28 +8,60 @@ import StdString
 /// # Miscellaneous
 
 prim_abort :: !String -> a
-prim_abort s = abort s
-
-prim_undefined :: a
-prim_undefined = undef
+prim_abort s = code inline {
+    .d 1 0
+        jsr print_string_
+    .o 0 0
+        halt
+}
 
 /// # Booleans
 
 /// ## Ordering
 
 prim_eqBool :: !Bool !Bool -> Bool
-prim_eqBool a b = (==) a b
+prim_eqBool a b = code inline {
+    eqB
+}
 
 /// ## Logic
 
 prim_andBool :: !Bool Bool -> Bool
-prim_andBool a b = (&&) a b
+prim_andBool a b = code {
+        push_b 0
+        jmp_false l1
+        pop_b 1
+        jsr_eval 0
+        pushB_a 0
+        pop_a 1
+    .d 0 1 b
+        rtn
+    :l1
+        pop_a 1
+    .d 0 1 b
+        rtn
+}
 
 prim_orBool :: !Bool Bool -> Bool
-prim_orBool a b = (||) a b
+prim_orBool a b = code {
+        push_b 0
+        jmp_true l2
+        pop_b 1
+        jsr_eval 0
+        pushB_a 0
+        pop_a 1
+    .d 0 1 b
+        rtn
+    :l2
+        pop_a 1
+    .d 0 1 b
+        rtn
+}
 
 prim_notBool :: !Bool -> Bool
-prim_notBool b = not b
+prim_notBool b = code inline {
+    notB
+}
 
 /// # Characters
 
@@ -97,171 +124,271 @@ prim_isAsciiChar c = isAscii c
 /// ## Ordering
 
 prim_eqInt :: !Int !Int -> Bool
-prim_eqInt a b = (==) a b
+prim_eqInt a b = code inline {
+    eqI
+}
 
 prim_ltInt :: !Int !Int -> Bool
-prim_ltInt a b = (<) a b
+prim_ltInt a b = code inline {
+    ltI
+}
 
 /// ## Arithmetic
 
 prim_addInt :: !Int !Int -> Int
-prim_addInt a b = (+) a b
+prim_addInt a b = code inline {
+    addI
+}
 
 prim_subInt :: !Int !Int -> Int
-prim_subInt a b = (-) a b
+prim_subInt a b = code inline {
+    subI
+}
 
 prim_mulInt :: !Int !Int -> Int
-prim_mulInt a b = (*) a b
-
-prim_divInt :: !Int !Int -> Int
-prim_divInt a b = (/) a b
-
-prim_powInt :: !Int !Int -> Int
-prim_powInt a b = (^) a b
+prim_mulInt a b = code inline {
+    mulI
+}
 
 /// ## Signed
 
-prim_absInt :: !Int -> Int
-prim_absInt a = abs a
-
-prim_signInt :: !Int -> Int
-prim_signInt a = sign a
-
 prim_negInt :: !Int -> Int
-prim_negInt a = ~ a
-
-//TODO Does not exist!
-prim_modInt :: !Int !Int -> Int
-prim_modInt a b = prim_undefined //(mod) a b
+prim_negInt a = code inline {
+    negI
+}
 
 /// ## Integer Arithmetic
 
+prim_quotInt :: !Int !Int -> Int
+prim_quotInt a b = code inline {
+    divI
+}
+
 prim_remInt :: !Int !Int -> Int
-prim_remInt a b = (rem) a b
+prim_remInt a b = code inline {
+    remI
+}
 
-prim_gcdInt :: !Int !Int -> Int
-prim_gcdInt a b = gcd a b
+prim_divInt :: !Int !Int -> Int
+prim_divInt a b = code inline {
+    floordivI
+}
 
-prim_lcmInt :: !Int !Int -> Int
-prim_lcmInt a b = lcm a b
+prim_modInt :: !Int !Int -> Int
+prim_modInt a b = code inline {
+    modI
+}
+
+prim_quotRemInt :: !Int !Int -> (!Int,!Int)
+prim_quotRemInt a b = code inline {
+    push_b 1
+    push_b 1
+    divI
+    push_b 2
+    push_b 1
+    mulI
+    push_b 2
+    subI
+    update_b 0 3
+    update_b 1 2
+    pop_b 2
+}
+
+prim_divModInt :: !Int !Int -> (!Int,!Int)
+prim_divModInt a b = code inline {
+    push_b 1
+    push_b 1
+    floordivI
+    push_b 2
+    push_b 1
+    mulI
+    push_b 2
+    subI
+    update_b 0 3
+    update_b 1 2
+    pop_b 2
+}
 
 /// ## Tests
 
 prim_isEvenInt :: !Int -> Bool
-prim_isEvenInt a = isEven a
+prim_isEvenInt a = code inline {
+    pushI 1
+    and%
+    pushI 0
+    eqI
+}
 
 prim_isOddInt :: !Int -> Bool
-prim_isOddInt a = isOdd a
+prim_isOddInt a = code inline {
+    pushI 1
+    and%
+    pushI 0
+    eqI
+    notB
+}
 
 /// ## Logic
 
 prim_andInt :: !Int !Int -> Int
-prim_andInt a b = (bitand) a b
+prim_andInt a b = code inline {
+    and%
+}
 
 prim_orInt :: !Int !Int -> Int
-prim_orInt a b = (bitor) a b
+prim_orInt a b = code inline {
+    or%
+}
 
 prim_xorInt :: !Int !Int -> Int
-prim_xorInt a b = (bitxor) a b
+prim_xorInt a b = code inline {
+    xor%
+}
 
 prim_notInt :: !Int -> Int
-prim_notInt a = bitnot a
+prim_notInt a = code inline {
+    not%
+}
 
 prim_shlInt :: !Int !Int -> Int
-prim_shlInt a b = (<<) a b
+prim_shlInt a b = code inline {
+    shiftl%
+}
 
 prim_shrInt :: !Int !Int -> Int
-prim_shrInt a b = (>>) a b
+prim_shrInt a b = code inline {
+    shiftr%
+}
 
 /// # Reals
 
 /// ## Ordering
 
 prim_eqReal :: !Real !Real -> Bool
-prim_eqReal a b = (==) a b
+prim_eqReal a b = code inline {
+    eqR
+}
 
 prim_ltReal :: !Real !Real -> Bool
-prim_ltReal a b = (<) a b
+prim_ltReal a b = code inline {
+    ltR
+}
 
 /// ## Arithmetic
 
 prim_addReal :: !Real !Real -> Real
-prim_addReal a b = (+) a b
+prim_addReal a b = code inline {
+    addR
+}
 
 prim_subReal :: !Real !Real -> Real
-prim_subReal a b = (-) a b
+prim_subReal a b = code inline {
+    subR
+}
 
 prim_mulReal :: !Real !Real -> Real
-prim_mulReal a b = (*) a b
+prim_mulReal a b = code inline {
+    mulR
+}
 
 prim_divReal :: !Real !Real -> Real
-prim_divReal a b = (/) a b
+prim_divReal a b = code inline {
+    divR
+}
 
 prim_powReal :: !Real !Real -> Real
-prim_powReal a b = (^) a b
+prim_powReal a b = code inline {
+    powR
+}
 
 /// ## Signed
 
 prim_absReal :: !Real -> Real
-prim_absReal a = abs a
-
-prim_signReal :: !Real -> Int
-prim_signReal a = sign a
+prim_absReal a = code inline {
+    absR
+}
 
 prim_negReal :: !Real -> Real
-prim_negReal a = ~ a
+prim_negReal a = code inline {
+    negR
+}
+
+/// ## Rounded 
+//TODO Stable?
+
+prim_roundReal :: !Real -> Int
+prim_roundReal r = code inline {
+	 RtoI
+}
+
+prim_truncateReal :: !Real -> Int
+prim_truncateReal r = code inline {
+	truncateR
+}
+
+prim_floorReal :: !Real -> Int
+prim_floorReal r = code inline {
+	entierR
+}
+
+prim_ceilReal :: !Real -> Int
+prim_ceilingReal r = code inline {
+	ceilingR
+}
 
 /// ## Algebraic
 
 prim_lnReal :: !Real -> Real
-prim_lnReal x = ln x
+prim_lnReal x = code inline {
+    lnR
+}
 
 prim_logReal :: !Real -> Real
-prim_logReal x = log10 x
+prim_logReal x = code inline {
+    log10R
+}
 
 prim_expReal :: !Real -> Real
-prim_expReal x = exp x
+prim_expReal x = code inline {
+    expR
+}
 
 prim_sqrtReal :: !Real -> Real
-prim_sqrtReal x = sqrt x
+prim_sqrtReal x = code inline {
+    sqrtR
+}
 
 /// ## Trigoniometric
 
 prim_sinReal :: !Real -> Real
-prim_sinReal x = sin x
+prim_sinReal x = code inline {
+    sinR
+}
 
 prim_cosReal :: !Real -> Real
-prim_cosReal x = cos x
+prim_cosReal x = code inline {
+    cosR
+}
 
 prim_tanReal :: !Real -> Real
-prim_tanReal x = tan x
+prim_tanReal x = code inline {
+    tanR
+}
 
 prim_asinReal :: !Real -> Real
-prim_asinReal x = asin x
+prim_asinReal x = code inline {
+    asinR
+}
 
 prim_acosReal :: !Real -> Real
-prim_acosReal x = acos x
+prim_acosReal x = code inline {
+    acosR
+}
 
 prim_atanReal :: !Real -> Real
-prim_atanReal x = atan x
-
-prim_sinhReal :: !Real -> Real
-prim_sinhReal x = sinh x
-
-prim_coshReal :: !Real -> Real
-prim_coshReal x = cosh x
-
-prim_tanhReal :: !Real -> Real
-prim_tanhReal x = tanh x
-
-prim_asinhReal :: !Real -> Real
-prim_asinhReal x = asinh x
-
-prim_acoshReal :: !Real -> Real
-prim_acoshReal x = acosh x
-
-prim_atanhReal :: !Real -> Real
-prim_atanhReal x = atanh x
+prim_atanReal x = code inline {
+    atanR
+}
 
 /// # Strings
 
@@ -283,34 +410,64 @@ prim_concatString a b = (+++) a b
 
 /// # Conversions
 
+/// ## Booleans
+
+prim_boolToString :: !Bool -> String
+prim_boolToString b = code inline {
+    .d 0 1 b
+        jsr BtoAC
+    .o 1 0
+}
+
 /// ## Characters
 
 prim_charToInt :: !Char -> Int
-prim_charToInt c = toInt c
+prim_charToInt c = code inline {
+    CtoI
+}
 
 prim_charToString :: !Char -> String
-prim_charToString c = toString c
+prim_charToString c = code {
+    CtoAC
+}
 
 /// ## Integers
 
 prim_intToChar :: !Int -> Char
-prim_intToChar i = toChar i
+prim_intToChar i = code inline {
+    ItoC
+}
 
 prim_intToReal :: !Int -> Real
-prim_intToReal i = toReal i
+prim_intToReal i = code inline {
+    ItoR
+}
 
 prim_intToString :: !Int -> String
-prim_intToString i = toString i
+prim_intToString i = code inline {
+    .d 0 1 i
+        jsr ItoAC
+    .o 1 0
+}
 
 /// ## Reals
 
 prim_realToInt :: !Real -> Int
-prim_realToInt x = toInt x
+prim_realToInt x = code inline {
+    RtoI
+}
 
 prim_realToString :: !Real -> String
-prim_realToString x = toString x
+prim_realToString x = code inline {
+    .d 0 2 r
+        jsr RtoAC
+    .o 1 0
+}
 
 /// ## Strings
+
+prim_stringToBool :: !String -> Bool
+prim_stringToBool s = toBool s
 
 prim_stringToInt :: !String -> Int
 prim_stringToInt s = toInt s
