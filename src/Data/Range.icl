@@ -4,8 +4,7 @@ import Data.Nat
 import Data.Int
 import Data.Record.Strict
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 import Control.Function
 
 import Algebra.Group
@@ -40,4 +39,3 @@ start r = r.Pair.x
 
 end :: !Range -> Nat
 end r = r.Pair.y
-

@@ -4,8 +4,7 @@ import Data.Nat
 import Data.Int
 import Data.Range
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 import Control.Function
 
 import Control.Functor
@@ -26,7 +25,7 @@ instance Eq [a] | Eq a where
     (==) [] [] = True
     (==) [] _  = False
     (==) _  [] = False
-    (==) [a:as] [b:bs] 
+    (==) [a:as] [b:bs]
         | a == b    = as == bs
         | otherwise = False
 
@@ -112,12 +111,12 @@ instance length []
     where
         acclen n [x:xs] = acclen (inc n) xs
         acclen n []     = n
-    
+
 instance % [a]
     where
 //    (%) :: ![a] !(!Int,!Int) -> [a]
     (%) list (frm,to) = take (to - frm + 1) (drop frm list)
-        
+
 instance toString [x] | toChar x
     where
 //    toString::![x] -> {#Char} | toChar x
@@ -133,9 +132,9 @@ instance fromString [x] | fromChar x
     fromString s = stolacc s (size s - 1) []
     where
         stolacc :: !String !Int u:[a] -> u:[a] | fromChar a
-        stolacc s i acc 
+        stolacc s i acc
             | i >= 0
-                = stolacc s (dec i) [fromChar (s.[i]) : acc] 
+                = stolacc s (dec i) [fromChar (s.[i]) : acc]
             // otherwise
                 = acc
 
@@ -233,7 +232,7 @@ filter f []                = []
 
 reverse::![.a] -> [.a]
 reverse list = reverse_ list []
-where 
+where
     reverse_ :: ![.a] u:[.a] -> v:[.a], [u <= v]
     reverse_ [hd:tl] list    = reverse_ tl [hd:list]
     reverse_ [] list        = list
@@ -263,7 +262,7 @@ updateAt n x [y:ys]    = [y : updateAt (n-1) x ys]
 splitAt :: !Int u:[.a] -> ([.a],u:[.a])
 splitAt 0     xs    =    ([],xs)
 splitAt _     []    =    ([],[])
-splitAt n [x:xs]    =    ([x:xs`],xs``) 
+splitAt n [x:xs]    =    ([x:xs`],xs``)
     where
         (xs`,xs``) = splitAt (n-1) xs
 
@@ -349,7 +348,7 @@ where
 
         takeynext [y:ys] accu    = (True, ys,accu++[y])
         takeynext []     accu    = (False,[],accu)
-    
+
         shift xout [_:ys]    = [(xout,ys): shift xout ys]
         shift _    []         = []
 
@@ -397,7 +396,7 @@ removeMember:: a !u:[a] -> u:[a] | Eq a
 removeMember e [a:as]
     | a==e        = as
                 = [a:removeMember e as]
-removeMember e [] = []    
+removeMember e [] = []
 
 removeMembers::!u:[a] !.[a] -> u:[a] | Eq a
 removeMembers x []        = x

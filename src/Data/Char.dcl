@@ -2,9 +2,7 @@ definition module Data.Char
 
 from Data.Nat import :: Nat
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
-from Control.Cast import class Cast
+from Control.Compare import class Eq, class Ord
 
 /// # Definition
 
@@ -52,4 +50,3 @@ digitToInt :: !Char -> Int
 
 chr :: Int -> Char
 ord :: Char -> Int
-

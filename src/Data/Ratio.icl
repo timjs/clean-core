@@ -6,8 +6,7 @@ import Data.Int
 import Data.Real
 import Data.Complex
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 import Control.Function
 
 import Algebra.Group
@@ -72,4 +71,3 @@ instance Field Ratio where
 
 // instance Normed Ratio where
 //     abs (Ratio x y) = Ratio (abs x) y
-

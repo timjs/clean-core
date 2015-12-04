@@ -3,9 +3,7 @@ implementation module Data.Char
 import Data.Nat
 
 import Control.Function
-import Control.Eq
-import Control.Ord
-import Control.Cast
+import Control.Compare
 
 import Clean.Prim
 
@@ -92,4 +90,3 @@ chr i = prim_intToChar i
 
 ord :: Char -> Int
 ord c = prim_charToInt c
-

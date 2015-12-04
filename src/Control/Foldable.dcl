@@ -1,7 +1,6 @@
 definition module Control.Foldable
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 
 from Data.Nat import :: Nat
 from Data.Maybe import :: Maybe
@@ -63,4 +62,3 @@ or ::  (t Bool) -> Bool | Foldable t
 
 any :: (a -> Bool) (t a) -> Bool | Foldable t
 all :: (a -> Bool) (t a) -> Bool | Foldable t
-

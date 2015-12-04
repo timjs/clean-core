@@ -4,8 +4,7 @@ from Data.Nat import :: Nat
 from Data.Ratio import :: Ratio
 from Data.Complex import :: Complex
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Domain
@@ -26,4 +25,3 @@ instance Group Int
 instance Semiring Int
 // instance Ring Int
 instance Domain Int
-

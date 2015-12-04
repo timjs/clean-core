@@ -6,8 +6,7 @@ import Data.Nat
 import Data.Maybe
 import Data.List
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Algebra.Group
 import Algebra.Ring
@@ -150,4 +149,3 @@ any p xs = foldl (\x y -> x || p y) False xs
 /// from left to right.
 all :: (a -> Bool) (t a) -> Bool | Foldable t
 all p xs = foldl (\x y -> x && p y) True xs
-

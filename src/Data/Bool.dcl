@@ -3,8 +3,7 @@ definition module Data.Bool
 // TODO
 // - test inlining of primitives when used as functions or macros
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 
 from Algebra.Lattice import class JoinSemilattice, class MeetSemilattice, class UpperBounded, class LowerBounded, class Bounded, class Complemented
 
@@ -41,4 +40,3 @@ bool :: a a !Bool -> a
 
 // otherwise :: !Bool
 // BUILTIN
-

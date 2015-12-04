@@ -4,8 +4,7 @@ import Data.Nat
 import Data.Ratio
 import Data.Complex
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Algebra.Group
 import Algebra.Ring
@@ -45,4 +44,3 @@ instance Domain Int where
     (`mod`) x y = prim_modInt x y
     gcd x y = prim_gcdInt x y
     lcm x y = prim_gcdInt x y
-

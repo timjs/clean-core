@@ -1,19 +1,22 @@
-implementation module Control.Ord
+implementation module Control.Compare
 
 import Data.Bool
 
-import Control.Eq
+/// # Equality
 
-/// # Class
+(/=) infix 4 :: !a !a -> Bool | Eq a
+(/=) x y = not (x == y)
+
+/// # Ordering
 
 (>) infix 4 :: !a !a -> Bool | Ord a
-(>) x y = y < x 
+(>) x y = y < x
 
 (<=) infix 4 :: !a !a -> Bool | Ord a
 (<=) x y = not (y < x)
 
 (>=) infix 4 :: !a !a -> Bool | Ord a
-(>=) x y = not (x < y) 
+(>=) x y = not (x < y)
 
 compare :: !a !a -> Ordering | Ord a
 compare x y
@@ -31,4 +34,3 @@ max x y = if (x < y) y x
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
 comparing p x y = compare (p x) (p y)
-

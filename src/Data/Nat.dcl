@@ -3,8 +3,7 @@ definition module Data.Nat
 from Data.Ratio import :: Ratio
 from Data.Complex import :: Complex
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 from Control.Cast import class Cast
 
 from Algebra.Group import class Semigroup, class Monoid
@@ -35,4 +34,3 @@ instance Semiring Nat
 /// # Special Algebra
 
 (.-) infixl 6 :: !Nat !Nat -> Nat
-

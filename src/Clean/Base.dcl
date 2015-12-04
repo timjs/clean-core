@@ -24,12 +24,9 @@ import Data.List
 // import Data.Set
 // import Data.Map
 
-import Control.Eq//TODO combined in Control.Compare?
-import Control.Ord
-import Control.Cast
-
+import Control.Compare
 import Control.Function
-import Control.Functor//TODO add Bifunctor
+import Control.Functor
 import Control.Applicative
 import Control.Monad
 
@@ -52,4 +49,3 @@ import Text.Parse
 
 // import System.File
 // import System.Process
-

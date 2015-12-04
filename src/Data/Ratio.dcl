@@ -1,7 +1,6 @@
 definition module Data.Ratio
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 
 from Data.Nat import :: Nat
 from Data.Complex import :: Complex
@@ -29,4 +28,3 @@ instance Group Ratio
 instance Semiring Ratio
 // instance Ring Ratio
 instance Field Ratio
-

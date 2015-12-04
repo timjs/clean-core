@@ -5,8 +5,7 @@ import Data.Int
 import Data.Ratio
 import Data.Complex
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 import Control.Function
 
 import Algebra.Group
@@ -55,4 +54,3 @@ instance Semiring Nat where
 (.-) n m
     | n > m = prim_subInt n m
     | otherwise = 0
-

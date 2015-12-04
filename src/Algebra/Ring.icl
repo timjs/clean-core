@@ -1,7 +1,6 @@
 implementation module Algebra.Ring
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Data.Nat
 import Data.Int
@@ -42,4 +41,3 @@ square x = x * x
 (^^) x n
     | n >= 0 = x ^ nat n
     | otherwise = reciprocal (x ^ nat (inverse n))
-

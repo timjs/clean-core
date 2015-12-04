@@ -1,8 +1,16 @@
-definition module Control.Ord
+definition module Control.Compare
 
-from Control.Eq import class Eq
+// TODO
+// - move default implementations inside class
 
-/// # Class
+/// # Equality
+
+class Eq a where
+    (==) infix 4 :: !a !a -> Bool
+
+(/=) infix 4 :: !a !a -> Bool | Eq a
+
+/// # Ordering
 
 :: Ordering = Lesser | Equal | Greater
 
@@ -21,4 +29,3 @@ max :: !a !a -> a | Ord a
 /// # Helpers
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
-

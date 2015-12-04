@@ -1,8 +1,6 @@
 definition module Data.List
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
-from Control.Cast import class Cast
+from Control.Compare import class Eq, class Ord
 
 from Control.Functor import class Functor
 from Control.Applicative import class Applicative, class Alternative
@@ -35,4 +33,3 @@ instance Monad []
 instance Foldable []
 instance Traversable []
 instance Sliceable []
-

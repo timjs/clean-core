@@ -1,8 +1,6 @@
 definition module Data.Maybe
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
-from Control.Cast import class Cast
+from Control.Compare import class Eq, class Ord
 
 from Algebra.Group import class Semigroup, class Monoid
 
@@ -32,4 +30,3 @@ raise :: a -> Maybe a | Monoid a & Eq a
 /// # Helpers
 
 maybe :: b (a -> b) !(Maybe a) -> b
-

@@ -1,7 +1,6 @@
 definition module Data.Real
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
+from Control.Compare import class Eq, class Ord
 
 from Data.Nat import :: Nat
 from Data.Ratio import :: Ratio
@@ -30,4 +29,3 @@ instance Semiring Real
 instance Field Real
 instance Algebraic Real
 instance Transcendental Real
-

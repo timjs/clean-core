@@ -1,8 +1,6 @@
 implementation module Data.Maybe
 
-import Control.Eq
-import Control.Ord
-import Control.Cast
+import Control.Compare
 
 import Algebra.Group
 
@@ -54,4 +52,3 @@ default _ (Just y) = y
 maybe :: b (a -> b) !(Maybe a) -> b
 maybe x _ Nothing = x
 maybe _ f (Just y) = f y
-

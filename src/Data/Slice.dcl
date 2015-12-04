@@ -1,7 +1,6 @@
 definition module Data.Slice
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Data.Maybe
 
@@ -30,4 +29,3 @@ length :: !(Slice a) -> Int
 
 findIndex :: !(a -> Bool) !(Slice a) -> Maybe Int
 findIndexOrEnd :: !(a -> Bool) !(Slice a) -> Int
-

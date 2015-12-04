@@ -1,7 +1,6 @@
 implementation module Data.Bool
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Algebra.Lattice
 
@@ -56,4 +55,3 @@ bool x y p = if p y x
 
 // otherwise :: !Bool
 // BUILTIN
-

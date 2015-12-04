@@ -3,8 +3,7 @@ definition module Control.Sliceable
 from Data.Range import :: Range
 from Data.Maybe import :: Maybe
 
-from Control.Eq import class Eq
-
+from Control.Compare import class Eq
 from Control.Foldable import class Foldable
 
 /// # Class
@@ -45,4 +44,3 @@ span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
 isPrefixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
 isSuffixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
 isInfixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
-

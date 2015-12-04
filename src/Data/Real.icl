@@ -1,7 +1,6 @@
 implementation module Data.Real
 
-import Control.Eq
-import Control.Ord
+import Control.Compare
 
 import Control.Function
 import Data.Nat
@@ -80,4 +79,3 @@ instance Transcendental Real where
     asinh x = log (sqrt (square x - 1.0) + x)
     acosh x = log (sqrt (square x - 1.0) + x)
     atanh x = (log (1.0 + x) - log (1.0 - x)) / 2.0
-

@@ -1,8 +1,6 @@
 definition module Data.Complex
 
-from Control.Eq import class Eq
-from Control.Ord import class Ord
-from Control.Cast import class Cast
+from Control.Compare import class Eq, class Ord
 
 from Data.Nat import :: Nat
 from Data.Ratio import :: Ratio
@@ -35,4 +33,3 @@ from Algebra.Ring import class Semiring, class Ring, class Field, class Algebrai
 // instance Field Complex
 // instance Algebraic Complex
 // instance Transcendental Complex
-
