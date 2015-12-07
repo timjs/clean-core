@@ -7,7 +7,7 @@ system module Clean.Prim
 
 /// # Miscellaneous
 
-prim_abort :: !String -> a
+prim_abort :: !String -> .a
 
 /// # Booleans
 

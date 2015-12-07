@@ -52,5 +52,5 @@ uncurry f (a, b) :== f a b
 // abort :: !String -> a
 abort s :== prim_abort s
 
-undefined :: a
+undefined :: .a
 
