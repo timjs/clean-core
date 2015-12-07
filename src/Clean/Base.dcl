@@ -2,6 +2,7 @@ definition module Clean.Base
 
 import Data.Bool
 import Data.Char
+import Data.Error
 
 import Data.Nat
 import Data.Int
@@ -12,9 +13,9 @@ import Data.Complex
 import Data.Maybe
 import Data.Either
 import Data.Enum
+import Data.Range
 
 import Data.Tuple
-import Data.Range
 import Data.List
 import Data.Array
 import Data.Slice
