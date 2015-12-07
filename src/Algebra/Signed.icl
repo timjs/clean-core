@@ -1,4 +1,4 @@
-implementation module Algebra.Group.Signed
+implementation module Algebra.Signed
 
 /*
 abs :: (Ord a, Group a) => a -> a

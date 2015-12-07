@@ -1,2 +1,2 @@
-implementation module Algebra.Group
+implementation module Algebra.Module
 
