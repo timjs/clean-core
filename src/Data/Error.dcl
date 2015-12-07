@@ -2,6 +2,8 @@ definition module Data.Error
 
 from Data.Either import :: Either
 
+from Text.Show import class Show
+
 /// # Errors
 
 :: Error
@@ -9,4 +11,8 @@ from Data.Either import :: Either
     | ..
 
 :: Usually a :== Either Error a
+
+/// # Instances
+
+instance Show Error
 

@@ -48,5 +48,5 @@ import Algebra.Normed
 import Text.Show
 import Text.Parse
 
-// import System.File
+import System.File
 // import System.Process
