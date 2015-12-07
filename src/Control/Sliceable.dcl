@@ -7,41 +7,46 @@ from Data.Maybe import :: Maybe
 from Control.Compare import class Eq
 from Control.Foldable import class Foldable
 
+from Algebra.Group import class Semigroup, class Monoid
+
 /// # Class
 
-class Sliceable s | Foldable s where
-    (%) infixl 4 :: (s a) Range -> s a
+//TODO Is Monoid contraint needed?
+class Sliceable s a | Foldable s & Monoid (s a) where
+    (@) infixl 9 :: (s a) !Nat -> a
+    (%) infixl 4 :: (s a) !Range -> s a
 
 /// # Functions
 
-head :: (s a) -> Maybe a | Sliceable s
-tail :: (s a) -> Maybe (s a) | Sliceable s
-init :: (s a) -> Maybe (s a) | Sliceable s
-last :: (s a) -> Maybe a | Sliceable s
+head :: (s a) -> Maybe a | Sliceable s a
+tail :: (s a) -> Maybe (s a) | Sliceable s a
+init :: (s a) -> Maybe (s a) | Sliceable s a
+last :: (s a) -> Maybe a | Sliceable s a
 
-uncons :: (s a) -> Maybe (a,(s a)) | Sliceable s
-unsnoc :: (s a) -> Maybe ((s a),a) | Sliceable s
+uncons :: (s a) -> Maybe (a,(s a)) | Sliceable s a
+unsnoc :: (s a) -> Maybe ((s a),a) | Sliceable s a
 
-unsafeHead :: (s a) -> a | Sliceable s
-unsafeTail :: (s a) -> (s a) | Sliceable s
-unsafeInit :: (s a) -> (s a) | Sliceable s
-unsafeLast :: (s a) -> a | Sliceable s
+unsafeHead :: (s a) -> a | Sliceable s a
+unsafeTail :: (s a) -> (s a) | Sliceable s a
+unsafeInit :: (s a) -> (s a) | Sliceable s a
+unsafeLast :: (s a) -> a | Sliceable s a
 
-unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s
-unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s
+unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s a
+unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s a
 
-take :: Nat (s a) -> (s a) | Sliceable s
-drop :: Nat (s a) -> (s a) | Sliceable s
-split :: Nat (s a) -> ((s a), (s a)) | Sliceable s
+take :: Nat (s a) -> (s a) | Sliceable s a
+drop :: Nat (s a) -> (s a) | Sliceable s a
+split :: Nat (s a) -> ((s a), (s a)) | Sliceable s a
 
-takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
-dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
-break :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
+takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a
+dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a
+break :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s a
 
-takeWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
-dropWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
-span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
+takeWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s a
+dropWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s a
+span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s a
 
-isPrefixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
-isSuffixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
-// isInfixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
+isPrefixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
+isSuffixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
+// isInfixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
+

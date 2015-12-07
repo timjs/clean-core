@@ -32,4 +32,4 @@ instance Monad []
 
 instance Foldable []
 instance Traversable []
-instance Sliceable []
+instance Sliceable [] a

@@ -92,9 +92,17 @@ instance Traversable [] where
         where
             cons_f x ys = (\x xs -> [x:xs]) <$> f x <*> ys
 
-instance Sliceable [] where
-    (%) xs r
-        = go (int $ start r) (int $ end r) xs
+instance Sliceable [] a where
+    (@) xs n = go (int n) xs
+        //TODO possible to index from the end?
+        // | n < 0     = go (size xs - n)
+        // | otherwise = go n
+        where
+            go _ []     = abort "Data.List.(@): index out of bound"
+            go 0 [x:xs] = x
+            go n [x:xs] = go (n - 1) xs
+
+    (%) xs r = go (int $ start r) (int $ end r) xs
         where
             go _ _ [] = []
             go 0 0 _ = []

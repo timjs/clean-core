@@ -10,154 +10,177 @@ import Data.Range
 import Data.Maybe
 
 import Algebra.Group
+import Algebra.Ring
 
 /// # Functions
 
 /// ## Safe basics
 
-head :: (s a) -> Maybe a | Sliceable s
+head :: (s a) -> Maybe a | Sliceable s a
 head s
     | null s = Nothing
     = Just $ unsafeHead s
 
-tail :: (s a) -> Maybe (s a) | Sliceable s
+tail :: (s a) -> Maybe (s a) | Sliceable s a
 tail s
     | null s = Nothing
     = Just $ unsafeTail s
 
-init :: (s a) -> Maybe (s a) | Sliceable s
+init :: (s a) -> Maybe (s a) | Sliceable s a
 init s
     | null s = Nothing
     = Just $ unsafeInit s
 
-last :: (s a) -> Maybe a | Sliceable s
+last :: (s a) -> Maybe a | Sliceable s a
 last s
     | null s = Nothing
     = Just $ unsafeLast s
 
-uncons :: (s a) -> Maybe (a,(s a)) | Sliceable s
+uncons :: (s a) -> Maybe (a,(s a)) | Sliceable s a
 uncons s
     | null s = Nothing
     = Just (unsafeHead s, unsafeTail s)
 
-unsnoc :: (s a) -> Maybe ((s a),a) | Sliceable s
+unsnoc :: (s a) -> Maybe ((s a),a) | Sliceable s a
 unsnoc s
     | null s = Nothing
     = Just (unsafeInit s, unsafeLast s)
 
 /// ### Unsafe basics
 
-unsafeHead :: (s a) -> a | Sliceable s
-unsafeHead s = s % 0..<1
+unsafeHead :: (s a) -> a | Sliceable s a
+unsafeHead s = s @ zero
 
-unsafeTail :: (s a) -> (s a) | Sliceable s
-unsafeTail s = s % 1..<l
+unsafeTail :: (s a) -> (s a) | Sliceable s a
+unsafeTail s = s % one ..< l
     where
         l = size s
 
-unsafeInit :: (s a) -> (s a) | Sliceable s
-unsafeInit s = s % 0..<l .- 1
+unsafeInit :: (s a) -> (s a) | Sliceable s a
+unsafeInit s = s % zero ..< l .- one
     where
         l = size s
 
-unsafeLast :: (s a) -> a | Sliceable s
-unsafeLast s = s % l .- 1..<l
+unsafeLast :: (s a) -> a | Sliceable s a
+unsafeLast s = s @ (l .- one)
     where
         l = size s
 
-unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s
+unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s a
 unsafeUncons s = (unsafeHead s, unsafeTail s)
 
-unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s
+unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s a
 unsafeUnsnoc s = (unsafeInit s, unsafeLast s)
 
 /// # Specified number
 
 /// O(1) `take n`, applied to a `(s a)` `s` returns the prefix of `s`
 /// of `length n`, or `s` itself if `n > length s`.
-take :: Nat (s a) -> (s a) | Sliceable s
+take :: Nat (s a) -> (s a) | Sliceable s a
 take n s
-    | n <= 0 = neutral
+    | n == zero = neutral
     | n >= l = s
-    = s % 0..<n
+    = s % zero..<n
     where
         l = size s
 
 /// O(1) `drop n s` returns the suffix of `s` after the first `n` elements,
 /// or `""` if `n > size s`.
-drop :: Nat (s a) -> (s a) | Sliceable s
+drop :: Nat (s a) -> (s a) | Sliceable s a
 drop n s
-    | n <= 0 = s
+    | n == zero = s
     | n >= l = neutral
     = s % n..<l
     where
         l = size s
 
 /// O(1) `split n s` is equivalent to `(take n s, drop n s)`.
-split :: Nat (s a) -> ((s a), (s a)) | Sliceable s
+split :: Nat (s a) -> ((s a), (s a)) | Sliceable s a
 split n s
-    | n <= 0 = (neutral, s)
+    | n == zero = (neutral, s)
     | n >= l = (s, neutral)
-    = (s % 0..<n, s % n..<l)
+    = (s % zero..<n, s % n..<l)
     where
         l = size s
 
 /// # Using predicate
 
-takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
+takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a
 takeTill p s
     = take (findIndexOrEnd p s) s
 
-dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
+dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a
 dropTill p s
     = drop (findIndexOrEnd p s) s
 
 /// `break p s` is equivalent to `(takeTill p s, dropTill p s)`.
-break :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
+break :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s a
 break p s
     = split (findIndexOrEnd p s) s
 
 /// `takeWhile`, applied to a p `p` and a `(s a)` `s`, returns the longest prefix (possibly neutral) of `s` of elements that satisfy `p`.
-takeWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
+takeWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s a
 takeWhile p s
     = takeTill (not o p) s
 
 /// `dropWhile p s` returns the suffix remaining after `takeWhile p s`.
-dropWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
+dropWhile :: (a -> Bool) (s a) -> (s a) | Sliceable s a
 dropWhile p s
     = dropTill (not o p) s
 
 /// `span p s` breaks the `(s a)` into two segments.
 /// It is equivalent to `(takeWhile p s, dropWhile p s)`
 /// and to `break (not o p)`.
-span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
+span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s a
 span p s
     = break (not o p) s
 
 /// ## Predicates
 
-isPrefixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
+isPrefixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 isPrefixOf needle haystack
-    | l == 0 = True
+    | l == zero = True
     | l > m = False
-    = needle == (haystack % 0..<l)
+    = needle == (haystack % zero ..< l)
     where
         l = size needle
         m = size haystack
 
-isSuffixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
+isSuffixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 isSuffixOf needle haystack
-    | l == 0 = True
+    | l == zero = True
     | l > m = False
-    = needle == (haystack % m - l..<m)
+    = needle == (haystack % m .- l ..< m)
     where
         l = size needle
         m = size haystack
 
-//TODO isInfixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
+//TODO isInfixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 
-findIndexOrEnd :: (a -> Bool) (s a) -> Nat
-findIndexOrEnd p s = undefined
+/// The `findIndex` function takes a predicate and a `Slice` and
+/// returns the index of the first element in the `Slice`
+/// satisfying the predicate.
+findIndex :: !(a -> Bool) (s a) -> Maybe Nat | Sliceable s a
+findIndex p s
+    = go zero
+    where
+        go n
+            | n >= l    = Nothing
+            | p (s @ n) = Just n
+            | otherwise = go (n + one)
+        l = size s
+
+/// `findIndexOrEnd` is a variant of `findIndex`, that returns the size
+/// of the slice if no element is found, rather than `Nothing`.
+findIndexOrEnd :: !(a -> Bool) (s a) -> Nat | Sliceable s a
+findIndexOrEnd p s
+    = go zero
+    where
+        go n
+            | n >= l    = l
+            | p (s @ n) = n
+            | otherwise = go (n + one)
+        l = size s
 
 /*
 import qualified Data.List as List
