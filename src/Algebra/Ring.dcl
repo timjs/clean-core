@@ -16,6 +16,8 @@ class Semiring a | Monoid a where
     (*) infixl 7 :: !a !a -> a
     unity :: a
 
+one :== unity
+
 (^) infixr 8 :: a !Nat -> a | Semiring a
 square :: !a -> a | Semiring a
 

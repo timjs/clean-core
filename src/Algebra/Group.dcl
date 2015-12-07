@@ -28,6 +28,8 @@ class Semigroup a where
 class Monoid a | Semigroup a where
     neutral :: a
 
+zero :== neutral
+
 /// Sets equipped with a single binary operation that is associative and
 /// commutative, along with a neutral element for that binary operation and
 /// inverses for all elements. Must satisfy the following laws:
