@@ -13,12 +13,12 @@ import Data.Maybe
 import Data.Either
 import Data.Enum
 
-import Data.Range
 import Data.Tuple
-import Data.Array
-import Data.String
-import Data.Slice
+import Data.Range
 import Data.List
+import Data.Array
+import Data.Slice
+import Data.String
 // import Data.Vector
 // import Data.Matrix
 // import Data.Set

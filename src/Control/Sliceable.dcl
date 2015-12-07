@@ -1,5 +1,6 @@
 definition module Control.Sliceable
 
+from Data.Nat import :: Nat
 from Data.Range import :: Range
 from Data.Maybe import :: Maybe
 
@@ -9,7 +10,7 @@ from Control.Foldable import class Foldable
 /// # Class
 
 class Sliceable s | Foldable s where
-    (%) infixl 9 :: (s a) Range -> s a
+    (%) infixl 4 :: (s a) Range -> s a
 
 /// # Functions
 
@@ -29,9 +30,9 @@ unsafeLast :: (s a) -> a | Sliceable s
 unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s
 unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s
 
-take :: Int (s a) -> (s a) | Sliceable s
-drop :: Int (s a) -> (s a) | Sliceable s
-split :: Int (s a) -> ((s a), (s a)) | Sliceable s
+take :: Nat (s a) -> (s a) | Sliceable s
+drop :: Nat (s a) -> (s a) | Sliceable s
+split :: Nat (s a) -> ((s a), (s a)) | Sliceable s
 
 takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
 dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s & Eq a
@@ -43,4 +44,4 @@ span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s & Eq a
 
 isPrefixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
 isSuffixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
-isInfixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a
+// isInfixOf :: (s a) (s a) -> Bool | Sliceable s & Eq a

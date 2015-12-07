@@ -1,4 +1,32 @@
 
+instance Traversable Maybe where
+    traverse _ Nothing = pure Nothing
+    traverse f (Just x) = Just <$> f x
+    sequenceA f = traverse id f
+    mapM f x = unwrapMonad (traverse (WrapMonad o f) x)
+    sequence x = mapM id x
+
+instance Traversable [] where
+    traverse f x = foldr cons_f (pure []) x
+      where cons_f x ys = (\x xs -> [x:xs]) <$> f x <*> ys
+    mapM f x = 'CM'.mapM f x
+    sequenceA f = traverse id f
+    sequence x = mapM id x
+
+instance Traversable (Either a) where
+    traverse _ (Left x) = pure (Left x)
+    traverse f (Right y) = Right <$> f y
+    sequenceA f = traverse id f
+    mapM f x = unwrapMonad (traverse (WrapMonad o f) x)
+    sequence x = mapM id x
+
+instance Traversable ((,) a) where
+    traverse f (x, y) = (\x y -> (x, y)) x <$> f y
+    sequenceA f = traverse id f
+    mapM f x = unwrapMonad (traverse (WrapMonad o f) x)
+    sequence x = mapM id x
+*/
+
 infixl 7 *, /
 infixl 6 +, -
 
