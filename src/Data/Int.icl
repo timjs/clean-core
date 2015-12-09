@@ -42,5 +42,13 @@ instance Domain Int where
     (`rem`) x y = prim_remInt x y
     (`div`) x y = prim_divInt x y
     (`mod`) x y = prim_modInt x y
-    gcd x y = prim_gcdInt x y
-    lcm x y = prim_gcdInt x y
+
+	gcd x y = gcdnat (abs x) (abs y)
+	where
+		gcdnat x 0 = x
+	    gcdnat x y = gcdnat y (x `rem` y)
+
+	lcm _ 0    = 0
+	lcm 0 _    = 0
+	lcm x y    = abs ((x `quot` gcd x y) * y)
+
