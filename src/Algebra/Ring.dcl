@@ -2,6 +2,8 @@ definition module Algebra.Ring
 
 from Data.Nat import :: Nat
 
+from Control.Compare import class Eq, class Ord
+
 from Algebra.Group import class Semigroup, class Monoid, class Group
 
 /// This module defines classes for mathematical structures with __two__ binary operator (`+` and `*`) and derived operations.
@@ -18,8 +20,8 @@ class Semiring a | Monoid a where
 
 one :== unity
 
-(^) infixr 8 :: a !Nat -> a | Semiring a
 square :: !a -> a | Semiring a
+(^) infixr 8 :: a !Nat -> a | Semiring a
 
 /// Sets equipped with two binary operations, one associative and commutative
 /// supplied with a neutral element, and the other associative supplied with a
@@ -45,6 +47,8 @@ square :: !a -> a | Semiring a
 ///     forall a b c, a * (b + c) == (a * b) + (a * c)
 ///     forall a b c, (a + b) * c == (a * c) + (b * c)
 class Ring a | Group a & Semiring a
+
+signum :: !a -> a | Ord a & Ring a
 
 class Domain a | Ring a where
     (`quot`) infix 7 :: !a !a -> a

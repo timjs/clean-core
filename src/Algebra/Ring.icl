@@ -18,6 +18,18 @@ quotRem n d | signum r == -signum d = (q+one, r-d)
   where qr@(q,r) = divMod n d
 */
 
+/// ## Signum
+
+signum :: !a -> a | Ord a & Ring a
+signum x | x <  zero = inverse one
+         | x == zero = zero
+         | x >  zero = one
+
+/// ## Powers
+
+square :: !a -> a | Semiring a
+square x = x * x
+
 (^) infixr 8 :: a !Nat -> a | Semiring a
 (^) x n = pow x (int n)
   where
@@ -34,10 +46,8 @@ quotRem n d | signum r == -signum d = (q+one, r-d)
         | n `rem` 2 == 0 = g (x * x) (n `quot` 2) y // using mod and div would be faster
         | otherwise = f x (n - 1) (x * y)
 
-square :: !a -> a | Semiring a
-square x = x * x
-
 (^^) infixr 8 :: a !Int -> a | Field a
 (^^) x n
     | n >= 0 = x ^ nat n
     | otherwise = reciprocal (x ^ nat (inverse n))
+
