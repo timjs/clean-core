@@ -39,7 +39,6 @@ import Control.Sliceable
 import Algebra.Group
 import Algebra.Ring
 import Algebra.Module
-//TODO name?
 
 import Text.Show
 import Text.Parse
