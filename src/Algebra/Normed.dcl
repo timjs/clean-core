@@ -1,2 +1,0 @@
-definition module Algebra.Normed
-

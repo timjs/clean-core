@@ -42,8 +42,6 @@ import Algebra.Ring
 // import Algebra.Lattice
 import Algebra.Module
 //TODO name?
-import Algebra.Signed
-import Algebra.Normed
 
 import Text.Show
 import Text.Parse
