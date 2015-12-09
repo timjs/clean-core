@@ -1,5 +1,7 @@
 definition module Algebra.Group
 
+from Control.Compare import class Eq, class Ord
+
 /// This module defines classes for mathematical structures with one binary operator (`+`) and derived operations.
 
 // TODO
@@ -47,4 +49,8 @@ zero :== neutral
 class Group a | Monoid a where
     (-) infixl 6 :: !a !a -> a
     inverse :: !a -> a
+
+negate a :== inverse a
+
+abs :: !a -> a | Ord a & Group a
 
