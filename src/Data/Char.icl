@@ -1,6 +1,7 @@
 implementation module Data.Char
 
-import Data.Nat
+import Data.Bool
+import Data.Int
 
 import Control.Function
 import Control.Compare
@@ -11,7 +12,6 @@ import Clean.Prim
 
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
-
 
 chr :: Int -> Char
 chr i = prim_intToChar i
@@ -29,52 +29,63 @@ instance Ord Char where
 
 /// # Classification
 
+inline_isLower c :== c >= 'a' && c <= 'z'
+inline_isUpper c :== c >= 'A' && c <= 'Z'
+inline_isDigit c :== c >= '0' && c <= '9'
+inline_isAlpha c :== inline_isUpper (prim_unsetLowercaseBitChar c)
+
 isUpper :: !Char -> Bool
-isUpper c = prim_isUpperChar c
+isUpper c = inline_isUpper c
 
 isLower :: !Char -> Bool
-isLower c = prim_isLowerChar c
+isLower c = inline_isLower c
 
 isAlpha :: !Char -> Bool
-isAlpha c = prim_isAlphaChar c
+isAlpha c = inline_isAlpha c
 
 isAlphaNum :: !Char -> Bool
-isAlphaNum c = prim_isAlphaNumChar c
+isAlphaNum c = inline_isAlpha c || inline_isDigit c
 
 isDigit :: !Char -> Bool
-isDigit c = prim_isDigitChar c
+isDigit c = inline_isDigit c
 
 isOctDigit :: !Char -> Bool
-isOctDigit c = prim_isOctDigitChar c
+isOctDigit c = c >= '0' &&  c <= '7'
 
 isHexDigit :: !Char -> Bool
-isHexDigit c = prim_isHexDigitChar c
-
-isSpace :: !Char -> Bool
-isSpace c = prim_isSpaceChar c
+isHexDigit c
+    # uc = prim_unsetLowercaseBitChar c
+    = inline_isDigit c || (uc >= 'A' &&  uc <= 'F')
 
 isControl :: !Char -> Bool
-isControl c = prim_isControlChar c
+isControl c = c < ' ' || c == '\177'
 
 isPrint :: !Char -> Bool
-isPrint c = prim_isPrintChar c
+isPrint c = c >= ' ' && c <= '~'
+
+isSpace :: !Char -> Bool
+isSpace c = c == ' ' || c == '\t' || c == '\n' || c ==  '\r' || c == '\f' || c == '\v'
 
 /// # Subranges
 
 isAscii :: !Char -> Bool
-isAscii c = prim_isAsciiChar c
+isAscii c = prim_charToInt c < 128
 
 /// # Case Conversion
 
 toUpper :: !Char -> Char
-toUpper c = prim_toUpperChar c
+toUpper c
+    | inline_isLower c = prim_unsetLowercaseBitChar c
+    | otherwise = c
 
 toLower :: !Char -> Char
-toLower c = prim_toLowerChar c
+toLower c
+    | inline_isUpper c = prim_setLowercaseBitChar c
+    | otherwise = c
 
 /// # Digit Conversion
 
 digitToInt :: !Char -> Int
-digitToInt c = prim_digitToInt c
+digitToInt c = prim_subInt (prim_charToInt c) 48
 
 //TODO intToDigit :: Int -> Char

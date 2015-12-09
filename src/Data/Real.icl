@@ -59,7 +59,7 @@ instance Transcendental Real where
     e  = 2.718281828459045235
     pi = 3.141592653589793238
 
-    log x = prim_lnReal x
+    log x = prim_logReal x
     exp x = prim_expReal x
 
     sin x = prim_sinReal x

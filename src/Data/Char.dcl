@@ -44,3 +44,4 @@ toLower :: !Char -> Char
 //TODO rename?
 digitToInt :: !Char -> Int
 //TODO intToDigit :: Int -> Char
+
