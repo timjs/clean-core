@@ -34,12 +34,10 @@ import Control.Monad
 //TODO in Collection? Container?
 import Control.Foldable
 import Control.Traversable
-// import Control.Indexable
 import Control.Sliceable
 
 import Algebra.Group
 import Algebra.Ring
-// import Algebra.Lattice
 import Algebra.Module
 //TODO name?
 

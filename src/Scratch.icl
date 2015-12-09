@@ -1,3 +1,6 @@
+implementation module StdChar
+
+//	Test on Characters:
 
 instance Traversable Maybe where
     traverse _ Nothing = pure Nothing

@@ -5,6 +5,7 @@ import Data.Ratio
 import Data.Complex
 
 import Control.Compare
+import Control.Function
 
 import Algebra.Group
 import Algebra.Ring
@@ -40,8 +41,8 @@ instance Semiring Int where
 instance Domain Int where
     (`quot`) x y = prim_quotInt x y
     (`rem`) x y = prim_remInt x y
-    (`div`) x y = prim_divInt x y
-    (`mod`) x y = prim_modInt x y
+    (`div`) x y = undefined//prim_divInt x y
+    (`mod`) x y = undefined//prim_modInt x y
 
 	gcd x y = gcdnat (abs x) (abs y)
 	where
