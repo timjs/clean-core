@@ -2,8 +2,6 @@ implementation module Data.Bool
 
 import Control.Compare
 
-import Algebra.Lattice
-
 import Clean.Prim
 
 /// # Definition
@@ -19,22 +17,6 @@ instance Eq Bool where
 instance Ord Bool where
     (<) False True = True
     (<) _     _    = False
-
-instance JoinSemilattice Bool where
-    (\/) x y = prim_orBool x y
-
-instance MeetSemilattice Bool where
-    (/\) x y = prim_andBool x y
-
-instance UpperBounded Bool where
-    top = True
-
-instance LowerBounded Bool where
-    bottom = False
-
-instance Complemented Bool where
-    complement True  = False
-    complement False = True
 
 /// # Operations
 

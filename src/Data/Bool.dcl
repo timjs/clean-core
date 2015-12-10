@@ -5,8 +5,6 @@ definition module Data.Bool
 
 from Control.Compare import class Eq, class Ord
 
-from Algebra.Lattice import class JoinSemilattice, class MeetSemilattice, class UpperBounded, class LowerBounded, class Bounded, class Complemented
-
 /// # Definition
 
 // :: Bool = True | False
@@ -17,20 +15,10 @@ from Algebra.Lattice import class JoinSemilattice, class MeetSemilattice, class 
 instance Eq Bool
 instance Ord Bool
 
-instance JoinSemilattice Bool
-instance MeetSemilattice Bool
-//instance Lattice Bool
-instance UpperBounded Bool
-instance LowerBounded Bool
-//instance BoundedLattice Bool
-instance Complemented Bool
-
 /// # Operations
 
 not :: !Bool -> Bool
-
 (||) infixr 2 :: !Bool Bool -> Bool
-
 (&&) infixr 3 :: !Bool Bool -> Bool
 
 // if :: !Bool a a -> a
