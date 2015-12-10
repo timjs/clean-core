@@ -2,7 +2,7 @@ definition module Clean.Core
 
 import Data.Bool
 import Data.Char
-// import Data.Nat
+import Data.Nat
 import Data.Int
 import Data.Real
 
@@ -17,9 +17,7 @@ import Control.Function
 import Algebra.Group
 import Algebra.Ring
 
-import Text.Show
-import Text.Parse
-
+import System.Console
 // import System.File
 // import System.Process
 

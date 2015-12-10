@@ -29,3 +29,6 @@ import Control.Sliceable
 
 import Algebra.Module
 
+import Text.Show
+import Text.Parse
+
