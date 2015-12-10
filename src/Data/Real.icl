@@ -1,11 +1,7 @@
 implementation module Data.Real
 
 import Control.Compare
-
 import Control.Function
-import Data.Nat
-import Data.Ratio
-import Data.Complex
 
 import Algebra.Group
 import Algebra.Ring

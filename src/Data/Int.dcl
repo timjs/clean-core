@@ -1,9 +1,5 @@
 definition module Data.Int
 
-from Data.Nat import :: Nat
-from Data.Ratio import :: Ratio
-from Data.Complex import :: Complex
-
 from Control.Compare import class Eq, class Ord
 
 from Algebra.Group import class Semigroup, class Monoid, class Group

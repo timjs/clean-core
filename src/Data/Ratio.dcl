@@ -2,9 +2,6 @@ definition module Data.Ratio
 
 from Control.Compare import class Eq, class Ord
 
-from Data.Nat import :: Nat
-from Data.Complex import :: Complex
-
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Field
 

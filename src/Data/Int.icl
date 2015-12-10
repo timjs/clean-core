@@ -1,9 +1,5 @@
 implementation module Data.Int
 
-import Data.Nat
-import Data.Ratio
-import Data.Complex
-
 import Control.Compare
 import Control.Function
 

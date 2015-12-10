@@ -1,7 +1,5 @@
 definition module Data.Char
 
-from Data.Nat import :: Nat
-
 from Control.Compare import class Eq, class Ord
 
 /// # Definition
