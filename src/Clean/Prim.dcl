@@ -44,10 +44,10 @@ prim_mulInt :: !Int !Int -> Int
 
 prim_quotInt :: !Int !Int -> Int
 prim_remInt :: !Int !Int -> Int
-prim_divInt :: !Int !Int -> Int
-prim_modInt :: !Int !Int -> Int
+// prim_divInt :: !Int !Int -> Int
+// prim_modInt :: !Int !Int -> Int
 prim_quotRemInt :: !Int !Int -> (!Int,!Int)
-prim_divModInt :: !Int !Int -> (!Int,!Int)
+// prim_divModInt :: !Int !Int -> (!Int,!Int)
 
 prim_isEvenInt :: !Int -> Bool
 prim_isOddInt :: !Int -> Bool
@@ -75,9 +75,9 @@ prim_divReal :: !Real !Real -> Real
 prim_powReal :: !Real !Real -> Real
 prim_absReal :: !Real -> Real
 
-prim_truncateReal :: !Real -> Int
 prim_floorReal :: !Real -> Int
-prim_ceilReal :: !Real -> Int
+// prim_ceilReal :: !Real -> Int
+// prim_truncateReal :: !Real -> Int
 
 prim_logReal :: !Real -> Real
 prim_log10Real :: !Real -> Real
@@ -96,8 +96,45 @@ prim_atanReal :: !Real -> Real
 prim_eqString :: !String !String -> Bool
 prim_ltString :: !String !String -> Bool
 
-prim_sliceString :: !String !(!Int,!Int) -> String
+prim_sliceString :: !String !Int !Int -> String
 prim_concatString :: !String !String -> String
+
+/// # Files
+
+prim_readTextFileMode   :== 0 /// Read from a text file
+prim_writeTextFileMode  :== 1 /// Write to a text file
+prim_appendTextFileMode :== 2 /// Append to an existing text file
+prim_readDataFileMode   :== 3 /// Read from a data file
+prim_writeDataFileMode  :== 4 /// Write to a data file
+prim_appendDataFileMode :== 5 /// Append to an existing data file
+
+prim_absoluteSeekMode :== 0 /// New position is the seek offset
+prim_relativeSeekMode :== 1 /// New position is the current position plus the seek offset
+prim_fromEndSeekMode  :== 2 /// New position is the size of the file plus the seek offset
+
+prim_openFile :: !String !Int -> (!Bool,!*File)
+prim_closeFile :: !*File -> Bool
+prim_reopenFile :: !*File !Int -> (!Bool,!*File)
+
+prim_stdio :: *File
+prim_stderr :: *File
+
+prim_positionFile :: !*File -> (!Int,!*File)
+prim_seekFile :: !*File !Int !Int -> (!Bool,!*File)
+
+prim_isEndFile :: !*File -> (!Bool,!*File)
+prim_isErrorFile :: !*File -> (!Bool,!*File)
+
+prim_readCharFile :: !*File -> (!Bool,!Char,!*File)
+prim_readIntFile :: !*File -> (!Bool,!Int,!*File)
+// prim_readRealFile :: !*File -> (!Bool,!Real,!*File)
+prim_readStringFile :: !*File !Int -> (!*String,!*File)
+prim_readLineFile :: !*File -> (!*String,!*File)
+
+prim_writeCharFile :: !Char !*File -> *File
+prim_writeIntFile :: !Int !*File -> *File
+// prim_writeRealFile :: !Real !*File -> *File
+prim_writeStringFile :: !String !*File -> *File
 
 /// # Conversions
 
@@ -111,5 +148,5 @@ prim_intToReal :: !Int -> Real
 prim_intToString :: !Int -> String
 
 prim_realToInt :: !Real -> Int
-prim_realToString :: !Real -> String
+// prim_realToString :: !Real -> String
 
