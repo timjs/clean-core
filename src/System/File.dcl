@@ -11,22 +11,21 @@ from Data.Either import :: Either
 :: Path :== String
 
 :: Error
-    | FileAlreadyExists
-    | FileDoesNotExist
-    | FileAlreadyInUse
-    | FileFull
-    | FileIsEOF
-    | FileIllegalOperation
-    | FilePermissionDenied
-    | FileUserError
+	| DoesNotExist | FileDoesNotExist
+	| AlreadyExists | FileAlreadyExists
+	| Permission | FilePermissionDenied
+	| EOFError | FileIsEOF
+	| FullError | FileFull
+	| IllegalOperationError | FileIllegalOperation
+	| UserError [Char] | FileUserError
 
 /// # Opening and Closing
 
+openFile :: !Path !FileMode !*World -> *(Usually *File, *World)
 /// ## Standard Input and Output
 
-stdin :: File
-stdout :: File
-stderr :: File
+stdio :: *File
+stderr :: *File
 
 /// ## Reading and Writing
 
