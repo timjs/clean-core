@@ -18,13 +18,6 @@ quotRem n d | signum r == -signum d = (q+one, r-d)
   where qr@(q,r) = divMod n d
 */
 
-/// ## Signum
-
-signum :: !a -> a | Ord a & Ring a
-signum x | x <  zero = inverse one
-         | x == zero = zero
-         | x >  zero = one
-
 /// ## Powers
 
 square :: !a -> a | Semiring a

@@ -49,8 +49,6 @@ square :: !a -> a | Semiring a
 ///     forall a b c, (a + b) * c == (a * c) + (b * c)
 class Ring a | Group a & Semiring a
 
-signum :: !a -> a | Ord a & Ring a
-
 class Domain a | Ring a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a

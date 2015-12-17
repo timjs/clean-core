@@ -52,5 +52,12 @@ class Group a | Monoid a where
 
 negate a :== inverse a
 
-abs :: !a -> a | Ord a & Group a
+/// # Absolute value & Sign
 
+:: Sign
+    = Positive
+    | Neutral
+    | Negative
+
+signum :: !a -> Sign | Ord a & Monoid a
+abs :: !a -> a | Ord a & Group a
