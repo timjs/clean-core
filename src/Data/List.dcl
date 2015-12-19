@@ -1,6 +1,6 @@
 definition module Data.List
 
-from Control.Compare import class Eq, class Ord
+from Algebra.Order import class Eq, class Ord
 
 from Control.Functor import class Functor
 from Control.Applicative import class Applicative, class Alternative

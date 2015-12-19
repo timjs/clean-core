@@ -4,7 +4,7 @@ from Data.Nat import :: Nat
 from Data.Range import :: Range
 from Data.Maybe import :: Maybe
 
-from Control.Compare import class Eq
+from Algebra.Order import class Eq
 from Control.Foldable import class Foldable
 
 from Algebra.Group import class Semigroup, class Monoid

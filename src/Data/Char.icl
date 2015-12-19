@@ -4,7 +4,7 @@ import Data.Bool
 import Data.Int
 
 import Control.Function
-import Control.Compare
+import Algebra.Order
 
 import Clean.Prim
 

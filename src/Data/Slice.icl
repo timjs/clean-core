@@ -1,7 +1,7 @@
 implementation module Data.Slice
 
 /*
-import Control.Compare
+import Algebra.Order
 
 import Data.Maybe
 

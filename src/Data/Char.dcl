@@ -1,6 +1,6 @@
 definition module Data.Char
 
-from Control.Compare import class Eq, class Ord
+from Algebra.Order import class Eq, class Ord
 
 /// # Definition
 

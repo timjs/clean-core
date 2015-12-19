@@ -72,7 +72,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Algebra.Lattice
+		Name:	Algebra.Module
 		Dir:	{Project}/src
 		Compiler
 			NeverMemoryProfile:	False
@@ -86,7 +86,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Algebra.Module
+		Name:	Algebra.Order
 		Dir:	{Project}/src
 		Compiler
 			NeverMemoryProfile:	False
@@ -143,20 +143,6 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Control.Applicative
-		Dir:	{Project}/src
-		Compiler
-			NeverMemoryProfile:	False
-			NeverTimeProfile:	False
-			StrictnessAnalysis:	True
-			ListTypes:	StrictExportTypes
-			ListAttributes:	True
-			Warnings:	True
-			Verbose:	True
-			ReadableABC:	False
-			ReuseUniqueNodes:	True
-			Fusion:	False
-	Module
-		Name:	Control.Compare
 		Dir:	{Project}/src
 		Compiler
 			NeverMemoryProfile:	False
@@ -479,6 +465,20 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Tuple
+		Dir:	{Project}/src
+		Compiler
+			NeverMemoryProfile:	False
+			NeverTimeProfile:	False
+			StrictnessAnalysis:	True
+			ListTypes:	StrictExportTypes
+			ListAttributes:	True
+			Warnings:	True
+			Verbose:	True
+			ReadableABC:	False
+			ReuseUniqueNodes:	True
+			Fusion:	False
+	Module
+		Name:	System.Console
 		Dir:	{Project}/src
 		Compiler
 			NeverMemoryProfile:	False

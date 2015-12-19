@@ -1,6 +1,6 @@
 implementation module Algebra.Group
 
-import Control.Compare
+import Algebra.Order
 
 /// ## Signum
 

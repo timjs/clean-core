@@ -1,6 +1,6 @@
 definition module Algebra.Group
 
-from Control.Compare import class Eq, class Ord
+from Algebra.Order import class Eq, class Ord
 
 /// This module defines classes for mathematical structures with one binary operator (`+`) and derived operations.
 
@@ -54,10 +54,7 @@ negate a :== inverse a
 
 /// # Absolute value & Sign
 
-:: Sign
-    = Positive
-    | Neutral
-    | Negative
+:: Sign = Positive | Neutral | Negative
 
 signum :: !a -> Sign | Ord a & Monoid a
 abs :: !a -> a | Ord a & Group a

@@ -1,6 +1,6 @@
 implementation module Data.Int
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Algebra.Group

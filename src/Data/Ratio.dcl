@@ -1,6 +1,6 @@
 definition module Data.Ratio
 
-from Control.Compare import class Eq, class Ord
+from Algebra.Order import class Eq, class Ord
 
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Field

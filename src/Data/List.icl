@@ -4,7 +4,7 @@ import Data.Nat
 import Data.Int
 import Data.Range
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Control.Functor

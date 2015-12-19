@@ -2,7 +2,7 @@ implementation module Data.Nat
 
 import Data.Bool
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Algebra.Group

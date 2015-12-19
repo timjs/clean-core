@@ -3,7 +3,7 @@ definition module Data.Bool
 // TODO
 // - test inlining of primitives when used as functions or macros
 
-from Control.Compare import class Eq, class Ord
+from Algebra.Order import class Eq, class Ord
 
 /// # Definition
 

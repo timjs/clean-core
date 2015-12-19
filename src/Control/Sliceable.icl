@@ -1,6 +1,6 @@
 implementation module Control.Sliceable
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 import Control.Foldable
 

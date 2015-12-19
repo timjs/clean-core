@@ -1,6 +1,6 @@
 implementation module Data.Real
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Algebra.Group

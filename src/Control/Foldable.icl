@@ -6,7 +6,7 @@ import Data.Nat
 import Data.Maybe
 import Data.List
 
-import Control.Compare
+import Algebra.Order
 
 import Algebra.Group
 import Algebra.Ring

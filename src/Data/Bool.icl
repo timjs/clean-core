@@ -1,6 +1,6 @@
 implementation module Data.Bool
 
-import Control.Compare
+import Algebra.Order
 
 import Clean.Prim
 

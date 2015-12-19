@@ -1,6 +1,6 @@
 implementation module Algebra.Ring
 
-import Control.Compare
+import Algebra.Order
 
 import Data.Nat
 import Data.Int

@@ -11,9 +11,9 @@ import Data.Enum
 import Data.Array
 import Data.String
 
-import Control.Compare
 import Control.Function
 
+import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 

@@ -1,6 +1,6 @@
 implementation module Data.Maybe
 
-import Control.Compare
+import Algebra.Order
 
 import Algebra.Group
 

@@ -6,7 +6,7 @@ import Data.Int
 import Data.Real
 import Data.Complex
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Algebra.Group

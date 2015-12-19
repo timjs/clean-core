@@ -1,13 +1,12 @@
 definition module Control.Foldable
 
-from Control.Compare import class Eq, class Ord
 
 from Data.Nat import :: Nat
 from Data.Maybe import :: Maybe
 
+from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
 from Algebra.Ring import class Semiring
-from Algebra.Lattice import class JoinSemilattice, class MeetSemilattice, class LowerBounded, class UpperBounded, class Bounded
 
 /// # Class
 

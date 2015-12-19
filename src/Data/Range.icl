@@ -3,7 +3,7 @@ implementation module Data.Range
 import Data.Nat
 import Data.Int
 
-import Control.Compare
+import Algebra.Order
 import Control.Function
 
 import Algebra.Group
