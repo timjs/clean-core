@@ -1,5 +1,7 @@
 implementation module Clean.Prim
 
+undefined :== prim_abort "Clean.Prim: Not yet implementd"
+
 /// # Miscellaneous
 
 prim_abort :: !String -> .a
@@ -151,12 +153,14 @@ prim_remInt a b = code inline {
     remI
 }
 
-// prim_divInt :: !Int !Int -> Int
+prim_divInt :: !Int !Int -> Int
+prim_divInt a b = undefined
 // prim_divInt a b = code inline {
 //     floordivI
 // }
 
-// prim_modInt :: !Int !Int -> Int
+prim_modInt :: !Int !Int -> Int
+prim_modInt a b = undefined
 // prim_modInt a b = code inline {
 //     modI
 // }
@@ -176,7 +180,8 @@ prim_quotRemInt a b = code inline {
     pop_b 2
 }
 
-// prim_divModInt :: !Int !Int -> (!Int,!Int)
+prim_divModInt :: !Int !Int -> (!Int,!Int)
+prim_divModInt a b = undefined
 // prim_divModInt a b = code inline {
 //     push_b 1
 //     push_b 1
@@ -412,6 +417,12 @@ prim_ltString a b = code inline {
         pushI 0
         gtI
 }
+
+/// ## Basic Values
+
+//TODO use create_array (?)
+prim_emptyString :: String
+prim_emptyString = ""
 
 /// ## Slicing
 

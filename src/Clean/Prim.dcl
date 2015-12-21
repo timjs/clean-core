@@ -47,10 +47,10 @@ prim_mulInt :: !Int !Int -> Int
 
 prim_quotInt :: !Int !Int -> Int
 prim_remInt :: !Int !Int -> Int
-// prim_divInt :: !Int !Int -> Int
-// prim_modInt :: !Int !Int -> Int
+prim_divInt :: !Int !Int -> Int
+prim_modInt :: !Int !Int -> Int
 prim_quotRemInt :: !Int !Int -> (!Int,!Int)
-// prim_divModInt :: !Int !Int -> (!Int,!Int)
+prim_divModInt :: !Int !Int -> (!Int,!Int)
 
 prim_isEvenInt :: !Int -> Bool
 prim_isOddInt :: !Int -> Bool
@@ -103,6 +103,8 @@ prim_atanReal :: !Real -> Real
 
 prim_eqString :: !String !String -> Bool
 prim_ltString :: !String !String -> Bool
+
+prim_emptyString :: String
 
 prim_sliceString :: !String !Int !Int -> String
 prim_concatString :: !String !String -> String
