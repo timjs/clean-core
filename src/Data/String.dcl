@@ -8,6 +8,9 @@ from Algebra.Group import class Semigroup, class Monoid
 // :: String :== {#Char}
 //BUILTIN
 
+pack :: ![Char] -> String
+unpack :: !String -> [Char]
+
 /// # Instances
 
 instance Eq String

@@ -5,6 +5,14 @@ import Algebra.Group
 
 import Clean.Prim
 
+/// # Definition
+
+pack :: ![Char] -> String
+pack cs = {c \\ c <- cs }
+
+unpack :: !String -> [Char]
+unpack cs = [c \\ c <-: cs]
+
 /// # Instances
 
 /// ## Order
