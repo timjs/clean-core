@@ -2,7 +2,6 @@ implementation module Data.String
 
 import Algebra.Order
 import Algebra.Group
-import Algebra.Ring
 
 import Clean.Prim
 
