@@ -14,7 +14,7 @@ import Clean.Prim
 
 :: Nat :== Int
 
-//TODO rewrite in inlined ABC
+//TODO rewrite in inlined ABC (?)
 nat :: !Int -> Nat
 nat n
     | prim_ltInt n 0 = abort "Data.Nat.nat: negative integer"
@@ -50,7 +50,8 @@ instance Semiring Nat where
 
 /// # Special Algebra
 
+//TODO rewrite in inlined ABC (?)
 (.-) infixl 6 :: !Nat !Nat -> Nat
 (.-) n m
-    | n > m     = prim_subInt n m
-    | otherwise = 0
+    | prim_ltInt m n = prim_subInt n m
+    | otherwise      = 0

@@ -16,12 +16,6 @@ int :: !Nat -> Int
 instance Eq Nat
 instance Ord Nat
 
-// instance Cast Nat Int       //== int n
-// instance Cast Nat Ratio     //== int n :/ 1
-// instance Cast Nat Real      //== real o int $ n == real << int <| n == n |> int |> real
-// instance Cast Nat Complex   //== n >> int >> real :+ 0.0
-// instance Cast Nat Char      //== chr n
-
 instance Semigroup Nat
 instance Monoid Nat
 instance Semiring Nat
