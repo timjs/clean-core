@@ -19,6 +19,7 @@ class Ord a | Eq a where
 min :: !a !a -> a | Ord a
 max :: !a !a -> a | Ord a
 
+//TODO other module?
 /// # Bound
 
 class LowerBounded a where

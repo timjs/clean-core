@@ -1,6 +1,5 @@
 definition module Control.Foldable
 
-
 from Data.Nat import :: Nat
 from Data.Maybe import :: Maybe
 
