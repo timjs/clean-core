@@ -22,7 +22,7 @@ class Semiring a | Monoid a where
 one :== unity
 
 square :: !a -> a | Semiring a
-(^) infixr 8 :: a !Nat -> a | Semiring a
+(^) infixr 8 :: !a !Nat -> a | Semiring a
 
 /// Sets equipped with two binary operations, one associative and commutative
 /// supplied with a neutral element, and the other associative supplied with a
@@ -91,7 +91,7 @@ class Field a | Ring a where
     (/) infixl 7 :: !a !a -> a
     reciprocal :: !a -> a
 
-(^^) infixr 8 :: a !Int -> a | Field a
+(^^) infixr 8 :: !a !Int -> a | Field a
 
 class Algebraic a | Field a where
     sqrt :: !a -> a

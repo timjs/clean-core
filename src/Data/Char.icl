@@ -4,6 +4,7 @@ import Data.Bool
 import Data.Int
 
 import Control.Function
+
 import Algebra.Order
 
 import Clean.Prim
@@ -13,10 +14,10 @@ import Clean.Prim
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
-chr :: Int -> Char
+chr :: !Int -> Char
 chr i = prim_intToChar i
 
-ord :: Char -> Int
+ord :: !Char -> Int
 ord c = prim_charToInt c
 
 /// # Instances

@@ -7,8 +7,8 @@ from Algebra.Order import class Eq, class Ord
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
-chr :: Int -> Char
-ord :: Char -> Int
+chr :: !Int -> Char
+ord :: !Char -> Int
 
 /// # Instances
 
