@@ -52,8 +52,8 @@ instance Algebraic Real where
     sqrt x = prim_sqrtReal x
 
 instance Transcendental Real where
-    e  = 2.718281828459045235
-    pi = 3.141592653589793238
+    e  = prim_eReal
+    pi = prim_piReal
 
     log x = prim_logReal x
     exp x = prim_expReal x
@@ -68,10 +68,14 @@ instance Transcendental Real where
 
     logBase x y = log y / log x
 
-    sinh x = (exp x - exp (inverse x)) / 2.0
-    cosh x = (exp x + exp (inverse x)) / 2.0
-    tanh x = sinh x / cosh x
+    sinh x = (exp x - exp (inverse x)) * 0.5
+    cosh x = (exp x + exp (inverse x)) * 0.5
+    tanh x = (expX - expI) / (expX + expI)
+        where
+            expX = exp x
+            expI = exp (inverse x)
 
-    asinh x = log (sqrt (square x - 1.0) + x)
+    asinh x = log (sqrt (x * x + 1.0) + x)
     acosh x = log (sqrt (square x - 1.0) + x)
-    atanh x = (log (1.0 + x) - log (1.0 - x)) / 2.0
+	atanh x = log ((1.0 + x)/(1.0 - x)) * 0.5
+

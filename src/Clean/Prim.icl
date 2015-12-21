@@ -10,8 +10,8 @@ prim_abort s = code inline {
         halt
 }
 
-prim_noop :: .a -> .b
-prim_noop _ = code inline {
+prim_noop :: .a
+prim_noop = code inline {
     no_op
 }
 
@@ -266,6 +266,16 @@ prim_zeroReal = code inline {
 prim_oneReal :: Real
 prim_oneReal = code inline {
     pushR 1.0
+}
+
+prim_piReal :: Real
+prim_piReal = code inline {
+    pushR 3.141592653589793238
+}
+
+prim_eReal :: Real
+prim_eReal = code inline {
+    pushR 2.718281828459045235
 }
 
 /// ## Arithmetic

@@ -8,7 +8,7 @@ system module Clean.Prim
 /// # Miscellaneous
 
 prim_abort :: !String -> .a
-prim_noop :: .a -> .b
+prim_noop :: .a
 
 /// # Booleans
 
@@ -72,6 +72,8 @@ prim_ltReal :: !Real !Real -> Bool
 
 prim_zeroReal :: Real
 prim_oneReal :: Real
+prim_piReal :: Real
+prim_eReal :: Real
 
 prim_negReal :: !Real -> Real
 prim_addReal :: !Real !Real -> Real
