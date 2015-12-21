@@ -43,10 +43,10 @@ instance Domain Int where
     (`mod`) x y = undefined//prim_modInt x y
     divMod x y = undefined//prim_divModInt x y
 
-	gcd x y = gcdNat (abs x) (abs y)
+	gcd x y = gcd` (abs x) (abs y)
 	where
-		gcdNat x 0 = x
-	    gcdNat x y = gcdNat y (x `rem` y)
+		gcd` x 0 = x
+	    gcd` x y = gcd` y (x `rem` y)
 
 	lcm _ 0    = 0
 	lcm 0 _    = 0
