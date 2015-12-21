@@ -1,7 +1,6 @@
 definition module Data.Nat
 
 from Algebra.Order import class Eq, class Ord
-
 from Algebra.Group import class Semigroup, class Monoid
 from Algebra.Ring import class Semiring
 

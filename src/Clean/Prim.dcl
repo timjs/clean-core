@@ -37,6 +37,9 @@ prim_ltInt :: !Int !Int -> Bool
 // prim_minInt :: !Int !Int -> Int
 // prim_maxInt :: !Int !Int-> Int
 
+prim_zeroInt :: Int
+prim_oneInt :: Int
+
 prim_negInt :: !Int -> Int
 prim_addInt :: !Int !Int -> Int
 prim_subInt :: !Int !Int -> Int
@@ -66,6 +69,9 @@ prim_ltReal :: !Real !Real -> Bool
 // prim_gtReal :: !Real !Real -> Bool
 // prim_minReal :: !Real !Real -> Real
 // prim_maxReal :: !Real !Real -> Real
+
+prim_zeroReal :: Real
+prim_oneReal :: Real
 
 prim_negReal :: !Real -> Real
 prim_addReal :: !Real !Real -> Real

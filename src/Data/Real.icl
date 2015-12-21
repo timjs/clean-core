@@ -1,8 +1,8 @@
 implementation module Data.Real
 
-import Algebra.Order
 import Control.Function
 
+import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 
@@ -29,7 +29,7 @@ instance Semigroup Real where
     (+) x y = prim_addReal x y
 
 instance Monoid Real where
-    neutral = 0.0
+    neutral = prim_zeroReal
 
 instance Group Real where
     (-) x y = prim_subReal x y
@@ -39,7 +39,7 @@ instance Group Real where
 instance Semiring Real where
     (*) x y = prim_mulReal x y
 
-    unity = 1.0
+    unity = prim_oneReal
 
 instance Field Real where
     (/) x y = prim_divReal x y

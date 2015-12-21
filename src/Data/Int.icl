@@ -1,8 +1,8 @@
 implementation module Data.Int
 
-import Algebra.Order
 import Control.Function
 
+import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 
@@ -24,7 +24,7 @@ instance Semigroup Int where
     (+) x y = prim_addInt x y
 
 instance Monoid Int where
-    neutral = 0
+    neutral = prim_zeroInt
 
 instance Group Int where
     (-) x y = prim_subInt x y
@@ -32,7 +32,7 @@ instance Group Int where
 
 instance Semiring Int where
     (*) x y = prim_mulInt x y
-    unity = 1
+    unity = prim_oneInt
 
 instance Domain Int where
     (`quot`) x y = prim_quotInt x y
@@ -40,10 +40,10 @@ instance Domain Int where
     (`div`) x y = undefined//prim_divInt x y
     (`mod`) x y = undefined//prim_modInt x y
 
-	gcd x y = gcdnat (abs x) (abs y)
+	gcd x y = gcdNat (abs x) (abs y)
 	where
-		gcdnat x 0 = x
-	    gcdnat x y = gcdnat y (x `rem` y)
+		gcdNat x 0 = x
+	    gcdNat x y = gcdNat y (x `rem` y)
 
 	lcm _ 0    = 0
 	lcm 0 _    = 0

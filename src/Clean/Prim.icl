@@ -105,6 +105,18 @@ prim_ltInt a b = code inline {
     ltI
 }
 
+/// ## Basic Values
+
+prim_zeroInt :: Int
+prim_zeroInt = code inline {
+    pushI 0
+}
+
+prim_oneInt :: Int
+prim_oneInt = code inline {
+    pushI 1
+}
+
 /// ## Arithmetic
 
 prim_negInt :: !Int -> Int
@@ -242,6 +254,18 @@ prim_eqReal a b = code inline {
 prim_ltReal :: !Real !Real -> Bool
 prim_ltReal a b = code inline {
     ltR
+}
+
+/// ## Basic Values
+
+prim_zeroReal :: Real
+prim_zeroReal = code inline {
+    pushR 0.0
+}
+
+prim_oneReal :: Real
+prim_oneReal = code inline {
+    pushR 1.0
 }
 
 /// ## Arithmetic
