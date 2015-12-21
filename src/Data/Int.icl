@@ -37,8 +37,11 @@ instance Semiring Int where
 instance Domain Int where
     (`quot`) x y = prim_quotInt x y
     (`rem`) x y = prim_remInt x y
+    quotRem x y = prim_quotRemInt x y
+
     (`div`) x y = undefined//prim_divInt x y
     (`mod`) x y = undefined//prim_modInt x y
+    divMod x y = undefined//prim_divModInt x y
 
 	gcd x y = gcdNat (abs x) (abs y)
 	where

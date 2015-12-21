@@ -52,8 +52,12 @@ class Ring a | Group a & Semiring a
 class Domain a | Ring a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a
+    quotRem :: !a !a -> (!a,!a)
+
     (`div`) infix 7 :: !a !a -> a
     (`mod`) infix 7 :: !a !a -> a
+    divMod :: !a !a -> (!a,!a)
+
     gcd :: !a !a -> a
     lcm :: !a !a -> a
 
