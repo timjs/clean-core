@@ -20,3 +20,9 @@ instance Group Int
 instance Semiring Int
 // instance Ring Int
 instance Domain Int
+
+/// # Helpers
+
+inc :: !Int -> Int
+dec :: !Int -> Int
+

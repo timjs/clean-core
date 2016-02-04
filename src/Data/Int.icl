@@ -52,3 +52,10 @@ instance Domain Int where
 	lcm 0 _    = 0
 	lcm x y    = abs ((x `quot` gcd x y) * y)
 
+/// # Helpers
+
+inc :: !Int -> Int
+inc x = prim_incInt x
+
+dec :: !Int -> Int
+dec x = prim_decInt x

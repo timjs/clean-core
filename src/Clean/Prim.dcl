@@ -39,6 +39,8 @@ prim_ltInt :: !Int !Int -> Bool
 
 prim_zeroInt :: Int
 prim_oneInt :: Int
+prim_incInt :: !Int -> Int
+prim_decInt :: !Int -> Int
 
 prim_negInt :: !Int -> Int
 prim_addInt :: !Int !Int -> Int
@@ -159,4 +161,3 @@ prim_intToString :: !Int -> String
 
 prim_realToInt :: !Real -> Int
 // prim_realToString :: !Real -> String
-

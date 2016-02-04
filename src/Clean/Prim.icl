@@ -119,6 +119,18 @@ prim_oneInt = code inline {
     pushI 1
 }
 
+/// ## Increase and Decrease
+
+prim_incInt :: !Int -> Int
+prim_incInt a = code inline {
+    incI
+}
+
+prim_decInt :: !Int -> Int
+prim_decInt a = code inline {
+    decI
+}
+
 /// ## Arithmetic
 
 prim_negInt :: !Int -> Int
@@ -671,4 +683,3 @@ prim_realToString x = code inline {
         jsr RtoAC
     .o 1 0
 }
-
