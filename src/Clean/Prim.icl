@@ -26,6 +26,18 @@ prim_eqBool a b = code inline {
     eqB
 }
 
+/// ## Literals
+
+prim_trueBool :: Bool
+prim_trueBool = code inline {
+    pushB TRUE
+}
+
+prim_falseBool :: Bool
+prim_falseBool = code inline {
+    pushB FALSE
+}
+
 /// ## Logic
 
 prim_andBool :: !Bool Bool -> Bool

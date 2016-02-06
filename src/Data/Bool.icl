@@ -1,6 +1,7 @@
 implementation module Data.Bool
 
 import Algebra.Order
+import Algebra.Lattice
 
 import Clean.Prim
 
@@ -9,7 +10,7 @@ import Clean.Prim
 // :: Bool = True | False
 // BUILTIN
 
-/// # Instances
+/// # Order
 
 instance Eq Bool where
     (==) x y = prim_eqBool x y
@@ -17,6 +18,20 @@ instance Eq Bool where
 instance Ord Bool where
     (<) False True = True
     (<) _     _    = False
+
+/// # Algebra
+
+instance MeetSemilattice Bool where
+    (/\) x y = prim_andBool x y
+
+instance JoinSemilattice Bool where
+    (\/) x y = prim_orBool x y
+
+instance UpperBounded Bool where
+    top = prim_trueBool
+
+instance LowerBounded Bool where
+    bottom = prim_falseBool
 
 /// # Operations
 

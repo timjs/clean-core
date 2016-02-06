@@ -4,6 +4,7 @@ definition module Data.Bool
 // - test inlining of primitives when used as functions or macros
 
 from Algebra.Order import class Eq, class Ord
+from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
 
 /// # Definition
 
@@ -14,6 +15,12 @@ from Algebra.Order import class Eq, class Ord
 
 instance Eq Bool
 instance Ord Bool
+// instance Enum Bool
+
+instance MeetSemilattice Bool
+instance JoinSemilattice Bool
+instance UpperBounded Bool
+instance LowerBounded Bool
 
 /// # Operations
 

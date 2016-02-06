@@ -5,20 +5,6 @@ definition module Algebra.Lattice
 /// Sets equipped with a binary operation that is commutative, associative and
 /// idempotent.  Must satisfy the following laws:
 ///
-/// - Associativity of join:
-///     forall a b c, join a (join b c) == join (join a b) c
-/// - Commutativity of join:
-///     forall a b,   join a b          == join b a
-/// - Idempotency of join:
-///     forall a,     join a a          == a
-///
-/// Join semilattices capture the notion of sets with a "least upper bound".
-class JoinSemilattice a where
-    (\/) infixr 2 :: !a !a -> a
-
-/// Sets equipped with a binary operation that is commutative, associative and
-/// idempotent.  Must satisfy the following laws:
-///
 /// - Associativity of meet:
 ///     forall a b c, meet a (meet b c) == meet (meet a b) c
 /// - Commutativity of meet:
@@ -29,6 +15,20 @@ class JoinSemilattice a where
 /// Meet semilattices capture the notion of sets with a "greatest lower bound".
 class MeetSemilattice a where
     (/\) infixr 3 :: !a !a -> a
+
+/// Sets equipped with a binary operation that is commutative, associative and
+/// idempotent.  Must satisfy the following laws:
+///
+/// - Associativity of join:
+///     forall a b c, join a (join b c) == join (join a b) c
+/// - Commutativity of join:
+///     forall a b,   join a b          == join b a
+/// - Idempotency of join:
+///     forall a,     join a a          == a
+///
+/// Join semilattices capture the notion of sets with a "least upper bound".
+class JoinSemilattice a where
+    (\/) infixr 2 :: !a !a -> a
 
 /// Sets equipped with two binary operations that are both commutative,
 /// associative and idempotent, along with absorbtion laws for relating the two
@@ -52,25 +52,6 @@ class Lattice a | JoinSemilattice a & MeetSemilattice a
 /// idempotent and supplied with a unitary element.  Must satisfy the following
 /// laws:
 ///
-/// - Associativity of join:
-///     forall a b c, join a (join b c) == join (join a b) c
-/// - Commutativity of join:
-///     forall a b,   join a b          == join b a
-/// - Idempotency of join:
-///     forall a,     join a a          == a
-/// - Bottom (Unitary Element):
-///     forall a,     join a bottom     == a
-///
-///  Join semilattices capture the notion of sets with a "least upper bound"
-///  equipped with a "bottom" element.
-//TODO BottomSemilattice? BoundedJoinSemilattice?
-class LowerBounded a | JoinSemilattice a where
-    bottom :: a
-
-/// Sets equipped with a binary operation that is commutative, associative and
-/// idempotent and supplied with a unitary element.  Must satisfy the following
-/// laws:
-///
 /// - Associativity of meet:
 ///     forall a b c, meet a (meet b c) == meet (meet a b) c
 /// - Commutativity of meet:
@@ -85,6 +66,25 @@ class LowerBounded a | JoinSemilattice a where
 //TODO TopSemilattice? BoundedMeetSemilattice?
 class UpperBounded a | MeetSemilattice a where
   top :: a
+
+/// Sets equipped with a binary operation that is commutative, associative and
+/// idempotent and supplied with a unitary element.  Must satisfy the following
+/// laws:
+///
+/// - Associativity of join:
+///     forall a b c, join a (join b c) == join (join a b) c
+/// - Commutativity of join:
+///     forall a b,   join a b          == join b a
+/// - Idempotency of join:
+///     forall a,     join a a          == a
+/// - Bottom (Unitary Element):
+///     forall a,     join a bottom     == a
+///
+///  Join semilattices capture the notion of sets with a "least upper bound"
+///  equipped with a "bottom" element.
+//TODO BottomSemilattice? BoundedJoinSemilattice?
+class LowerBounded a | JoinSemilattice a where
+    bottom :: a
 
 /// Sets equipped with two binary operations that are both commutative,
 /// associative and idempotent and supplied with neutral elements, along with

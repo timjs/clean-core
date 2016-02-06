@@ -14,6 +14,9 @@ prim_noop :: .a
 
 prim_eqBool :: !Bool !Bool -> Bool
 
+prim_trueBool :: Bool
+prim_falseBool :: Bool
+
 prim_andBool :: !Bool Bool -> Bool
 prim_orBool :: !Bool Bool -> Bool
 prim_notBool :: !Bool -> Bool
