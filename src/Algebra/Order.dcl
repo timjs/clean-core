@@ -19,17 +19,6 @@ class Ord a | Eq a where
 min :: !a !a -> a | Ord a
 max :: !a !a -> a | Ord a
 
-//TODO other module?
-/// # Bound
-
-class LowerBounded a where
-    bottom :: a
-
-class UpperBounded a where
-    top :: a
-
-class Bounded a | UpperBounded a & LowerBounded a
-
 /// # Helpers
 
 :: Ordering = Lesser | Equal | Greater

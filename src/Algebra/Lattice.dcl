@@ -108,12 +108,14 @@ class UpperBounded a | MeetSemilattice a where
 ///     forall a,     join a bottom     == bottom
 class Bounded a | UpperBounded a & LowerBounded a
 
+/* TODO needed?
 class Complemented a | Bounded a where
     complement :: !a -> a
+*/
 
 /// # Calculations
 
-/* TODO add
+/* TODO add?
 /// Implementation of Kleene fixed-point theorem <http://en.wikipedia.org/wiki/Kleene_fixed-point_theorem>.
 /// Assumes that the function is monotone and does not check if that is correct.
 unsafeLfp :: (a -> a) -> a | Eq a & LowerBounded a
@@ -144,4 +146,3 @@ gfp f = gfpFrom top f
 gfpFrom :: a -> (a -> a) -> a | Eq a & BoundedMeetSemiLattice a
 gfpFrom init f = unsafeGfpFrom init (\x -> f x /\ x)
 */
-
