@@ -24,6 +24,18 @@ one :== unity
 square :: !a -> a | Semiring a
 (^) infixr 8 :: !a !Nat -> a | Semiring a
 
+class Domain a | Semiring a where
+    (`quot`) infix 7 :: !a !a -> a
+    (`rem`) infix 7 :: !a !a -> a
+    quotRem :: !a !a -> (!a,!a)
+
+    (`div`) infix 7 :: !a !a -> a
+    (`mod`) infix 7 :: !a !a -> a
+    divMod :: !a !a -> (!a,!a)
+
+    gcd :: !a !a -> a
+    lcm :: !a !a -> a
+
 /// Sets equipped with two binary operations, one associative and commutative
 /// supplied with a neutral element, and the other associative supplied with a
 /// neutral element, with distributivity laws relating the two operations.  Must
@@ -48,18 +60,6 @@ square :: !a -> a | Semiring a
 ///     forall a b c, a * (b + c) == (a * b) + (a * c)
 ///     forall a b c, (a + b) * c == (a * c) + (b * c)
 class Ring a | Group a & Semiring a
-
-class Domain a | Ring a where
-    (`quot`) infix 7 :: !a !a -> a
-    (`rem`) infix 7 :: !a !a -> a
-    quotRem :: !a !a -> (!a,!a)
-
-    (`div`) infix 7 :: !a !a -> a
-    (`mod`) infix 7 :: !a !a -> a
-    divMod :: !a !a -> (!a,!a)
-
-    gcd :: !a !a -> a
-    lcm :: !a !a -> a
 
 /// Sets equipped with two binary operations – both associative, commutative and
 /// possessing a neutral element – and distributivity laws relating the two
@@ -137,4 +137,3 @@ class Transcendental a | Algebraic a where
     // asinh x          =  log (sqrt (x^2+1) + x)
     // acosh x          =  log (sqrt (x^2-1) + x)
     // atanh x          =  (log (1+x) - log (1-x)) / 2
-
