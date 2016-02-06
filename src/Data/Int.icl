@@ -5,18 +5,52 @@ import Control.Function
 import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
+import Algebra.Enum
 
 import Clean.Prim
 
 /// # Instances
 
-/// ## Comparison
+/// ## Order
 
 instance Eq Int where
     (==) x y = prim_eqInt x y
 
 instance Ord Int where
     (<) x y = prim_ltInt x y
+
+instance Enum Int where
+    toEnum n = prim_noop
+    fromEnum n = prim_noop
+
+    succ x = prim_incInt x
+    pred x = prim_decInt x
+
+    //TODO move to class (defaults extension) or instance on Ord Ring (flexibles extension)
+    enumFrom x = [x : enumFrom (succ x)]
+
+    enumFromTo x y
+        | x <= y    = [x : enumFromTo (succ x) y]
+        | otherwise = []
+
+    enumFromThen x y = [x : enumFromBy x (y - x)]
+        where
+            // enumFromBy x s :: Int Int -> .[Int]
+            enumFromBy x s = [x : enumFromBy (x + s) s]
+
+    enumFromThenTo x y z
+        | x <= y    = enumFromByUpto x (y - x) z
+        | otherwise = enumFromByDownto x (x - y) z
+        where
+            // enumFromByUpto :: !Int !Int !Int -> .[Int]
+            enumFromByUpto x s z
+                | x <= z    = [x : enumFromByUpto (x + s) s z]
+                | otherwise = []
+
+            // enumFromByDownto :: !Int !Int !Int -> .[Int]
+            enumFromByDownto x s z
+                | x >= z    = [x : enumFromByDownto (x - s) s z]
+                | otherwise = []
 
 /// ## Algebra
 

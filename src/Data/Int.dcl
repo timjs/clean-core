@@ -3,6 +3,7 @@ definition module Data.Int
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Domain
+from Algebra.Enum import class Enum
 
 /// # Definition
 
@@ -13,6 +14,7 @@ from Algebra.Ring import class Semiring, class Ring, class Domain
 
 instance Eq Int
 instance Ord Int
+instance Enum Int
 
 instance Semigroup Int
 instance Monoid Int
@@ -25,4 +27,3 @@ instance Domain Int
 
 inc :: !Int -> Int
 dec :: !Int -> Int
-
