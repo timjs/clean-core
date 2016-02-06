@@ -1,10 +1,8 @@
 definition module Algebra.Ring
 
-//TODO remove for core
 from Data.Nat import :: Nat
 
 from Algebra.Order import class Eq, class Ord
-
 from Algebra.Group import class Semigroup, class Monoid, class Group
 
 /// This module defines classes for mathematical structures with __two__ binary operator (`+` and `*`) and derived operations.

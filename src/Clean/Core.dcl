@@ -9,6 +9,7 @@ import Data.Real
 import Data.Tuple
 import Data.Array
 // import Data.Array.Unboxed
+// import Data.Array.Strict
 import Data.String
 
 import Control.Function
@@ -19,6 +20,6 @@ import Algebra.Group
 import Algebra.Ring
 import Algebra.Lattice
 
-import System.Console
+// import System.Console
 // import System.File
 // import System.Process

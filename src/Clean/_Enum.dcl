@@ -1,4 +1,4 @@
-definition module _SystemEnum
+definition module Clean._Enum
 
 from Algebra.Enum import class Enum(enumFrom, enumFromTo, enumFromThen, enumFromThenTo)
 

@@ -3,8 +3,7 @@ definition module Algebra.Enum
 from Data.Nat import :: Nat
 
 // import Algebra.Enum._Internal
-// import Clean._SystemEnum
-import _SystemEnum
+// import Clean._Enum
 
 /// # Class
 

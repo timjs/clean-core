@@ -3,7 +3,10 @@ implementation module Data.String
 import Algebra.Order
 import Algebra.Group
 
+import Data.Int//FIXME needed for `inc`
+
 import Clean.Prim
+import Clean._Array
 
 /// # Definition
 
@@ -19,7 +22,7 @@ unpack cs = [c \\ c <-: cs]
 
 instance Eq String where
     (==) a b = prim_eqString a b
-    
+
 instance Ord String where
     (<) a b = prim_ltString a b
 
@@ -30,4 +33,3 @@ instance Semigroup String where
 
 instance Monoid String where
     neutral = prim_emptyString
-
