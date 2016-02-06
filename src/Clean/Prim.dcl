@@ -34,16 +34,19 @@ prim_unsetLowercaseBitChar :: !Char -> Char
 
 /// # Integers
 
+prim_zeroInt :: Int
+prim_oneInt :: Int
+prim_upperInt :: Int
+prim_lowerInt :: Int
+
 prim_eqInt :: !Int !Int -> Bool
 prim_ltInt :: !Int !Int -> Bool
 // prim_gtInt :: !Int !Int -> Bool
-// prim_minInt :: !Int !Int -> Int
-// prim_maxInt :: !Int !Int-> Int
 
-prim_zeroInt :: Int
-prim_oneInt :: Int
 prim_incInt :: !Int -> Int
 prim_decInt :: !Int -> Int
+prim_minInt :: !Int !Int -> Int
+prim_maxInt :: !Int !Int-> Int
 
 prim_negInt :: !Int -> Int
 prim_addInt :: !Int !Int -> Int

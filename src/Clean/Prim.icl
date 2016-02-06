@@ -107,6 +107,24 @@ prim_unsetLowercaseBitChar c = code inline {
 
 /// # Integers
 
+/// ## Values
+
+prim_zeroInt :: Int
+prim_zeroInt = code inline {
+    pushI 0
+}
+
+prim_oneInt :: Int
+prim_oneInt = code inline {
+    pushI 1
+}
+
+prim_upperInt :: Int
+prim_upperInt = undefined
+
+prim_lowerInt :: Int
+prim_lowerInt = undefined
+
 /// ## Ordering
 
 prim_eqInt :: !Int !Int -> Bool
@@ -119,19 +137,7 @@ prim_ltInt a b = code inline {
     ltI
 }
 
-/// ## Basic Values
-
-prim_zeroInt :: Int
-prim_zeroInt = code inline {
-    pushI 0
-}
-
-prim_oneInt :: Int
-prim_oneInt = code inline {
-    pushI 1
-}
-
-/// ## Increase and Decrease
+/// ## Operations
 
 prim_incInt :: !Int -> Int
 prim_incInt a = code inline {
@@ -142,6 +148,16 @@ prim_decInt :: !Int -> Int
 prim_decInt a = code inline {
     decI
 }
+
+prim_minInt :: !Int !Int -> Int
+prim_minInt a b = undefined // code inline {
+    // minI
+// }
+
+prim_maxInt :: !Int !Int -> Int
+prim_maxInt a b = undefined // code inline {
+    // maxI
+// }
 
 /// ## Arithmetic
 
