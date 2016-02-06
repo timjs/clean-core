@@ -3,9 +3,10 @@ implementation module Data.Int
 import Control.Function
 
 import Algebra.Order
+import Algebra.Enum
 import Algebra.Group
 import Algebra.Ring
-import Algebra.Enum
+import Algebra.Lattice
 
 import Clean.Prim
 
@@ -62,6 +63,7 @@ instance Monoid Int where
 
 instance Group Int where
     (-) x y = prim_subInt x y
+
     inverse x = prim_negInt x
 
 instance Semiring Int where
@@ -85,6 +87,18 @@ instance Domain Int where
 	lcm _ 0    = 0
 	lcm 0 _    = 0
 	lcm x y    = abs ((x `quot` gcd x y) * y)
+
+instance MeetSemilattice Int where
+    (/\) x y = prim_minInt x y
+
+instance JoinSemilattice Int where
+    (\/) x y = prim_maxInt x y
+
+instance UpperBounded Int where
+    top = undefined
+
+instance LowerBounded Int where
+    bottom = undefined
 
 /// # Helpers
 

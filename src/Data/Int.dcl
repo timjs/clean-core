@@ -1,9 +1,10 @@
 definition module Data.Int
 
 from Algebra.Order import class Eq, class Ord
+from Algebra.Enum import class Enum
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Domain
-from Algebra.Enum import class Enum
+from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
 
 /// # Definition
 
@@ -22,6 +23,11 @@ instance Group Int
 instance Semiring Int
 // instance Ring Int
 instance Domain Int
+
+instance MeetSemilattice Int
+instance JoinSemilattice Int
+instance UpperBounded Int
+instance LowerBounded Int
 
 /// # Helpers
 

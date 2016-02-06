@@ -2,7 +2,8 @@ definition module Data.Nat
 
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
-from Algebra.Ring import class Semiring
+from Algebra.Ring import class Semiring, class Domain
+from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
 
 /// # Definition
 
@@ -19,6 +20,11 @@ instance Ord Nat
 instance Semigroup Nat
 instance Monoid Nat
 instance Semiring Nat
+
+instance MeetSemilattice Nat
+instance JoinSemilattice Nat
+instance UpperBounded Nat
+instance LowerBounded Nat
 
 /// # Special Algebra
 

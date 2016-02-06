@@ -7,6 +7,7 @@ import Control.Function
 import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
+import Algebra.Lattice
 
 import Clean.Prim
 
@@ -17,8 +18,8 @@ import Clean.Prim
 //TODO rewrite in inlined ABC (?)
 nat :: !Int -> Nat
 nat n
-    | prim_ltInt n 0 = abort "Data.Nat.nat: negative integer"
-    | otherwise      = n
+    | n < 0     = prim_abort "Data.Nat.nat: negative integer"
+    | otherwise = n
 
 int :: !Nat -> Int
 int n = prim_noop
@@ -48,10 +49,25 @@ instance Semiring Nat where
 
     unity = prim_oneInt
 
+
+/// ## Lattice
+
+instance MeetSemilattice Nat where
+    (/\) x y = prim_minInt x y
+
+instance JoinSemilattice Nat where
+    (\/) x y = prim_maxInt x y
+
+instance UpperBounded Nat where
+    top = prim_upperInt
+
+instance LowerBounded Nat where
+    bottom = prim_zeroInt
+
 /// # Special Algebra
 
 //TODO rewrite in inlined ABC (?)
 (.-) infixl 6 :: !Nat !Nat -> Nat
 (.-) n m
-    | prim_ltInt m n = prim_subInt n m
-    | otherwise      = 0
+    | m < n     = prim_subInt n m
+    | otherwise = prim_zeroInt
