@@ -1,6 +1,6 @@
 implementation module Control.Foldable
 
-import Control.Function
+import Data.Function
 import Data.Bool
 import Data.Nat
 import Data.Maybe

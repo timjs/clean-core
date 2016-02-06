@@ -1,6 +1,6 @@
 implementation module Control.Monad
 
-import Control.Function
+import Data.Function
 
 import Control.Functor
 import Control.Applicative

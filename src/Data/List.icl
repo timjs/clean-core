@@ -5,7 +5,7 @@ import Data.Int
 import Data.Range
 
 import Algebra.Order
-import Control.Function
+import Data.Function
 
 import Control.Functor
 import Control.Applicative

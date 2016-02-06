@@ -2,7 +2,7 @@ implementation module Control.Applicative
 
 import Data.Maybe
 
-import Control.Function
+import Data.Function
 import Control.Functor
 import Control.Foldable
 

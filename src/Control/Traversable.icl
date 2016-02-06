@@ -1,6 +1,6 @@
 implementation module Control.Traversable
 
-import Control.Function
+import Data.Function
 import Control.Functor
 import Control.Applicative
 import Control.Foldable

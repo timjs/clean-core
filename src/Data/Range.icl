@@ -4,7 +4,7 @@ import Data.Nat
 import Data.Int
 
 import Algebra.Order
-import Control.Function
+import Data.Function
 
 import Algebra.Group
 

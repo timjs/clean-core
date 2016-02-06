@@ -3,7 +3,7 @@ implementation module System.File
 import Data.Error
 import Data.Either
 
-import Control.Function
+import Data.Function
 
 /// # Opening and Closing
 

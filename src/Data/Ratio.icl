@@ -7,7 +7,7 @@ import Data.Real
 import Data.Complex
 
 import Algebra.Order
-import Control.Function
+import Data.Function
 
 import Algebra.Group
 import Algebra.Ring

@@ -1,9 +1,9 @@
 implementation module Data.Int
 
-import Control.Function
+import Data.Function
 
 import Algebra.Order
-import Algebra.Enum
+import Data.Enum
 import Algebra.Group
 import Algebra.Ring
 import Algebra.Lattice

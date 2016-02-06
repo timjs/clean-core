@@ -1,8 +1,8 @@
-definition module Algebra.Enum
+definition module Data.Enum
 
 from Data.Nat import :: Nat
 
-// import Algebra.Enum._Internal
+// import Data.Enum._Internal
 // import Clean._Enum
 
 /// # Class

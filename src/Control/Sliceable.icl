@@ -1,7 +1,7 @@
 implementation module Control.Sliceable
 
 import Algebra.Order
-import Control.Function
+import Data.Function
 import Control.Foldable
 
 import Data.Bool

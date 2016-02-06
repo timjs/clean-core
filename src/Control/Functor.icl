@@ -1,6 +1,6 @@
 implementation module Control.Functor
 
-import Control.Function
+import Data.Function
 
 /// # Class
 

@@ -6,16 +6,16 @@ import Data.Nat
 import Data.Int
 import Data.Real
 
+import Data.Function
+
 import Data.Tuple
+import Data.Enum
 import Data.Array
 // import Data.Array.Unboxed
 // import Data.Array.Strict
 import Data.String
 
-import Control.Function
-
 import Algebra.Order
-import Algebra.Enum
 import Algebra.Group
 import Algebra.Ring
 import Algebra.Lattice

@@ -1,7 +1,7 @@
 definition module Data.Int
 
 from Algebra.Order import class Eq, class Ord
-from Algebra.Enum import class Enum
+from Data.Enum import class Enum
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Domain
 from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded

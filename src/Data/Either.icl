@@ -1,6 +1,6 @@
 implementation module Data.Either
 
-import Control.Function
+import Data.Function
 
 import Control.Functor
 import Control.Applicative

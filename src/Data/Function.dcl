@@ -1,4 +1,4 @@
-definition module Control.Function
+definition module Data.Function
 
 import Clean.Prim
 
@@ -53,4 +53,3 @@ uncurry f (a, b) :== f a b
 abort s :== prim_abort s
 
 undefined :: .a
-

@@ -3,7 +3,7 @@ implementation module Data.Char
 import Data.Bool
 import Data.Int
 
-import Control.Function
+import Data.Function
 
 import Algebra.Order
 

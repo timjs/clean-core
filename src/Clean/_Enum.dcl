@@ -1,6 +1,6 @@
 definition module Clean._Enum
 
-from Algebra.Enum import class Enum(enumFrom, enumFromTo, enumFromThen, enumFromThenTo)
+from Data.Enum import class Enum(enumFrom, enumFromTo, enumFromThen, enumFromThenTo)
 
 /*
 	This module must be imported if dotdot expressions are used
