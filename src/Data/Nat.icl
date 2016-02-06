@@ -49,6 +49,21 @@ instance Semiring Nat where
 
     unity = prim_oneInt
 
+instance Domain Nat where
+    (`quot`) x y = prim_quotInt x y
+    (`rem`)  x y = prim_remInt x y
+    quotRem  x y = prim_quotRemInt x y
+
+    (`div`) x y = prim_divInt x y
+    (`mod`) x y = prim_modInt x y
+    divMod  x y = prim_divModInt x y
+
+	gcd x 0 = x
+    gcd x y = gcd y (x `rem` y)
+
+	lcm _ 0    = 0
+	lcm 0 _    = 0
+	lcm x y    = (x `quot` gcd x y) * y
 
 /// ## Lattice
 

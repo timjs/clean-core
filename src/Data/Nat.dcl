@@ -20,6 +20,7 @@ instance Ord Nat
 instance Semigroup Nat
 instance Monoid Nat
 instance Semiring Nat
+instance Domain Nat
 
 instance MeetSemilattice Nat
 instance JoinSemilattice Nat
