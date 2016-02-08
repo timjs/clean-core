@@ -1,31 +1,139 @@
 implementation module Data.Int
 
+import Data.Enum
 import Data.Function
 
 import Algebra.Order
-import Data.Enum
 import Algebra.Group
 import Algebra.Ring
 import Algebra.Lattice
-
-import Clean.Prim
 
 /// # Instances
 
 /// ## Order
 
 instance Eq Int where
-    (==) x y = prim_eqInt x y
+    (==) x y = code inline {
+        eqI
+    }
 
 instance Ord Int where
-    (<) x y = prim_ltInt x y
+    (<) x y = code inline {
+        ltI
+    }
+
+/// ## Algebra
+
+instance Semigroup Int where
+    (+) x y = code inline {
+        addI
+    }
+
+instance Monoid Int where
+    neutral = code inline {
+        pushI 0
+    }
+
+instance Group Int where
+    (-) x y = code inline {
+        subI
+    }
+
+    inverse x = code inline {
+        negI
+    }
+
+instance Semiring Int where
+    (*) x y = code inline {
+        mulI
+    }
+
+    unity = code inline {
+        pushI 1
+    }
+
+instance Domain Int where
+    (`quot`) x y = code inline {
+        divI
+    }
+    (`rem`)  x y = code inline {
+        remI
+    }
+    quotRem  x y = code inline {
+        push_b 1
+        push_b 1
+        divI
+        push_b 2
+        push_b 1
+        mulI
+        push_b 2
+        subI
+        update_b 0 3
+        update_b 1 2
+        pop_b 2
+    }
+
+    (`div`) x y = undefined /*code inline {
+        floordivI
+    }*/
+    (`mod`) x y = undefined /*code inline {
+        modI
+    }*/
+    divMod  x y = undefined /*code inline {
+        push_b 1
+        push_b 1
+        floordivI
+        push_b 2
+        push_b 1
+        mulI
+        push_b 2
+        subI
+        update_b 0 3
+        update_b 1 2
+        pop_b 2
+    }*/
+
+	gcd x y = gcd` (abs x) (abs y)
+	where
+		gcd` x 0 = x
+	    gcd` x y = gcd` y (x `rem` y)
+
+	lcm _ 0    = 0
+	lcm 0 _    = 0
+	lcm x y    = abs ((x `quot` gcd x y) * y)
+
+instance MeetSemilattice Int where
+    (/\) x y = undefined /*code inline {
+        minI
+    }*/
+
+instance JoinSemilattice Int where
+    (\/) x y = undefined /*code inline {
+        maxI
+    }*/
+
+instance UpperBounded Int where
+    top = undefined
+
+instance LowerBounded Int where
+    bottom = undefined
+
+/// ## Enum
 
 instance Enum Int where
-    toEnum n = prim_noop
-    fromEnum n = prim_noop
+    toEnum n = code inline {
+        no_op
+    }
+    fromEnum n = code inline {
+        no_op
+    }
 
-    succ x = prim_incInt x
-    pred x = prim_decInt x
+    succ x = code inline {
+        incI
+    }
+    pred x = code inline {
+        decI
+    }
 
     //TODO move to class (defaults extension) or instance on Ord Ring (flexibles extension)
     enumFrom x = [x : enumFrom (succ x)]
@@ -52,58 +160,3 @@ instance Enum Int where
             enumFromByDownto x s z
                 | x >= z    = [x : enumFromByDownto (x - s) s z]
                 | otherwise = []
-
-/// ## Algebra
-
-instance Semigroup Int where
-    (+) x y = prim_addInt x y
-
-instance Monoid Int where
-    neutral = prim_zeroInt
-
-instance Group Int where
-    (-) x y = prim_subInt x y
-
-    inverse x = prim_negInt x
-
-instance Semiring Int where
-    (*) x y = prim_mulInt x y
-    unity = prim_oneInt
-
-instance Domain Int where
-    (`quot`) x y = prim_quotInt x y
-    (`rem`)  x y = prim_remInt x y
-    quotRem  x y = prim_quotRemInt x y
-
-    (`div`) x y = prim_divInt x y
-    (`mod`) x y = prim_modInt x y
-    divMod  x y = prim_divModInt x y
-
-	gcd x y = gcd` (abs x) (abs y)
-	where
-		gcd` x 0 = x
-	    gcd` x y = gcd` y (x `rem` y)
-
-	lcm _ 0    = 0
-	lcm 0 _    = 0
-	lcm x y    = abs ((x `quot` gcd x y) * y)
-
-instance MeetSemilattice Int where
-    (/\) x y = prim_minInt x y
-
-instance JoinSemilattice Int where
-    (\/) x y = prim_maxInt x y
-
-instance UpperBounded Int where
-    top = undefined
-
-instance LowerBounded Int where
-    bottom = undefined
-
-/// # Helpers
-
-inc :: !Int -> Int
-inc x = prim_incInt x
-
-dec :: !Int -> Int
-dec x = prim_decInt x

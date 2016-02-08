@@ -5,7 +5,6 @@ import Algebra.Group
 
 import Data.Int//FIXME needed for `inc`
 
-import Clean.Prim
 import _SystemArray
 
 /// # Definition
@@ -17,19 +16,3 @@ unpack :: !String -> [Char]
 unpack cs = [c \\ c <-: cs]
 
 /// # Instances
-
-/// ## Order
-
-instance Eq String where
-    (==) a b = prim_eqString a b
-
-instance Ord String where
-    (<) a b = prim_ltString a b
-
-/// ## Group
-
-instance Semigroup String where
-    (+) a b = prim_concatString a b
-
-instance Monoid String where
-    neutral = prim_emptyString

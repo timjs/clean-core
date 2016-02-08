@@ -1,6 +1,4 @@
-definition module Data.Function
-
-from Clean.Prim import prim_abort
+system module Data.Function
 
 // id :: a -> a
 id a :== a
@@ -49,7 +47,5 @@ uncurry f (a, b) :== f a b
 (`on`) infixl 0 //:: (b b -> c) (a -> b) a a -> c
 (`on`) g f :== \x y -> g (f x) (f y)
 
-// abort :: !String -> a
-abort s :== prim_abort s
-
+abort :: !String -> .a
 undefined :: .a

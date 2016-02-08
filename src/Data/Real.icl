@@ -6,65 +6,107 @@ import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 
-import Clean.Prim
-
 /// # Definition
 
 real :: !Int -> Real
-real x = prim_intToReal x
+real x = code inline {
+    ItoR
+}
 
 /// # Instances
 
 /// ## Comparisson
 
 instance Eq Real where
-    (==) x y = prim_eqReal x y
+    (==) x y = code inline {
+        eqR
+    }
 
 instance Ord Real where
-    (<) x y = prim_ltReal x y
+    (<) x y = code inline {
+        ltR
+    }
 
 /// ## Algebra
 
 instance Semigroup Real where
-    (+) x y = prim_addReal x y
+    (+) x y = code inline {
+        addR
+    }
 
 instance Monoid Real where
-    neutral = prim_zeroReal
+    neutral = code inline {
+        pushR 0.0
+    }
 
 instance Group Real where
-    (-) x y = prim_subReal x y
+    (-) x y = code inline {
+        subR
+    }
 
-    inverse x = prim_negReal x
+    inverse x = code inline {
+        negR
+    }
 
 instance Semiring Real where
-    (*) x y = prim_mulReal x y
+    (*) x y = code inline {
+        mulR
+    }
 
-    unity = prim_oneReal
+    unity = code inline {
+        pushR 1.0
+    }
 
 instance Field Real where
-    (/) x y = prim_divReal x y
+    (/) x y = code inline {
+        divR
+    }
 
-    reciprocal x = prim_divReal 1.0 x //TODO other primitive?
+    reciprocal x = 1.0 / x //TODO other primitive?
 
 instance Algebraic Real where
-    (**) x y = prim_powReal x y
+    (**) x y = code inline {
+        powR
+    }
 
-    sqrt x = prim_sqrtReal x
+    sqrt x = code inline {
+        sqrtR
+    }
 
 instance Transcendental Real where
-    e  = prim_eReal
-    pi = prim_piReal
+    e  = code inline {
+        pushR 2.718281828459045235
+    }
+    pi = code inline {
+        pushR 3.141592653589793238
+    }
 
-    log x = prim_logReal x
-    exp x = prim_expReal x
+    log x = code inline {
+        lnR
+    }
+    exp x = code inline {
+        expR
+    }
 
-    sin x = prim_sinReal x
-    cos x = prim_cosReal x
-    tan x = prim_tanReal x
+    sin x = code inline {
+        sinR
+    }
+    cos x = code inline {
+        cosR
+    }
+    tan x = code inline {
+        tanR
+    }
 
-    asin x = prim_asinReal x
-    acos x = prim_acosReal x
-    atan x = prim_atanReal x
+    asin x = code inline {
+        asinR
+    }
+    acos x = code inline {
+        acosR
+    }
+    atan x = code inline {
+        atanR
+    }
 
     logBase x y = log y / log x
 
@@ -78,4 +120,3 @@ instance Transcendental Real where
     asinh x = log (sqrt (x * x + 1.0) + x)
     acosh x = log (sqrt (square x - 1.0) + x)
 	atanh x = log ((1.0 + x)/(1.0 - x)) * 0.5
-
