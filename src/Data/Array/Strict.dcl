@@ -1,6 +1,5 @@
 definition module Data.Array.Strict
 
-// import _DataArrayStrictInternal
 import _SystemArray
 
 /// # Definition

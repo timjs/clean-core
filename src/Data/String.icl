@@ -6,7 +6,7 @@ import Algebra.Group
 import Data.Int//FIXME needed for `inc`
 
 import Clean.Prim
-import Clean._Array
+import _SystemArray
 
 /// # Definition
 

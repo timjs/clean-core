@@ -7,7 +7,6 @@ import Algebra.Group
 
 import Clean.Prim
 
-// import _DataArrayUnboxedInternal
 import _SystemArray
 
 /// ## Instances

@@ -3,7 +3,6 @@ definition module Data.Array.Unboxed
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
 
-// import _DataArrayUnboxedInternal
 import _SystemArray
 
 /// # Definition
