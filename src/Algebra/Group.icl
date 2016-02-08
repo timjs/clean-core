@@ -5,9 +5,9 @@ import Algebra.Order
 /// ## Signum
 
 signum :: !a -> Sign | Ord a & Monoid a
-signum x | x <  zero = Positive
+signum x | x <  zero = Negative
          | x == zero = Neutral
-         | x >  zero = Negative
+         | otherwise = Positive
 
 /// ## Absolute value
 
