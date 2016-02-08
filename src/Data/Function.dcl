@@ -39,13 +39,14 @@ flip f :== g
     where g b a = f a b
 
 // curry :: ((a, b) -> c) a b -> c
-curry f a b :== f (a, b)
+curry f a b :== f (a,b)
 
 // uncurry :: (a b -> c) (a,b) -> c
-uncurry f (a, b) :== f a b
+uncurry f (a,b) :== f a b
 
 (`on`) infixl 0 //:: (b b -> c) (a -> b) a a -> c
 (`on`) g f :== \x y -> g (f x) (f y)
 
 abort :: !String -> .a
 undefined :: .a
+impossible :: .a
