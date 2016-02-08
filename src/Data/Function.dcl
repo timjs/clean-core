@@ -1,6 +1,6 @@
 definition module Data.Function
 
-import Clean.Prim
+from Clean.Prim import prim_abort
 
 // id :: a -> a
 id a :== a
