@@ -12,8 +12,6 @@ import Data.Function
 import Algebra.Group
 import Algebra.Ring
 
-import Clean.Prim
-
 /// # Definition
 
 :: Ratio = Ratio !Int !Int

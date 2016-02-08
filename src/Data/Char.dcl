@@ -1,4 +1,6 @@
-definition module Data.Char
+system module Data.Char
+
+from Data.Enum import class Enum
 
 from Algebra.Order import class Eq, class Ord
 
@@ -14,6 +16,8 @@ ord :: !Char -> Int
 
 instance Eq Char
 instance Ord Char
+
+// instance Enum Char
 
 /// # Classification
 
@@ -41,5 +45,4 @@ toLower :: !Char -> Char
 
 //TODO rename?
 digitToInt :: !Char -> Int
-//TODO intToDigit :: Int -> Char
-
+intToDigit :: !Int -> Char

@@ -1,7 +1,8 @@
-definition module Data.Int
+system module Data.Int
+
+from Data.Enum import class Enum
 
 from Algebra.Order import class Eq, class Ord
-from Data.Enum import class Enum
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Domain
 from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
@@ -15,21 +16,19 @@ from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class 
 
 instance Eq Int
 instance Ord Int
-instance Enum Int
 
 instance Semigroup Int
 instance Monoid Int
 instance Group Int
 instance Semiring Int
-// instance Ring Int
+//IMPLICIT instance Ring Int
 instance Domain Int
 
 instance MeetSemilattice Int
 instance JoinSemilattice Int
+//IMPLICIT instance Lattice Int
 instance UpperBounded Int
 instance LowerBounded Int
+//IMPLICIT instance Bounded Int
 
-/// # Helpers
-
-inc :: !Int -> Int
-dec :: !Int -> Int
+instance Enum Int

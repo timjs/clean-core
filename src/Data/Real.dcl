@@ -1,4 +1,4 @@
-definition module Data.Real
+system module Data.Real
 
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid, class Group

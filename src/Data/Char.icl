@@ -6,8 +6,7 @@ import Data.Int
 import Data.Function
 
 import Algebra.Order
-
-import Clean.Prim
+import Algebra.Group
 
 /// # Definition
 
@@ -15,48 +14,69 @@ import Clean.Prim
 // BUILTIN
 
 chr :: !Int -> Char
-chr i = prim_intToChar i
+chr i = code inline {
+    ItoC
+}
 
 ord :: !Char -> Int
-ord c = prim_charToInt c
+ord c = code inline {
+    CtoI
+}
 
 /// # Instances
 
 instance Eq Char where
-    (==) x y = prim_eqChar x y
+    (==) x y = code inline {
+        eqC
+    }
 
 instance Ord Char where
-    (<) x y = prim_ltChar x y
+    (<) x y = code inline {
+        ltC
+    }
 
 /// # Classification
 
-inline_isLower c :== c >= 'a' && c <= 'z'
-inline_isUpper c :== c >= 'A' && c <= 'Z'
-inline_isDigit c :== c >= '0' && c <= '9'
-inline_isAlpha c :== inline_isUpper (prim_unsetLowercaseBitChar c)
+setLowercaseBit :: !Char -> Char
+setLowercaseBit c = code inline {
+    pushI 32
+    or%
+}
+
+unsetLowercaseBit :: !Char -> Char
+unsetLowercaseBit c = code inline {
+    pushI 223
+    and%
+}
+
+IS_LOWER c      :== c >= 'a' && c <= 'z'
+IS_UPPER c      :== c >= 'A' && c <= 'Z'
+IS_DIGIT c      :== c >= '0' && c <= '9'
+IS_OCT_DIGIT c  :== c >= '0' &&  c <= '7'
+IS_HEX_LETTER c :== c >= 'A' &&  c <= 'F'
+IS_ALPHA c      :== IS_UPPER (unsetLowercaseBit c)
 
 isUpper :: !Char -> Bool
-isUpper c = inline_isUpper c
+isUpper c = IS_UPPER c
 
 isLower :: !Char -> Bool
-isLower c = inline_isLower c
+isLower c = IS_LOWER c
 
 isAlpha :: !Char -> Bool
-isAlpha c = inline_isAlpha c
+isAlpha c = IS_ALPHA c
 
 isAlphaNum :: !Char -> Bool
-isAlphaNum c = inline_isAlpha c || inline_isDigit c
+isAlphaNum c = IS_ALPHA c || IS_DIGIT c
 
 isDigit :: !Char -> Bool
-isDigit c = inline_isDigit c
+isDigit c = IS_DIGIT c
 
 isOctDigit :: !Char -> Bool
-isOctDigit c = c >= '0' &&  c <= '7'
+isOctDigit c = IS_OCT_DIGIT c
 
 isHexDigit :: !Char -> Bool
-isHexDigit c
-    # uc = prim_unsetLowercaseBitChar c
-    = inline_isDigit c || (uc >= 'A' &&  uc <= 'F')
+isHexDigit c = IS_DIGIT c || IS_HEX_LETTER u
+    where u = unsetLowercaseBit c
 
 isControl :: !Char -> Bool
 isControl c = c < ' ' || c == '\177'
@@ -70,23 +90,24 @@ isSpace c = c == ' ' || c == '\t' || c == '\n' || c ==  '\r' || c == '\f' || c =
 /// # Subranges
 
 isAscii :: !Char -> Bool
-isAscii c = prim_charToInt c < 128
+isAscii c = ord c < 128
 
 /// # Case Conversion
 
 toUpper :: !Char -> Char
 toUpper c
-    | inline_isLower c = prim_unsetLowercaseBitChar c
+    | IS_LOWER c = unsetLowercaseBit c
     | otherwise = c
 
 toLower :: !Char -> Char
 toLower c
-    | inline_isUpper c = prim_setLowercaseBitChar c
+    | IS_UPPER c = setLowercaseBit c
     | otherwise = c
 
 /// # Digit Conversion
 
 digitToInt :: !Char -> Int
-digitToInt c = prim_subInt (prim_charToInt c) 48
+digitToInt c = ord c - 48
 
-//TODO intToDigit :: Int -> Char
+intToDigit :: !Int -> Char
+intToDigit i = chr (i + 48)

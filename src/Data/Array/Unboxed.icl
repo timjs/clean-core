@@ -5,8 +5,6 @@ import Data.Function
 import Algebra.Order
 import Algebra.Group
 
-import Clean.Prim
-
 import _SystemArray
 
 /// ## Instances
@@ -15,7 +13,11 @@ import _SystemArray
 //     (==) xs ys = inline_equal xs ys
 
 instance Eq {#Char} where
-    (==) xs ys = prim_eqString xs ys
+    (==) xs ys = code inline {
+        .d 2 0
+            jsr eqAC
+        .o 0 1 b
+    }
 
 // instance Eq {#Nat} where
 //     (==) xs ys = inline_equal xs ys
@@ -31,7 +33,13 @@ instance Eq {#Char} where
 //     (<) xs ys = inline_lesser xs ys
 
 instance Ord {#Char} where
-    (<) xs ys = prim_ltString xs ys
+    (<) xs ys = code inline {
+        .d 2 0
+            jsr cmpAC
+        .o 0 1 i
+            pushI 0
+            gtI
+    }
 
 // instance Ord {#Nat} where
 //     (<) xs ys = inline_lesser xs ys
@@ -47,7 +55,11 @@ instance Ord {#Char} where
 //     (+) xs ys = inline_append xs ys
 
 instance Semigroup {#Char} where
-    (+) xs ys = prim_concatString xs ys
+    (+) xs ys = code inline {
+        .d 2 0
+            jsr catAC
+        .o 1 0
+    }
 
 // instance Semigroup {#Nat} where
 //     (+) xs ys = inline_append xs ys
@@ -63,7 +75,7 @@ instance Semigroup {#Char} where
 //     neutral = {# }
 
 instance Monoid {#Char} where
-    neutral = prim_emptyString
+    neutral = "" //TODO primitive ABC code?
 
 // instance Monoid {#Nat} where
 //     neutral = {# }

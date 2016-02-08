@@ -1,4 +1,4 @@
-definition module Data.Nat
+system module Data.Nat
 
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
