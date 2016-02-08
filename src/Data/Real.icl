@@ -6,6 +6,8 @@ import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 
+import Text.Show
+
 /// # Definition
 
 real :: !Int -> Real
@@ -15,7 +17,16 @@ real x = code inline {
 
 /// # Instances
 
-/// ## Comparisson
+/// ## Show
+
+instance Show Real where
+    show x = undefined /*code inline {
+        .d 0 2 r
+            jsr RtoAC
+        .o 1 0
+    }*/
+
+/// ## Order
 
 instance Eq Real where
     (==) x y = code inline {

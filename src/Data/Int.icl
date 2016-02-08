@@ -8,7 +8,18 @@ import Algebra.Group
 import Algebra.Ring
 import Algebra.Lattice
 
+import Text.Show
+
 /// # Instances
+
+/// ## Show
+
+instance Show Int where
+    show x = code inline {
+        .d 0 1 i
+            jsr ItoAC
+        .o 1 0
+    }
 
 /// ## Order
 

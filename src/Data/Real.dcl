@@ -4,6 +4,8 @@ from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid, class Group
 from Algebra.Ring import class Semiring, class Ring, class Field, class Algebraic, class Transcendental
 
+from Text.Show import class Show
+
 /// # Definition
 
 // :: Real = ... | 0 | ...
@@ -12,6 +14,8 @@ from Algebra.Ring import class Semiring, class Ring, class Field, class Algebrai
 real :: !Int -> Real
 
 /// # Instances
+
+instance Show Real
 
 instance Eq Real
 instance Ord Real

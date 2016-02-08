@@ -27,6 +27,15 @@ int n = code inline {
 
 /// # Instances
 
+/// ## Show
+
+instance Show Nat where
+    show x = code inline {
+        .d 0 1 i
+            jsr ItoAC
+        .o 1 0
+    }
+
 /// ## Order
 
 instance Eq Nat where

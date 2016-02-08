@@ -5,9 +5,16 @@ import Data.Function
 import Algebra.Order
 import Algebra.Group
 
+import Text.Show
+
 import _SystemArray
 
 /// ## Instances
+
+instance Show {#Char} where
+    show xs = code inline {
+        no_op
+    }
 
 // instance Eq {#Bool} where
 //     (==) xs ys = inline_equal xs ys

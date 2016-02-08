@@ -280,39 +280,13 @@ prim_writeStringFile s f = code inline {
 
 /// ## Booleans
 
-prim_boolToString :: !Bool -> String
-prim_boolToString b = code inline {
-    .d 0 1 b
-        jsr BtoAC
-    .o 1 0
-}
-
 /// ## Characters
 
-prim_charToString :: !Char -> String
-prim_charToString c = code inline {
-    CtoAC
-}
-
 /// ## Integers
-
-prim_intToString :: !Int -> String
-prim_intToString i = code inline {
-    .d 0 1 i
-        jsr ItoAC
-    .o 1 0
-}
 
 /// ## Reals
 
 prim_realToInt :: !Real -> Int
 prim_realToInt x = code inline {
     RtoI
-}
-
-prim_realToString :: !Real -> String
-prim_realToString x = code inline {
-    .d 0 2 r
-        jsr RtoAC
-    .o 1 0
 }

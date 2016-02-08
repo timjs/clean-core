@@ -3,6 +3,8 @@ system module Data.Bool
 from Algebra.Order import class Eq, class Ord
 from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
 
+from Text.Show import class Show
+
 /// # Definition
 
 // :: Bool = True | False
@@ -10,14 +12,17 @@ from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class 
 
 /// # Instances
 
+instance Show Bool
+
 instance Eq Bool
 instance Ord Bool
-// instance Enum Bool
 
 instance MeetSemilattice Bool
 instance JoinSemilattice Bool
 instance UpperBounded Bool
 instance LowerBounded Bool
+
+// instance Enum Bool
 
 /// # Operations
 

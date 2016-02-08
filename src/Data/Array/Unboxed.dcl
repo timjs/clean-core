@@ -3,6 +3,8 @@ system module Data.Array.Unboxed
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
 
+from Text.Show import class Show
+
 import _SystemArray
 
 /// # Definition
@@ -11,6 +13,12 @@ import _SystemArray
 //BUILTIN
 
 /// # Instances
+
+// instance Show {#Bool}
+instance Show {#Char}
+// instance Show {#Nat}
+// instance Show {#Int}
+// instance Show {#Real}
 
 // instance Eq {#Bool}
 instance Eq {#Char}

@@ -25,6 +25,15 @@ ord c = code inline {
 
 /// # Instances
 
+/// ## Show
+
+instance Show Char where
+    show x = code inline {
+        CtoAC
+    }
+
+/// ## Order
+
 instance Eq Char where
     (==) x y = code inline {
         eqC

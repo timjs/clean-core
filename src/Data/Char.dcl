@@ -4,6 +4,8 @@ from Data.Enum import class Enum
 
 from Algebra.Order import class Eq, class Ord
 
+from Text.Show import class Show
+
 /// # Definition
 
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
@@ -13,6 +15,8 @@ chr :: !Int -> Char
 ord :: !Char -> Int
 
 /// # Instances
+
+instance Show Char
 
 instance Eq Char
 instance Ord Char

@@ -14,4 +14,4 @@ c = {1, 2}
 d :: {#Int}
 d = {1, 2}
 
-Start = a == b
+Start = ((show a, show 4), (a,c))

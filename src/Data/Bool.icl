@@ -3,12 +3,25 @@ implementation module Data.Bool
 import Algebra.Order
 import Algebra.Lattice
 
+import Text.Show
+
 /// # Definition
 
 // :: Bool = True | False
 // BUILTIN
 
-/// # Order
+/// # Instances
+
+/// ## Show
+
+instance Show Bool where
+    show x = code inline {
+        .d 0 1 b
+            jsr BtoAC
+        .o 1 0
+    }
+
+/// ## Order
 
 instance Eq Bool where
     (==) x y = code inline {
@@ -22,7 +35,7 @@ instance Ord Bool where
     //     ltB
     // }
 
-/// # Algebra
+/// ## Lattice
 
 instance MeetSemilattice Bool where
     (/\) x y = code {
