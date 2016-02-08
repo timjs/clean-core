@@ -275,18 +275,3 @@ prim_writeStringFile s f = code inline {
         jsr writeFS
     .o 0 2 f
 }
-
-/// # Conversions
-
-/// ## Booleans
-
-/// ## Characters
-
-/// ## Integers
-
-/// ## Reals
-
-prim_realToInt :: !Real -> Int
-prim_realToInt x = code inline {
-    RtoI
-}
