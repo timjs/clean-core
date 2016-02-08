@@ -3,7 +3,8 @@ definition module Data.Array
 from Algebra.Order import class Eq, class Ord
 from Algebra.Group import class Semigroup, class Monoid
 
-import Clean._Array
+// import _DataArrayInternal
+import _SystemArray
 
 /// # Definition
 

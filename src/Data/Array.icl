@@ -5,7 +5,8 @@ import Data.Function
 import Algebra.Order
 import Algebra.Group
 
-import Clean._Array
+// import _DataArrayInternal
+import _SystemArray
 
 /// # Instances
 
