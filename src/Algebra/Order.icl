@@ -2,6 +2,17 @@ implementation module Algebra.Order
 
 import Data.Bool
 
+:: Ordering :== Int
+
+Lesser :: Ordering
+Lesser  = -1
+
+Equal :: Ordering
+Equal   =  0
+
+Greater :: Ordering
+Greater = +1
+
 /// # Equivalence
 
 (/=) infix 4 :: !a !a -> Bool | Eq a
