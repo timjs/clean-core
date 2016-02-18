@@ -14,11 +14,24 @@ import Algebra.Lattice
 
 :: Nat :== Int
 
-//TODO rewrite in inlineable ABC (?)
 nat :: !Int -> Nat
-nat n
-    | n < 0     = abort "Data.Nat.nat: negative integer"
-    | otherwise = n
+nat n = code {
+    pushI 0
+    push_b 1
+    ltI
+    jmp_true abort_n
+.d 0 1 i
+    rtn
+:abort_n
+    buildAC "Data.Nat.nat: negative integer"
+.d 1 0
+    jsr print_string_
+.o 0 0
+    halt
+}
+// nat n
+    // | n < 0     = abort "Data.Nat.nat: negative integer"
+    // | otherwise = n
 
 int :: !Nat -> Int
 int n = code inline {
@@ -141,8 +154,23 @@ instance LowerBounded Nat where
 
 /// # Special Algebra
 
-//TODO rewrite in inlineable ABC (?)
 (.-) infixl 6 :: !Nat !Nat -> Nat
-(.-) n m
-    | m < n     = nat (int n - int m)
-    | otherwise = neutral
+(.-) n m = code {
+    push_b 0
+    push_b 2
+    ltI
+    jmp_false zero_n
+
+    subI
+.d 0 1 i
+    rtn
+
+:zero_n
+    pop_b 2
+    pushI 0
+.d 0 1 i
+    rtn
+}
+// (.-) n m
+//     | m < n     = nat (int n - int m)
+//     | otherwise = neutral
