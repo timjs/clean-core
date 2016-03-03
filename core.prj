@@ -39,7 +39,8 @@ Global
 		ExportedNames:	
 	Paths
 		Path:	{Project}/src
-		Path:	{Application}/lib/Generics
+		Path:	{Project}/../clean-generics/src
+		Path:	{Project}/../clean-stdenv/src
 	Precompile:	
 	Postlink:	
 MainModule
@@ -283,7 +284,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	_SystemArray
-		Dir:	{Application}/lib/StdEnv
+		Dir:	{Project}/../clean-stdenv/src
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
