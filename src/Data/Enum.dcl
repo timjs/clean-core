@@ -1,19 +1,18 @@
 definition module Data.Enum
 
-from Data.Nat import :: Nat
-
 /// # Overloading
 
 class Enum a where
-    toEnum :: !Nat -> a
-    fromEnum :: !a -> Nat
+    toEnum :: !Int -> a
+    fromEnum :: !a -> Int
 
-    succ :: !a -> a
-    pred :: !a -> a
+succ :: !a -> a | Enum a
+pred :: !a -> a | Enum a
 
-    enumFrom :: !a -> .[a]
-    enumFromTo :: !a !a -> .[a]
-    enumFromThen :: a a -> .[a]
-    enumFromThenTo :: !a !a !a -> .[a]
+//TODO test [n..] for Bounded n
+enumFrom :: !a -> .[a] | Enum a
+enumFromTo :: !a !a -> .[a] | Enum a
+enumFromThen :: !a !a -> .[a] | Enum a
+enumFromThenTo :: !a !a !a -> .[a] | Enum a
 
 //TODO patch compiler to use enum... functions

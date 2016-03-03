@@ -113,6 +113,8 @@ instance Domain Int where
 	lcm 0 _    = 0
 	lcm x y    = abs ((x `quot` gcd x y) * y)
 
+/// ## Lattices
+
 instance MeetSemilattice Int where
     (/\) x y = undefined /*code inline {
         minI
@@ -139,35 +141,14 @@ instance Enum Int where
         no_op
     }
 
-    succ x = code inline {
-        incI
-    }
-    pred x = code inline {
-        decI
-    }
+/// # Helpers
 
-    //TODO move to class (defaults extension) or instance on Ord Ring (flexibles extension)
-    enumFrom x = [x : enumFrom (succ x)]
+inc :: !Int -> Int
+inc x = code inline {
+    incI
+}
 
-    enumFromTo x y
-        | x <= y    = [x : enumFromTo (succ x) y]
-        | otherwise = []
-
-    enumFromThen x y = [x : enumFromBy x (y - x)]
-        where
-            // enumFromBy x s :: Int Int -> .[Int]
-            enumFromBy x s = [x : enumFromBy (x + s) s]
-
-    enumFromThenTo x y z
-        | x <= y    = enumFromByUpto x (y - x) z
-        | otherwise = enumFromByDownto x (x - y) z
-        where
-            // enumFromByUpto :: !Int !Int !Int -> .[Int]
-            enumFromByUpto x s z
-                | x <= z    = [x : enumFromByUpto (x + s) s z]
-                | otherwise = []
-
-            // enumFromByDownto :: !Int !Int !Int -> .[Int]
-            enumFromByDownto x s z
-                | x >= z    = [x : enumFromByDownto (x - s) s z]
-                | otherwise = []
+dec :: !Int -> Int
+dec x = code inline {
+    decI
+}

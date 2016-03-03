@@ -20,8 +20,10 @@ nat n = code {
     push_b 1
     ltI
     jmp_true abort_n
+
 .d 0 1 i
     rtn
+
 :abort_n
     buildAC "Data.Nat.nat: negative integer"
 .d 1 0
@@ -150,6 +152,16 @@ instance UpperBounded Nat where
 instance LowerBounded Nat where
     bottom = code inline {
         pushI 0
+    }
+
+/// ## Enum
+
+instance Enum Nat where
+    toEnum n = code inline {
+        no_op
+    }
+    fromEnum n = code inline {
+        no_op
     }
 
 /// # Special Algebra

@@ -3,6 +3,10 @@ implementation module Data.Bool
 import Algebra.Order
 import Algebra.Lattice
 
+import Data.Nat
+import Data.Enum
+import Data.Function
+
 import Text.Show
 
 /// # Definition
@@ -12,7 +16,7 @@ import Text.Show
 
 /// # Instances
 
-/// ## Show
+/// ## Show and Parse
 
 instance Show Bool where
     show x = code inline {
@@ -79,13 +83,22 @@ instance LowerBounded Bool where
         pushB FALSE
     }
 
+/// ## Enum
+
+instance Enum Bool where
+    toEnum 0 = False
+    toEnum 1 = True
+    toEnum _ = abort "Data.Bool.toEnum: bad argument"
+
+    fromEnum False = 0
+    fromEnum True  = 1
 
 /// # Operations
 
 not :: !Bool -> Bool
 not x = code inline {
-        notB
-    }
+    notB
+}
 
 (&&) infixr 3 :: !Bool Bool -> Bool
 (&&) x y = code {

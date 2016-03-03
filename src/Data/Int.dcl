@@ -36,3 +36,8 @@ instance LowerBounded Int
 //IMPLICIT instance Bounded Int
 
 instance Enum Int
+
+/// # Helpers
+
+inc :: !Int -> Int
+dec :: !Int -> Int

@@ -44,6 +44,34 @@ instance Ord Char where
         ltC
     }
 
+/// ## Lattices
+
+instance MeetSemilattice Char where
+    (/\) x y = undefined /*code inline {
+        minC
+    }*/
+
+instance JoinSemilattice Char where
+    (\/) x y = undefined /*code inline {
+        maxC
+    }*/
+
+instance UpperBounded Char where
+    top = undefined
+
+instance LowerBounded Char where
+    bottom = undefined
+
+/// ## Enum
+
+instance Enum Char where
+    toEnum n = code inline {
+        CtoI
+    }
+    fromEnum n = code inline {
+        ItoC
+    }
+
 /// # Classification
 
 setLowercaseBit :: !Char -> Char
