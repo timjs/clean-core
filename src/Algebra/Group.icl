@@ -4,12 +4,12 @@ import Algebra.Order
 
 /// ## Signum
 
-signum :: !a -> Sign | Ord a & Monoid a
+signum :: !a -> Sign | Ord, Monoid a
 signum x | x <  zero = Negative
          | x == zero = Neutral
          | otherwise = Positive
 
 /// ## Absolute value
 
-abs :: !a -> a | Ord a & Group a
+abs :: !a -> a | Ord, Group a
 abs x = max x (inverse x)

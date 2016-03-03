@@ -17,10 +17,10 @@ class Semiring a | Monoid a where
     (*) infixl 7 :: !a !a -> a
     unity :: a
 
-one :== unity
-
 square :: !a -> a | Semiring a
 (^) infixr 8 :: !a !Nat -> a | Semiring a
+
+one :== unity
 
 class Domain a | Semiring a where
     (`quot`) infix 7 :: !a !a -> a
