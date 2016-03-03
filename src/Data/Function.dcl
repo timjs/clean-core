@@ -49,4 +49,4 @@ uncurry f (a,b) :== f a b
 
 abort :: !String -> .a
 undefined :: .a
-impossible :: .a
+unreachable :: .a

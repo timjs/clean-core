@@ -11,5 +11,5 @@ abort s = code inline {
 undefined :: .a
 undefined = abort "Run-time error! Program evaluated an undefined value!"
 
-impossible :: .a
-impossible = abort "Run-time error! Program reached an impossible branch!"
+unreachable :: .a
+unreachable = abort "Run-time error! Program reached an unreachable branch!"
