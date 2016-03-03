@@ -128,7 +128,7 @@ instance % [a]
 instance toString [x] | toChar x
     where
 //    toString::![x] -> {#Char} | toChar x
-    toString xs = ltosacc 0 xs (createArray l ' ')
+    toString xs = ltosacc 0 xs (array l ' ')
     where
         l                    = length xs
         ltosacc i [h:t] arr    = ltosacc (inc i) t {arr & [i]=toChar h}

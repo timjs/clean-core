@@ -88,8 +88,6 @@ instance Sliceable Slice
 
 /// # Literals
 
-module Data.Int
-
 class IsInt a where
     fromInt :: Int -> a
 

@@ -1,4 +1,4 @@
-definition module System.File
+definition module System.IO
 
 from Data.Error import :: Error, :: Usually
 from Data.Either import :: Either
@@ -8,28 +8,49 @@ from Data.Either import :: Either
 // :: File
 // BUILTIN
 
-:: Path :== String
+/// # IOModes
+
+:: IOMode (:== Int)
+
+ReadMode, WriteMode, AppendMode :: IOMode
+ReadMode   = 0
+WriteMode  = 1
+AppendMode = 2
+ReadWriteMode = undefined
+
+:: SeekMode (:== Int)
+
+AbsoluteSeek, RelativeSeek, SeekFromEnd :: SeekMode
+AbsoluteSeek = 0
+RelativeSeek = 1
+SeekFromEnd  = 2
+
+:: FilePath :== String
 
 :: Error
-	| DoesNotExist | FileDoesNotExist
-	| AlreadyExists | FileAlreadyExists
-	| Permission | FilePermissionDenied
-	| EOFError | FileIsEOF
-	| FullError | FileFull
-	| IllegalOperationError | FileIllegalOperation
-	| UserError [Char] | FileUserError
+	| FileDoesNotExist
+	| FileAlreadyExists
+	| PermissionDenied
+	| FileIsAtEnd
+	| FileIsFull
+	| IllegalFileOperation
+	| UserFileError [Char]
 
 /// # Opening and Closing
 
-openFile :: !Path !FileMode !*World -> *(Usually *File, *World)
+withFile :: !FilePath !IOMode (!*File -> *(Usually a, *File)) -> *(Usually a, *File)
+openFile :: !FilePath !IOMode !*World -> *(Usually *File, *World)
+openBinaryFile :: !FilePath !IOMode !*World -> *(Usually *File, *World)
+closeFile :: !*File !*World -> *(Usually (), *World)
+
 /// ## Standard Input and Output
 
-stdio :: *File
+stdin :: *File
+stdout :: *File
 stderr :: *File
 
 /// ## Reading and Writing
 
-readFile :: !Path !*World -> *(Usually String, *World)
-writeFile :: !Path !String !*World -> *(Usually (), *World)
-appendFile :: !Path !String !*World -> *(Usually (), *World)
-
+readFile :: !FilePath !*World -> *(Usually String, *World)
+writeFile :: !FilePath !String !*World -> *(Usually (), *World)
+appendFile :: !FilePath !String !*World -> *(Usually (), *World)

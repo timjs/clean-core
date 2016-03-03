@@ -20,7 +20,3 @@ import Algebra.Ring
 import Algebra.Lattice
 
 import Text.Show
-
-// import System.Console
-// import System.File
-// import System.Process
