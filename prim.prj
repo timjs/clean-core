@@ -34,17 +34,17 @@ Global
 		GenerateSymbolTable:	False
 		GenerateLinkMap:	False
 		LinkResources:	False
-		ResourceSource:	
+		ResourceSource:
 		GenerateDLL:	False
-		ExportedNames:	
+		ExportedNames:
 	Paths
-		Path:	{Project}/src
+		Path:	{Project}/Sources
 		Path:	{Application}/lib/Generics
-	Precompile:	
-	Postlink:	
+	Precompile:
+	Postlink:
 MainModule
 	Name:	Clean.Prim
-	Dir:	{Project}/src
+	Dir:	{Project}/Sources
 	Compiler
 		NeverMemoryProfile:	False
 		NeverTimeProfile:	False

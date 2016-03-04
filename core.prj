@@ -38,14 +38,14 @@ Global
 		GenerateDLL:	False
 		ExportedNames:	
 	Paths
-		Path:	{Project}/src
-		Path:	{Project}/../clean-generics/src
-		Path:	{Project}/../clean-stdenv/src
+		Path:	{Project}/Sources
+		Path:	{Project}/../clean-generics/Sources
+		Path:	{Project}/../clean-stdenv/Sources
 	Precompile:	
 	Postlink:	
 MainModule
 	Name:	Clean.Core
-	Dir:	{Project}/src
+	Dir:	{Project}/Sources
 	Compiler
 		NeverMemoryProfile:	False
 		NeverTimeProfile:	False
@@ -60,7 +60,7 @@ MainModule
 OtherModules
 	Module
 		Name:	Algebra.Group
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -74,7 +74,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Algebra.Lattice
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -88,7 +88,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Algebra.Order
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -102,7 +102,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Algebra.Ring
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -116,7 +116,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Array
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -130,7 +130,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Array.Strict
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -144,7 +144,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Array.Unboxed
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -158,7 +158,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Bool
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -172,7 +172,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Char
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -186,7 +186,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Enum
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -200,7 +200,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Function
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -214,7 +214,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Int
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -228,7 +228,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Nat
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -242,7 +242,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Real
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -256,7 +256,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Data.Tuple
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -270,7 +270,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	Text.Show
-		Dir:	{Project}/src
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
@@ -284,7 +284,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	_SystemArray
-		Dir:	{Project}/../clean-stdenv/src
+		Dir:	{Project}/../clean-stdenv/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False

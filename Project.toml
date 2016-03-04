@@ -8,6 +8,11 @@ name = "clean-stdenv"
 version = "2.4.0"
 path = "../clean-stdenv"
 
+[[dependencies]]
+name = "clean-generics"
+version = "2.4.0"
+path = "../clean-generics"
+
 [library]
 modules = []
 
