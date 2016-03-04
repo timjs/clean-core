@@ -4,9 +4,9 @@ from Data.Nat import :: Nat
 from Data.Range import :: Range
 from Data.Maybe import :: Maybe
 
-from Algebra.Order import class Eq
 from Control.Foldable import class Foldable
 
+from Algebra.Order import class Eq
 from Algebra.Group import class Semigroup, class Monoid
 
 /// # Class
@@ -49,4 +49,3 @@ span :: (a -> Bool) (s a) -> ((s a), (s a)) | Sliceable s a
 isPrefixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 isSuffixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 // isInfixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
-
