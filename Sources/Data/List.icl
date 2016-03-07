@@ -93,7 +93,7 @@ instance Traversable [] where
             cons_f x ys = (\x xs -> [x:xs]) <$> f x <*> ys
 
 instance Sliceable [] a where
-    (@) xs n = go (int n) xs
+    index n xs = go (int n) xs
         //TODO possible to index from the end?
         // | n < 0     = go (size xs - n)
         // | otherwise = go n
@@ -102,7 +102,7 @@ instance Sliceable [] a where
             go 0 [x:xs] = x
             go n [x:xs] = go (n - 1) xs
 
-    (%) xs r = go (int $ start r) (int $ end r) xs
+    slice n m xs = go (int n) (int m) xs
         where
             go _ _ [] = []
             go 0 0 _ = []

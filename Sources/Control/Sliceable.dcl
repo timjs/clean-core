@@ -1,7 +1,6 @@
 definition module Control.Sliceable
 
 from Data.Nat import :: Nat
-from Data.Range import :: Range
 from Data.Maybe import :: Maybe
 
 from Control.Foldable import class Foldable
@@ -11,10 +10,11 @@ from Algebra.Group import class Semigroup, class Monoid
 
 /// # Class
 
-//TODO Is Monoid contraint needed?
+//TODO Is Monoid contraint needed? => yes: neutral in take, drop and split
+//TODO Is Foldabel constraint needed? => yes: null and length
 class Sliceable s a | Foldable s & Monoid (s a) where
-    (@) infixl 9 :: (s a) !Nat -> a
-    (%) infixl 4 :: (s a) !Range -> s a
+    index :: !Nat (s a) -> a
+    slice :: !Nat !Nat (s a) -> s a
 
 /// # Functions
 
@@ -34,9 +34,9 @@ unsafeLast :: (s a) -> a | Sliceable s a
 unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s a
 unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s a
 
-take :: Nat (s a) -> (s a) | Sliceable s a
-drop :: Nat (s a) -> (s a) | Sliceable s a
-split :: Nat (s a) -> ((s a), (s a)) | Sliceable s a
+take :: !Nat (s a) -> (s a) | Sliceable s a
+drop :: !Nat (s a) -> (s a) | Sliceable s a
+split :: !Nat (s a) -> ((s a), (s a)) | Sliceable s a
 
 takeTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a
 dropTill :: (a -> Bool) (s a) -> (s a) | Sliceable s a

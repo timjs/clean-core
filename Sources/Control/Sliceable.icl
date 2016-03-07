@@ -1,14 +1,21 @@
 implementation module Control.Sliceable
 
-import Algebra.Order
-import Data.Function
+// NOTE on style:
+// - | and = on new line
+// - no otherwise
+// - indent where below fundef
+// - use where instead of let
+// - do *not* use infix operators like @ or %
+// - use Nat instead of Nat (=> negative indices are counted from the back?)
+
 import Control.Foldable
 
+import Data.Function
 import Data.Bool
 import Data.Nat
-import Data.Range
 import Data.Maybe
 
+import Algebra.Order
 import Algebra.Group
 import Algebra.Ring
 
@@ -49,59 +56,59 @@ unsnoc s
 /// ### Unsafe basics
 
 unsafeHead :: (s a) -> a | Sliceable s a
-unsafeHead s = s @ zero
+unsafeHead s
+    = index zero s
 
 unsafeTail :: (s a) -> (s a) | Sliceable s a
-unsafeTail s = s % one ..< l
-    where
-        l = size s
+unsafeTail s
+    = slice one (length s) s
 
 unsafeInit :: (s a) -> (s a) | Sliceable s a
-unsafeInit s = s % zero ..< l .- one
-    where
-        l = size s
+unsafeInit s
+    = slice zero (length s .- one) s
 
 unsafeLast :: (s a) -> a | Sliceable s a
-unsafeLast s = s @ (l .- one)
-    where
-        l = size s
+unsafeLast s
+    = index (length s .- one) s
 
 unsafeUncons :: (s a) -> (a,(s a)) | Sliceable s a
-unsafeUncons s = (unsafeHead s, unsafeTail s)
+unsafeUncons s
+    = (unsafeHead s, unsafeTail s)
 
 unsafeUnsnoc :: (s a) -> ((s a),a) | Sliceable s a
-unsafeUnsnoc s = (unsafeInit s, unsafeLast s)
+unsafeUnsnoc s
+    = (unsafeInit s, unsafeLast s)
 
 /// # Specified number
 
 /// O(1) `take n`, applied to a `(s a)` `s` returns the prefix of `s`
 /// of `length n`, or `s` itself if `n > length s`.
-take :: Nat (s a) -> (s a) | Sliceable s a
+take :: !Nat (s a) -> (s a) | Sliceable s a
 take n s
     | n == zero = neutral
     | n >= l = s
-    = s % zero..<n
+    = slice zero n s
     where
-        l = size s
+        l = length s
 
 /// O(1) `drop n s` returns the suffix of `s` after the first `n` elements,
-/// or `""` if `n > size s`.
-drop :: Nat (s a) -> (s a) | Sliceable s a
+/// or `""` if `n > length s`.
+drop :: !Nat (s a) -> (s a) | Sliceable s a
 drop n s
     | n == zero = s
     | n >= l = neutral
-    = s % n..<l
+    = slice n l s
     where
-        l = size s
+        l = length s
 
 /// O(1) `split n s` is equivalent to `(take n s, drop n s)`.
-split :: Nat (s a) -> ((s a), (s a)) | Sliceable s a
+split :: !Nat (s a) -> ((s a), (s a)) | Sliceable s a
 split n s
     | n == zero = (neutral, s)
     | n >= l = (s, neutral)
-    = (s % zero..<n, s % n..<l)
+    = (slice zero n s, slice n l s)
     where
-        l = size s
+        l = length s
 
 /// # Using predicate
 
@@ -140,22 +147,24 @@ span p s
 isPrefixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 isPrefixOf needle haystack
     | l == zero = True
-    | l > m = False
-    = needle == (haystack % zero ..< l)
+    | l >  m = False
+    = needle == slice zero l haystack
     where
-        l = size needle
-        m = size haystack
+        l = length needle
+        m = length haystack
 
 isSuffixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
 isSuffixOf needle haystack
     | l == zero = True
-    | l > m = False
-    = needle == (haystack % m .- l ..< m)
+    | l >  m = False
+    = needle == slice (m .- l) m haystack
     where
-        l = size needle
-        m = size haystack
+        l = length needle
+        m = length haystack
 
 //TODO isInfixOf :: (s a) (s a) -> Bool | Sliceable s a & Eq (s a)
+
+/// # Helpers
 
 /// The `findIndex` function takes a predicate and a `Slice` and
 /// returns the index of the first element in the `Slice`
@@ -165,22 +174,22 @@ findIndex p s
     = go zero
     where
         go n
-            | n >= l    = Nothing
-            | p (s @ n) = Just n
-            | otherwise = go (n + one)
-        l = size s
+            | n >= l = Nothing
+            | p (index n s) = Just n
+            = go (n + one)
+        l = length s
 
-/// `findIndexOrEnd` is a variant of `findIndex`, that returns the size
+/// `findIndexOrEnd` is a variant of `findIndex`, that returns the length
 /// of the slice if no element is found, rather than `Nothing`.
 findIndexOrEnd :: !(a -> Bool) (s a) -> Nat | Sliceable s a
 findIndexOrEnd p s
     = go zero
     where
         go n
-            | n >= l    = l
-            | p (s @ n) = n
-            | otherwise = go (n + one)
-        l = size s
+            | n >= l = l
+            | p (index n s) = n
+            = go (n + one)
+        l = length s
 
 /*
 import qualified Data.List as List
@@ -198,8 +207,8 @@ test_quick =
     , take 3 input == wrap "Hel"
     , drop 3 input == wrap "lo world"
     , split 4 input == (take 4 input, drop 4 input)
-    , takeTill p0 input == wrap "Hello"
-    , dropTill p0 input == wrap " world"
+    , takeTill pzero input == wrap "Hello"
+    , dropTill pzero input == wrap " world"
     , break p1 input == (takeTill p1 input, dropTill p1 input)
     , takeWhile p2 input == wrap "Hello"
     , dropWhile p2 input == wrap " world"
@@ -209,7 +218,7 @@ test_quick =
     ]
     where
         input = wrap "Hello world"
-        p0 c = c == ' '
+        pzero c = c == ' '
         p1 c = c == 'l'
         p2 c = isAlphanum c
 
@@ -223,4 +232,3 @@ test_cmp =
 
 Start = test_cmp
 */
-
