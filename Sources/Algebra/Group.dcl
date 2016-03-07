@@ -52,7 +52,7 @@ class Group a | Monoid a where
 
 negate a :== inverse a
 
-/// # Absolute value & Sign
+/// # Absolute value & Signum function
 
 :: Sign = Positive | Neutral | Negative
 
