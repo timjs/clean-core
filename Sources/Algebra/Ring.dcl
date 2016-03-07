@@ -17,6 +17,7 @@ class Semiring a | Monoid a where
     (*) infixl 7 :: !a !a -> a
     unity :: a
 
+//TODO move into class
 square :: !a -> a | Semiring a
 (^) infixr 8 :: !a !Nat -> a | Semiring a
 
@@ -33,6 +34,17 @@ class Domain a | Semiring a where
 
     gcd :: !a !a -> a
     lcm :: !a !a -> a
+
+    /* XXX add these?
+    stdAssociate :: a -> a
+    stdAssociate x = x `div` stdUnit x
+
+    stdUnit :: a -> a
+    stdUnit x = snd (normalize x)
+
+    normalize :: a -> (a, a)
+    normalize x = (stdAssociate x, stdUnit x)
+    */
 
 /// Sets equipped with two binary operations, one associative and commutative
 /// supplied with a neutral element, and the other associative supplied with a
@@ -89,16 +101,18 @@ class Field a | Ring a where
     (/) infixl 7 :: !a !a -> a
     reciprocal :: !a -> a
 
+//TODO move into class
 (^^) infixr 8 :: !a !Int -> a | Field a
 
 class Algebraic a | Field a where
-    sqrt :: !a -> a
-    // cbrt :: !a -> a
-    // root :: !a !a -> a
     (**) infixr 8 :: !a !a -> a
-
+    sqrt :: !a -> a
+    // sqrt = root 2.0
+    // cbrt :: !a -> a
+    // cbrt = root 3.0
+    // root :: !a !a -> a
     // root n x = x ** (reciprocal n)
-    // sqrt = root 2
+
 
 class Transcendental a | Algebraic a where
     e :: a
