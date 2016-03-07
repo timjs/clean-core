@@ -4,7 +4,6 @@ import Data.Function
 import Data.Bool
 import Data.Nat
 import Data.Maybe
-import Data.List
 
 import Algebra.Order
 
@@ -58,11 +57,11 @@ defaultFoldl` f z0 l = foldr f` id l z0
 null :: (t a) -> Bool | Foldable t
 null xs = foldr (\_ _ -> False) True xs
 
-/// Returns the size/length of a finite structure as an `Nat`.  The
+/// Returns the length of a finite structure as an `Nat`.  The
 /// default implementation is optimized for structures that are similar to
 /// cons-lists, because there is no general way to do better.
-size :: (t a) -> Nat | Foldable t
-size xs = foldl (\c _ -> c + (nat 1)) (nat 0) xs
+length :: (t a) -> Nat | Foldable t
+length xs = foldl (\c _ -> c + (nat 1)) (nat 0) xs
 
 // Does the element occur in the structure?
 elem :: a (t a) -> Bool | Foldable t & Eq a
@@ -76,7 +75,7 @@ notElem x y = not (elem x y)
 // the leftmost element of the structure matching the predicate, or
 // `Nothing` if there is no such element.
 find :: (a -> Bool) (t a) -> Maybe a | Foldable t
-find p x = listToMaybe (foldMap (\x -> if (p x) [x] []) x)
+find p x = undefined //listToMaybe (foldMap (\x -> if (p x) [x] []) x)
 
 /// ## Ord
 
@@ -105,13 +104,13 @@ minimumBy p x = foldr1 min` x
 /// The concatenation of all the elements of a container of lists.
 /// This is a synonym for `fold`
 concat :: (t [a]) -> [a] | Foldable t
-concat xs = fold xs
+concat xs = undefined//fold xs
 
 /// Map a function over all the elements of a container and concatenate
 /// the resulting lists.
 /// This is a synonym for `foldMap`
 concatMap :: (a -> [b]) (t a) -> [b] | Foldable t
-concatMap f xs = foldMap f xs
+concatMap f xs = undefined//foldMap f xs
 
 /// ## Monoids and Semirings
 

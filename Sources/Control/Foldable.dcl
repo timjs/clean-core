@@ -30,7 +30,7 @@ defaultFoldl` :: (b a -> b) b (t a) -> b | Foldable t
 /// # Special folds
 
 null :: (t a) -> Bool | Foldable t
-size :: (t a) -> Nat | Foldable t
+length :: (t a) -> Nat | Foldable t
 elem :: a (t a) -> Bool | Foldable t & Eq a
 notElem :: a (t a) -> Bool | Foldable t & Eq a
 find :: (a -> Bool) (t a) -> Maybe a | Foldable t
