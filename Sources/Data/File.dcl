@@ -1,6 +1,8 @@
 system module Data.File
 
-//TODO change `prim_` prefix to just `_` and move to internal module.
+/// Basic file operations
+///
+/// Import this module qualified!
 
 /// # Files
 
@@ -11,36 +13,37 @@ system module Data.File
 
 /// ## Opening and Closing
 
-prim_openFile :: !String !Int -> (!Bool,!*File)
-prim_closeFile :: !*File -> Bool
-prim_reopenFile :: !*File !Int -> (!Bool,!*File)
+open :: !String !Int -> (!Bool,!*File)
+close :: !*File -> Bool
+reopen :: !*File !Int -> (!Bool,!*File)
 
-/// ## Standard IO
+/// ### Standard Input/Output
 
-prim_stdio :: *File
-prim_stderr :: *File
+stdio :: *File
+stderr :: *File
 
 /// ## Seeking
 
-prim_positionFile :: !*File -> (!Int,!*File)
-prim_seekFile :: !*File !Int !Int -> (!Bool,!*File)
+position :: !*File -> (!Int,!*File)
+seek :: !*File !Int !Int -> (!Bool,!*File)
 
-/// ## Tests
+/// ## Testing
 
-prim_isEndOfFile :: !*File -> (!Bool,!*File)
-prim_isErrorFile :: !*File -> (!Bool,!*File)
+isAtEnd :: !*File -> (!Bool,!*File)
+isError :: !*File -> (!Bool,!*File)
 
 /// ## Reading
 
-prim_readCharFile :: !*File -> (!Bool,!Char,!*File)
-prim_readIntFile :: !*File -> (!Bool,!Int,!*File)
-prim_readRealFile::!*File -> (!Bool,!Real,!*File)
-prim_readStringFile :: !*File !Int -> (!*String,!*File)
-prim_readLineFile :: !*File -> (!*String,!*File)
+readChar :: !*File -> (!Bool,!Char,!*File)
+readInt :: !*File -> (!Bool,!Int,!*File)
+readReal :: !*File -> (!Bool,!Real,!*File)
+readString :: !*File !Int -> (!*String,!*File)
+
+readLine :: !*File -> (!*String,!*File)
 
 /// ## Writing
 
-prim_writeCharFile :: !Char !*File -> *File
-prim_writeIntFile :: !Int !*File -> *File
-prim_writeRealFile :: !Real !*File -> *File
-prim_writeStringFile :: !String !*File -> *File
+writeChar :: !Char !*File -> *File
+writeInt :: !Int !*File -> *File
+// writeReal :: !Real !*File -> *File
+writeString :: !String !*File -> *File
