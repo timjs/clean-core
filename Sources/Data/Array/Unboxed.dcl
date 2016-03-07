@@ -15,31 +15,31 @@ import _SystemArray
 /// # Instances
 
 instance Show {#Bool}
-instance Show {#Char}
-// instance Show {#Nat}
-instance Show {#Int}
-instance Show {#Real}
-
 instance Eq {#Bool}
-instance Eq {#Char}
-// instance Eq {#Nat}
-instance Eq {#Int}
-instance Eq {#Real}
-
 instance Ord {#Bool}
-instance Ord {#Char}
-// instance Ord {#Nat}
-instance Ord {#Int}
-instance Ord {#Real}
-
 instance Semigroup {#Bool}
-instance Semigroup {#Char}
-// instance Semigroup {#Nat}
-instance Semigroup {#Int}
-instance Semigroup {#Real}
-
 instance Monoid {#Bool}
+
+instance Show {#Char}
+instance Eq {#Char}
+instance Ord {#Char}
+instance Semigroup {#Char}
 instance Monoid {#Char}
+
+// instance Show {#Nat}
+// instance Eq {#Nat}
+// instance Ord {#Nat}
+// instance Semigroup {#Nat}
 // instance Monoid {#Nat}
+
+instance Show {#Int}
+instance Eq {#Int}
+instance Ord {#Int}
+instance Semigroup {#Int}
 instance Monoid {#Int}
+
+instance Show {#Real}
+instance Eq {#Real}
+instance Ord {#Real}
+instance Semigroup {#Real}
 instance Monoid {#Real}

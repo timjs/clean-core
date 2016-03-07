@@ -1,19 +1,20 @@
 implementation module Data.Array
 
-import Data.Function
-
-import Algebra.Order
-import Algebra.Group
-
-import _SystemArray
+import Data.Array.Internal
 
 /// # Instances
 
+instance Show {a} | Show a where
+    show xs = showArray "" xs
+    
 instance Eq {a} | Eq a where
-    (==) xs ys = undefined
+    (==) xs ys = eqArray xs ys
 
 instance Ord {a} | Ord a where
-    (<) xs ys = undefined
+    (<) xs ys = ltArray xs ys
 
-// instance Semigroup {a}
-// instance Monoid {a}
+instance Semigroup {a} where
+    (+) xs ys = concatArray xs ys
+
+instance Monoid {a} where
+    neutral = emptyArray

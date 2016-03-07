@@ -1,5 +1,10 @@
 definition module Data.Array.Strict
 
+from Algebra.Order import class Eq, class Ord
+from Algebra.Group import class Semigroup, class Monoid
+
+from Text.Show import class Show
+
 import _SystemArray
 
 /// # Definition
@@ -9,8 +14,10 @@ import _SystemArray
 
 /// # Instances
 
-// instance Eq {!e} | Eq e
-// instance Ord {!e} | Ord e
-//
-// instance Semigroup {!e}
-// instance Monoid {!e}
+instance Show {!a} | Show a
+
+instance Eq {!a} | Eq a
+instance Ord {!a} | Ord a
+
+instance Semigroup {!a}
+instance Monoid {!a}
