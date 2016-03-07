@@ -5,10 +5,10 @@ import Data.Char
 import Data.Nat
 import Data.Int
 import Data.Real
+// import Data.File
 
 import Data.Function
 
-import Data.Tuple
 import Data.Enum
 import Data.Array
 import Data.Array.Unboxed
