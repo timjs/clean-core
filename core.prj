@@ -40,7 +40,6 @@ Global
 	Paths
 		Path:	{Project}/Sources
 		Path:	{Project}/../clean-generics/Sources
-		Path:	{Project}/../clean-stdenv/Sources
 	Precompile:	
 	Postlink:	
 MainModule
@@ -129,6 +128,20 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
+		Name:	Data.Array.Internal
+		Dir:	{Project}/Sources
+		Compiler
+			NeverMemoryProfile:	False
+			NeverTimeProfile:	False
+			StrictnessAnalysis:	True
+			ListTypes:	StrictExportTypes
+			ListAttributes:	True
+			Warnings:	True
+			Verbose:	True
+			ReadableABC:	False
+			ReuseUniqueNodes:	True
+			Fusion:	False
+	Module
 		Name:	Data.Array.Strict
 		Dir:	{Project}/Sources
 		Compiler
@@ -199,6 +212,20 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
+		Name:	Data.File
+		Dir:	{Project}/Sources
+		Compiler
+			NeverMemoryProfile:	False
+			NeverTimeProfile:	False
+			StrictnessAnalysis:	True
+			ListTypes:	StrictExportTypes
+			ListAttributes:	True
+			Warnings:	True
+			Verbose:	True
+			ReadableABC:	False
+			ReuseUniqueNodes:	True
+			Fusion:	False
+	Module
 		Name:	Data.Function
 		Dir:	{Project}/Sources
 		Compiler
@@ -255,20 +282,6 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Tuple
-		Dir:	{Project}/Sources
-		Compiler
-			NeverMemoryProfile:	False
-			NeverTimeProfile:	False
-			StrictnessAnalysis:	True
-			ListTypes:	StrictExportTypes
-			ListAttributes:	True
-			Warnings:	True
-			Verbose:	True
-			ReadableABC:	False
-			ReuseUniqueNodes:	True
-			Fusion:	False
-	Module
 		Name:	Text.Show
 		Dir:	{Project}/Sources
 		Compiler
@@ -284,7 +297,7 @@ OtherModules
 			Fusion:	False
 	Module
 		Name:	_SystemArray
-		Dir:	{Project}/../clean-stdenv/Sources
+		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
 			NeverTimeProfile:	False
