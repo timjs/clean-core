@@ -36,14 +36,11 @@ class Domain a | Semiring a where
     lcm :: !a !a -> a
 
     /* XXX add these?
-    stdAssociate :: a -> a
-    stdAssociate x = x `div` stdUnit x
-
-    stdUnit :: a -> a
-    stdUnit x = snd (normalize x)
+    associate :: a -> a
+    associate x = x `div` unity
 
     normalize :: a -> (a, a)
-    normalize x = (stdAssociate x, stdUnit x)
+    normalize x = (associate x, unity)
     */
 
 /// Sets equipped with two binary operations, one associative and commutative

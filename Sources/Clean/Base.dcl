@@ -2,10 +2,8 @@ definition module Clean.Base
 
 import Clean.Core
 
-import Data.Nat
 import Data.Ratio
 import Data.Complex
-import Data.Range
 
 import Data.Maybe
 import Data.Either
@@ -13,6 +11,11 @@ import Data.Error
 
 import Data.List
 import Data.Slice
+import Data.String
+import Data.Tuple
+import Data.Array.Extensions
+import Data.Array.Unboxed.Extensions
+import Data.Array.Strict.Extensions
 // import Data.Vector
 // import Data.Matrix
 // import Data.Set
@@ -29,6 +32,4 @@ import Control.Sliceable
 
 import Algebra.Module
 
-import Text.Show
 import Text.Parse
-

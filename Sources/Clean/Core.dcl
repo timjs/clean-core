@@ -5,7 +5,7 @@ import Data.Char
 import Data.Nat
 import Data.Int
 import Data.Real
-import Data.File
+import qualified Data.File as File
 
 import Data.Function
 
