@@ -10,7 +10,7 @@ force:
 	cpm $(PROJECT).prj --force
 
 clean:
-	rm -R (find . -name "Clean System Files")
-	rm -R $(PROJECT).exe
+	rm -Rvf (find . -name "Clean System Files")
+	rm -Rvf $(PROJECT).exe
 
 .PHONY: force clean
