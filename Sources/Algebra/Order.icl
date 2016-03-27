@@ -5,15 +5,15 @@ import Data.Bool
 :: Ordering :== Int
 
 Lesser :: Ordering
-Lesser  = -1
+Lesser = -1
 
 Equal :: Ordering
-Equal   =  0
+Equal = 0
 
 Greater :: Ordering
-Greater = +1
+Greater = 1
 
-/// # Equivalence
+/// # Equality
 
 (/=) infix 4 :: !a !a -> Bool | Eq a
 (/=) x y = not (x == y)
@@ -35,13 +35,13 @@ min x y = if (x < y) x y
 max :: !a !a -> a | Ord a
 max x y = if (x < y) y x
 
-/// # Helpers
-
 compare :: !a !a -> Ordering | Ord a
 compare x y
     | x <  y    = Lesser
     | x == y    = Equal
     | otherwise = Greater
+
+/// # Helpers
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
 comparing p x y = compare (p x) (p y)

@@ -1,6 +1,6 @@
 definition module Algebra.Order
 
-/// # Equivalence
+/// # Equality
 
 class Eq a where
     (==) infix 4 :: !a !a -> Bool //TODO generic
@@ -9,11 +9,14 @@ class Eq a where
 
 /// # Order
 
+//TODO This is a speedup until simple enumerations are automatically optimzed by the compiler
 :: Ordering (:== Int)
 
 Lesser :: Ordering
 Equal :: Ordering
 Greater :: Ordering
+
+// :: Ordering = LT | EQ | GT
 
 class Ord a | Eq a where
     (<) infix 4 :: !a !a -> Bool //TODO generic
@@ -26,6 +29,8 @@ min :: !a !a -> a | Ord a
 max :: !a !a -> a | Ord a
 
 compare :: !a !a -> Ordering | Ord a
+
+/// ## Helpers
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
 

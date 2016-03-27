@@ -18,7 +18,8 @@ square :: !a -> a | Num a
 (^) infixr 8 :: !a !Nat -> a | Num a
 //OR? (^) infixr 8 :: !a !a -> a | Num a & Integral b (can be an Int which is negative...)
 
-/// A Ring like class, includes numerical values that can be negated.
+/// A Ring like class for numerical values.
+/// Includes numerical values that can be negated.
 class Neg a | Num a where
     (-) infixl 6 :: !a !a -> a
     // (-) x y = x + negate y
@@ -46,6 +47,7 @@ class Integral a | Num a where
 
 /// ## Fractional
 
+/// A Field like class for numerical values.
 class Fractional a | Num a where
     (/) infixl 7 :: !a !a -> a
     // (/) x y = x * recip y
@@ -65,39 +67,54 @@ class Transcendental a | Fractional a where
     log :: !a -> a
 
     (**) infixr 8 :: !a !a -> a
+    // x ** y = exp (log x * y)
     logBase :: !a !a -> a
+    // logBase x y = log y / log x
 
     sin :: !a -> a
     cos :: !a -> a
     tan :: !a -> a
+    // tan x = sin x / cos x
 
     asin :: !a -> a
+    // asin x = atan (x / sqrt (one - square x))
     acos :: !a -> a
+    // acos x = half pi - asin x
     atan :: !a -> a
+    // atan x = asin x / acos x
 
     sinh :: !a -> a
+    // sinh x = (exp x - exp (-x)) / 2
+    // sinh x = half (exp x - exp (negate x))
     cosh :: !a -> a
+    // cosh x = (exp x + exp (-x)) / 2
+    // cosh x = half (exp x + exp (negate x))
     tanh :: !a -> a
+    // tanh x = sinh x / cosh x
+    // tanh x = (expX - expI) / (expX + expI)
+    //     where
+    //         expX = exp x
+    //         expI = exp (negate x)
 
     asinh :: !a -> a
+    // asinh x = log (sqrt (x^2+1) + x)
+    // asinh x = log (sqrt (square x + one) + x)
     acosh :: !a -> a
+    // acosh x = log (sqrt (x^2-1) + x)
+    // acosh x = log (sqrt (square x - one) + x)
     atanh :: !a -> a
+    // atanh x = (log (1+x) - log (1-x)) / 2
+	// atanh x = half (log ((one + x) / (one - x)))
 
-    // x ** y           =  exp (log x * y)
-    // logBase x y      =  log y / log x
-    // tan  x           =  sin x / cos x
-    // asin x           =  atan (x / sqrt (1-x^2))
-    // acos x           =  pi/2 - asin x
-    // sinh x           =  (exp x - exp (-x)) / 2
-    // cosh x           =  (exp x + exp (-x)) / 2
-    // tanh x           =  sinh x / cosh x
-    // asinh x          =  log (sqrt (x^2+1) + x)
-    // acosh x          =  log (sqrt (x^2-1) + x)
-    // atanh x          =  (log (1+x) - log (1-x)) / 2
 
 /// # Unsigned, Signed and Rounded Numericals
 
-class Unsigned a | Ord, Num a
+/// Signed numerical types.
+/// This can't be forced by the compiler!
+//TODO maybe we need to add a method to force it, otherwise Signed and Unsigned are not disjunct...
+class Unsigned a | Ord, Num a /*where
+    unsigned :: Bool
+    unsigned = True*/
 
 class Signed a | Ord, Neg a where
     abs :: !a -> a
@@ -124,6 +141,7 @@ class Signed a | Ord, Neg a where
     // // OR without Ord
     // isNegative x = signum x == negate one
 
+/// Coercion from Fractionals to Integrals.
 class Rounded a | Ord, Fractional a where
     truncate :: !a -> b | Integral b
     round :: !a -> b | Integral b
@@ -134,6 +152,8 @@ class Rounded a | Ord, Fractional a where
 
 /// # Floating point operations
 
+/// Floating point operations.
+/// Operations possible on other types are represented by the Transcendental class.
 class Floating a | Rounded a where
     // a constant function, returning the radix of the representation (often 2)
     floatRadix :: !a -> Int
