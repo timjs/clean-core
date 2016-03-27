@@ -1,2 +1,0 @@
-implementation module Data.Tuple
-
