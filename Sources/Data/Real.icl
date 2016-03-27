@@ -65,7 +65,7 @@ instance Fractional Real where
     (/) x y = code inline {
         divR
     }
-    recip x = 1.0 / x //TODO other primitive?
+    recip x = 1.0 / x //TODO primitive ABC?
 
 instance Transcendental Real where
     e  = code inline {
@@ -78,16 +78,17 @@ instance Transcendental Real where
     sqrt x = code inline {
         sqrtR
     }
-    log x = code inline {
-        lnR
-    }
     exp x = code inline {
         expR
+    }
+    log x = code inline {
+        lnR
     }
 
     (**) x y = code inline {
         powR
     }
+    logBase x y = log y / log x
 
     sin x = code inline {
         sinR
@@ -109,8 +110,6 @@ instance Transcendental Real where
         atanR
     }
 
-    logBase x y = log y / log x
-
     sinh x = (exp x - exp (negate x)) * 0.5
     cosh x = (exp x + exp (negate x)) * 0.5
     tanh x = (expX - expI) / (expX + expI)
@@ -119,8 +118,8 @@ instance Transcendental Real where
             expI = exp (negate x)
 
     asinh x = log (sqrt (x * x + 1.0) + x)
-    acosh x = log (sqrt (square x - 1.0) + x)
-	atanh x = log ((1.0 + x)/(1.0 - x)) * 0.5
+    acosh x = log (sqrt (x * x - 1.0) + x)
+	atanh x = log ((1.0 + x) / (1.0 - x)) * 0.5
 
 instance Rounded Real where
     truncate r = undefined /*code inline {
