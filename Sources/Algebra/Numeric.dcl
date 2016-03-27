@@ -7,6 +7,10 @@ from Algebra.Order import class Eq, class Ord
 /// ## Numerical
 
 /// A Semiring like class for numerical values.
+///
+/// Num includes not only Nats, Ints and Reals,
+/// but also Ratios, Decimals, Complex numbers
+/// and Vectors and Matrices (component whise operations).
 class Num a where
     (+) infixl 6 :: !a !a -> a
     zero :: a
@@ -149,6 +153,14 @@ class Rounded a | Ord, Fractional a where
     floor :: !a -> b | Integral b
 
     // ADD? fraction :: !a -> a
+
+/*
+class Scaled v a | Num (v a) & Num a where
+    (.* ) infixl 5 :: !a !(v a) -> (v a)
+    ( *.) infixl 5 :: !(v a) !a -> (v a)
+    // ( *.) a v = (.*) v a
+    (.*.) infixr 2 :: !(v a) !(v a) -> a
+*/
 
 /// # Floating point operations
 
