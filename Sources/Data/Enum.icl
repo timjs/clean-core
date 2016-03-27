@@ -1,7 +1,7 @@
 implementation module Data.Enum
 
 import Algebra.Order
-import Algebra.Group
+import Algebra.Numeric
 
 import Data.Int
 

@@ -13,8 +13,6 @@ instance Eq {!e} | Eq e where
 instance Ord {!e} | Ord e where
     (<) xs ys = ltArray xs ys
 
-instance Semigroup {!e} where
-    (+) xs ys = concatArray xs ys
-
-instance Monoid {!e} where
-    neutral = emptyArray
+instance Appendable {!e} where
+    (++) xs ys = concatArray xs ys
+    nil = emptyArray

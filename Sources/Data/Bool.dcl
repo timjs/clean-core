@@ -1,7 +1,6 @@
 system module Data.Bool
 
-from Algebra.Order import class Eq, class Ord
-from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
+from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
 
 from Data.Enum import class Enum
 
@@ -18,10 +17,6 @@ instance Show Bool
 
 instance Eq Bool
 instance Ord Bool
-
-instance MeetSemilattice Bool
-instance JoinSemilattice Bool
-// IMPLICIT instance Lattice Bool
 instance UpperBounded Bool
 instance LowerBounded Bool
 // IMPLICIT instance Bounded Bool

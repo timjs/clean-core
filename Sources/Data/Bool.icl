@@ -1,7 +1,6 @@
 implementation module Data.Bool
 
 import Algebra.Order
-import Algebra.Lattice
 
 import Data.Nat
 import Data.Enum
@@ -39,47 +38,13 @@ instance Ord Bool where
     //     ltB
     // }
 
-/// ## Lattice
-
-instance MeetSemilattice Bool where
-    (/\) x y = code {
-            push_b 0
-            jmp_false meet_b
-            pop_b 1
-            jsr_eval 0
-            pushB_a 0
-            pop_a 1
-        .d 0 1 b
-            rtn
-        :meet_b
-            pop_a 1
-        .d 0 1 b
-            rtn
-    }
-
-instance JoinSemilattice Bool where
-    (\/) x y = code {
-            push_b 0
-            jmp_true join_b
-            pop_b 1
-            jsr_eval 0
-            pushB_a 0
-            pop_a 1
-        .d 0 1 b
-            rtn
-        :join_b
-            pop_a 1
-        .d 0 1 b
-            rtn
-    }
-
 instance UpperBounded Bool where
-    top = code inline {
+    maxBound = code inline {
         pushB TRUE
     }
 
 instance LowerBounded Bool where
-    bottom = code inline {
+    minBound = code inline {
         pushB FALSE
     }
 

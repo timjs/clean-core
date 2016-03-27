@@ -1,7 +1,6 @@
 system module Data.Char
 
-from Algebra.Order import class Eq, class Ord
-from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
+from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
 
 from Data.Enum import class Enum
 
@@ -22,9 +21,6 @@ instance Show Char
 instance Eq Char
 instance Ord Char
 
-instance MeetSemilattice Char
-instance JoinSemilattice Char
-//IMPLICIT instance Lattice Char
 instance UpperBounded Char
 instance LowerBounded Char
 //IMPLICIT instance Bounded Char

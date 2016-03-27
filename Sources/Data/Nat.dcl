@@ -1,9 +1,7 @@
 system module Data.Nat
 
-from Algebra.Order import class Eq, class Ord
-from Algebra.Group import class Semigroup, class Monoid
-from Algebra.Ring import class Semiring, class Domain
-from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
+from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
+from Algebra.Numeric import class Num, class Integral
 
 from Data.Enum import class Enum
 
@@ -24,16 +22,12 @@ instance Show Nat
 
 instance Eq Nat
 instance Ord Nat
-
-instance Semigroup Nat
-instance Monoid Nat
-instance Semiring Nat
-instance Domain Nat
-
-instance MeetSemilattice Nat
-instance JoinSemilattice Nat
 instance UpperBounded Nat
 instance LowerBounded Nat
+//IMPLICIT instance Bounded Nat
+
+instance Num Nat
+instance Integral Nat
 
 instance Enum Nat
 

@@ -10,7 +10,9 @@ import Data.Enum
 import Data.Array.Unboxed
 
 import Algebra.Order
-import Algebra.Group
+import Algebra.Numeric
+
+import Control.Appendable
 
 import Text.Show
 
@@ -20,11 +22,11 @@ import _SystemArray
 
 // showArray :: {a} -> String | Show a
 showArray symbol xs
-    | size xs == 0 :== "{" + symbol + "}"
-    | otherwise    :== "{" + symbol + show xs.[0] + go 1
+    | size xs == 0 :== "{" ++ symbol ++ "}"
+    | otherwise    :== "{" ++ symbol ++ show xs.[0] ++ go 1
     where
         go i
-            | i < size xs = "," + show xs.[i] + go (succ i)
+            | i < size xs = "," ++ show xs.[i] ++ go (succ i)
             | otherwise   = "}"
 
 // eqArray :: {a} {a} -> Bool | Eq a

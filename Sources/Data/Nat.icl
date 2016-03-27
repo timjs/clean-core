@@ -6,9 +6,7 @@ import Data.Int
 import Data.Function
 
 import Algebra.Order
-import Algebra.Group
-import Algebra.Ring
-import Algebra.Lattice
+import Algebra.Numeric
 
 /// # Definition
 
@@ -63,30 +61,31 @@ instance Ord Nat where
         ltI
     }
 
-/// ## Group
+instance UpperBounded Nat where
+    maxBound = undefined
 
-instance Semigroup Nat where
-    (+) x y = code inline {
-        addI
-    }
-
-instance Monoid Nat where
-    neutral = code inline {
+instance LowerBounded Nat where
+    minBound = code inline {
         pushI 0
     }
 
-/// ## Ring
+/// ## Numeric
 
-instance Semiring Nat where
+instance Num Nat where
+    (+) x y = code inline {
+        addI
+    }
+    zero = code inline {
+        pushI 0
+    }
     (*) x y = code inline {
         mulI
     }
-
-    unity = code inline {
+    one = code inline {
         pushI 1
     }
 
-instance Domain Nat where
+instance Integral Nat where
     (`quot`) x y = code inline {
         divI
     }
@@ -127,6 +126,21 @@ instance Domain Nat where
         pop_b 2
     }*/
 
+    isEven x = code inline {
+        pushI 1
+        and%
+        pushI 0
+        eqI
+    }
+
+    isOdd x = code inline {
+        pushI 1
+        and%
+        pushI 0
+        eqI
+        notB
+    }
+
 	gcd x 0 = x
     gcd x y = gcd y (x `rem` y)
 
@@ -134,25 +148,6 @@ instance Domain Nat where
 	lcm 0 _    = 0
 	lcm x y    = (x `quot` gcd x y) * y
 
-/// ## Lattice
-
-instance MeetSemilattice Nat where
-    (/\) x y = undefined /*code inline {
-        minI
-    }*/
-
-instance JoinSemilattice Nat where
-    (\/) x y = undefined /*code inline {
-        maxI
-    }*/
-
-instance UpperBounded Nat where
-    top = undefined
-
-instance LowerBounded Nat where
-    bottom = code inline {
-        pushI 0
-    }
 
 /// ## Enum
 

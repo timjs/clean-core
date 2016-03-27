@@ -1,8 +1,7 @@
 system module Data.Real
 
 from Algebra.Order import class Eq, class Ord
-from Algebra.Group import class Semigroup, class Monoid, class Group
-from Algebra.Ring import class Semiring, class Ring, class Field, class Algebraic, class Transcendental
+from Algebra.Numeric import class Num, class Neg, class Integral, class Fractional, class Transcendental, class Rounded
 
 from Text.Show import class Show
 
@@ -20,11 +19,9 @@ instance Show Real
 instance Eq Real
 instance Ord Real
 
-instance Semigroup Real
-instance Monoid Real
-instance Group Real
-instance Semiring Real
-//IMPLCIT instance Ring Real
-instance Field Real
-instance Algebraic Real
+instance Num Real
+instance Neg Real
+instance Fractional Real
 instance Transcendental Real
+
+instance Rounded Real

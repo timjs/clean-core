@@ -3,8 +3,7 @@ implementation module Data.Real
 import Data.Function
 
 import Algebra.Order
-import Algebra.Group
-import Algebra.Ring
+import Algebra.Numeric
 
 import Text.Show
 
@@ -40,49 +39,33 @@ instance Ord Real where
 
 /// ## Algebra
 
-instance Semigroup Real where
+instance Num Real where
     (+) x y = code inline {
         addR
     }
-
-instance Monoid Real where
-    neutral = code inline {
+    zero = code inline {
         pushR 0.0
     }
-
-instance Group Real where
-    (-) x y = code inline {
-        subR
-    }
-
-    inverse x = code inline {
-        negR
-    }
-
-instance Semiring Real where
     (*) x y = code inline {
         mulR
     }
-
-    unity = code inline {
+    one = code inline {
         pushR 1.0
     }
 
-instance Field Real where
+instance Neg Real where
+    (-) x y = code inline {
+        subR
+    }
+    negate x = code inline {
+        negR
+    }
+
+instance Fractional Real where
     (/) x y = code inline {
         divR
     }
-
-    reciprocal x = 1.0 / x //TODO other primitive?
-
-instance Algebraic Real where
-    (**) x y = code inline {
-        powR
-    }
-
-    sqrt x = code inline {
-        sqrtR
-    }
+    recip x = 1.0 / x //TODO other primitive?
 
 instance Transcendental Real where
     e  = code inline {
@@ -92,11 +75,18 @@ instance Transcendental Real where
         pushR 3.141592653589793238
     }
 
+    sqrt x = code inline {
+        sqrtR
+    }
     log x = code inline {
         lnR
     }
     exp x = code inline {
         expR
+    }
+
+    (**) x y = code inline {
+        powR
     }
 
     sin x = code inline {
@@ -121,13 +111,27 @@ instance Transcendental Real where
 
     logBase x y = log y / log x
 
-    sinh x = (exp x - exp (inverse x)) * 0.5
-    cosh x = (exp x + exp (inverse x)) * 0.5
+    sinh x = (exp x - exp (negate x)) * 0.5
+    cosh x = (exp x + exp (negate x)) * 0.5
     tanh x = (expX - expI) / (expX + expI)
         where
             expX = exp x
-            expI = exp (inverse x)
+            expI = exp (negate x)
 
     asinh x = log (sqrt (x * x + 1.0) + x)
     acosh x = log (sqrt (square x - 1.0) + x)
 	atanh x = log ((1.0 + x)/(1.0 - x)) * 0.5
+
+instance Rounded Real where
+    truncate r = undefined /*code inline {
+        truncateR
+    }*/
+    round r = code inline {
+        RtoI
+    }
+    ceiling r = undefined /*code inline {
+        ceilingR
+    }*/
+    floor r = code inline {
+        entierR
+    }

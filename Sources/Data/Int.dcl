@@ -2,10 +2,8 @@ system module Data.Int
 
 from Data.Enum import class Enum
 
-from Algebra.Order import class Eq, class Ord
-from Algebra.Group import class Semigroup, class Monoid, class Group
-from Algebra.Ring import class Semiring, class Ring, class Domain
-from Algebra.Lattice import class MeetSemilattice, class JoinSemilattice, class UpperBounded, class LowerBounded
+from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
+from Algebra.Numeric import class Num, class Neg, class Integral
 
 from Text.Show import class Show
 
@@ -20,20 +18,13 @@ instance Show Int
 
 instance Eq Int
 instance Ord Int
-
-instance Semigroup Int
-instance Monoid Int
-instance Group Int
-instance Semiring Int
-//IMPLICIT instance Ring Int
-instance Domain Int
-
-instance MeetSemilattice Int
-instance JoinSemilattice Int
-//IMPLICIT instance Lattice Int
 instance UpperBounded Int
 instance LowerBounded Int
 //IMPLICIT instance Bounded Int
+
+instance Num Int
+instance Neg Int
+instance Integral Int
 
 instance Enum Int
 

@@ -4,9 +4,7 @@ import Data.Enum
 import Data.Function
 
 import Algebra.Order
-import Algebra.Group
-import Algebra.Ring
-import Algebra.Lattice
+import Algebra.Numeric
 
 import Text.Show
 
@@ -33,37 +31,37 @@ instance Ord Int where
         ltI
     }
 
+instance UpperBounded Int where
+    maxBound = undefined
+
+instance LowerBounded Int where
+    minBound = undefined
+
 /// ## Algebra
 
-instance Semigroup Int where
+instance Num Int where
     (+) x y = code inline {
         addI
     }
-
-instance Monoid Int where
-    neutral = code inline {
+    zero = code inline {
         pushI 0
     }
-
-instance Group Int where
-    (-) x y = code inline {
-        subI
-    }
-
-    inverse x = code inline {
-        negI
-    }
-
-instance Semiring Int where
     (*) x y = code inline {
         mulI
     }
-
-    unity = code inline {
+    one = code inline {
         pushI 1
     }
 
-instance Domain Int where
+instance Neg Int where
+    (-) x y = code inline {
+        subI
+    }
+    negate x = code inline {
+        negI
+    }
+
+instance Integral Int where
     (`quot`) x y = code inline {
         divI
     }
@@ -104,32 +102,29 @@ instance Domain Int where
         pop_b 2
     }*/
 
-	gcd x y = gcd` (abs x) (abs y)
+    isEven x = code inline {
+        pushI 1
+        and%
+        pushI 0
+        eqI
+    }
+
+    isOdd x = code inline {
+        pushI 1
+        and%
+        pushI 0
+        eqI
+        notB
+    }
+
+	gcd x y = undefined //gcd` (abs x) (abs y)
 	where
 		gcd` x 0 = x
 	    gcd` x y = gcd` y (x `rem` y)
 
 	lcm _ 0    = 0
 	lcm 0 _    = 0
-	lcm x y    = abs ((x `quot` gcd x y) * y)
-
-/// ## Lattices
-
-instance MeetSemilattice Int where
-    (/\) x y = undefined /*code inline {
-        minI
-    }*/
-
-instance JoinSemilattice Int where
-    (\/) x y = undefined /*code inline {
-        maxI
-    }*/
-
-instance UpperBounded Int where
-    top = undefined
-
-instance LowerBounded Int where
-    bottom = undefined
+	lcm x y    = undefined //abs ((x `quot` gcd x y) * y)
 
 /// ## Enum
 

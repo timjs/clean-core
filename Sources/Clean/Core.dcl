@@ -5,7 +5,6 @@ import Data.Char
 import Data.Nat
 import Data.Int
 import Data.Real
-import qualified Data.File as File
 
 import Data.Function
 
@@ -15,8 +14,8 @@ import Data.Array.Unboxed
 import Data.Array.Strict
 
 import Algebra.Order
-import Algebra.Group
-import Algebra.Ring
-import Algebra.Lattice
+import Algebra.Numeric
 
 import Text.Show
+
+// import qualified System.File as File

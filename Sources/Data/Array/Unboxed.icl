@@ -2,6 +2,8 @@ implementation module Data.Array.Unboxed
 
 import Data.Array.Internal
 
+import Control.Appendable
+
 /// # Specializations
 
 /// ## Char
@@ -27,15 +29,13 @@ instance Ord {#Char} where
             gtI
     }
 
-instance Semigroup {#Char} where
-    (+) xs ys = code inline {
+instance Appendable {#Char} where
+    (++) xs ys = code inline {
         .d 2 0
             jsr catAC
         .o 1 0
     }
-
-instance Monoid {#Char} where
-    neutral = code inline {
+    nil = code inline {
     	buildAC ""
     }
 
@@ -47,10 +47,9 @@ instance Eq {#Bool} where
     (==) xs ys = eqArray xs ys
 instance Ord {#Bool} where
     (<) xs ys = ltArray xs ys
-instance Semigroup {#Bool} where
-    (+) xs ys = concatArray xs ys
-instance Monoid {#Bool} where
-    neutral = emptyArray
+instance Appendable {#Bool} where
+    (++) xs ys = concatArray xs ys
+    nil = emptyArray
 
 /// ## Nat
 
@@ -60,10 +59,9 @@ instance Monoid {#Bool} where
 //     (==) xs ys = eqArray xs ys
 // instance Ord {#Nat} where
 //     (<) xs ys = ltArray xs ys
-// instance Semigroup {#Nat} where
-//     (+) xs ys = concatArray xs ys
-// instance Monoid {#Nat} where
-//     neutral = emptyArray
+// instance Appendable {#Nat} where
+//     (++) xs ys = concatArray xs ys
+//     nil = emptyArray
 
 /// ## Int
 
@@ -73,10 +71,9 @@ instance Eq {#Int} where
     (==) xs ys = eqArray xs ys
 instance Ord {#Int} where
     (<) xs ys = ltArray xs ys
-instance Semigroup {#Int} where
-    (+) xs ys = concatArray xs ys
-instance Monoid {#Int} where
-    neutral = emptyArray
+instance Appendable {#Int} where
+    (++) xs ys = concatArray xs ys
+    nil = emptyArray
 
 /// ## Real
 
@@ -86,7 +83,6 @@ instance Eq {#Real} where
     (==) xs ys = eqArray xs ys
 instance Ord {#Real} where
     (<) xs ys = ltArray xs ys
-instance Semigroup {#Real} where
-    (+) xs ys = concatArray xs ys
-instance Monoid {#Real} where
-    neutral = emptyArray
+instance Appendable {#Real} where
+    (++) xs ys = concatArray xs ys
+    nil = emptyArray

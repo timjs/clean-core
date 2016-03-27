@@ -19,8 +19,11 @@ fix f :== x
 (?) infixr 3 //1 :: Bool a a -> a
 (?) b t f :== if b t f
 
-(o) infixr 9 // :: (b -> c) (a -> b) a -> c
-(o) f g x :== f (g x)
+// (o) infixr 9 // :: (b -> c) (a -> b) a -> c
+// (o) f g x :== f (g x)
+
+(@) infixr 9 // :: (b -> c) (a -> b) a -> c
+(@) f g x :== f (g x)
 
 // (<|) infixr 2 //:: (a -> b) a -> b
 // (<|) f a :== f a

@@ -6,7 +6,7 @@ import Data.Int
 import Data.Function
 
 import Algebra.Order
-import Algebra.Group
+import Algebra.Numeric
 
 /// # Definition
 
@@ -46,21 +46,11 @@ instance Ord Char where
 
 /// ## Lattices
 
-instance MeetSemilattice Char where
-    (/\) x y = undefined /*code inline {
-        minC
-    }*/
-
-instance JoinSemilattice Char where
-    (\/) x y = undefined /*code inline {
-        maxC
-    }*/
-
 instance UpperBounded Char where
-    top = undefined
+    maxBound = undefined
 
 instance LowerBounded Char where
-    bottom = undefined
+    minBound = undefined
 
 /// ## Enum
 
