@@ -30,3 +30,22 @@ square x = x * x
 (^^) x n
     | n >= 0 = x ^ nat n
     = recip (x ^ nat (negate n))
+
+/// ## Signed
+
+/*
+abs :: !a -> a
+abs x = max x (negate x)
+
+signum :: !a -> a
+signum x
+    | x <  zero = negate one
+    | x == zero = zero
+    | otherwise = one
+
+isPositive :: !a -> Bool
+isPositive x = x > zero
+
+isNegative :: !a -> Bool
+isNegative x = x < zero
+*/

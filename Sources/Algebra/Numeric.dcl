@@ -17,7 +17,6 @@ class Num a where
     (*) infixl 7 :: !a !a -> a
     one :: a
 
-//TODO move into class (?)
 square :: !a -> a | Num a
 (^) infixr 8 :: !a !Nat -> a | Num a
 //OR? (^) infixr 8 :: !a !a -> a | Num a & Integral b (can be an Int which is negative...)
@@ -58,11 +57,10 @@ class Fractional a | Num a where
     recip :: !a -> a
     // recip x = one / x
 
-//TODO move into class (?)
-(^^) infixr 8 :: !a !Int -> a | Fractional a
 //OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Neg, Integral b
+(^^) infixr 8 :: !a !Int -> a | Fractional a
 
-class Transcendental a | Fractional a where
+class Transcendental a | Neg, Fractional a where
     e :: a
     pi :: a
 
@@ -110,8 +108,7 @@ class Transcendental a | Fractional a where
     // atanh x = (log (1+x) - log (1-x)) / 2
 	// atanh x = half (log ((one + x) / (one - x)))
 
-
-/// # Unsigned, Signed and Rounded Numericals
+/// ## Unsigned and Signed Numericals
 
 /// Signed numerical types.
 /// This can't be forced by the compiler!
@@ -145,6 +142,8 @@ class Signed a | Ord, Neg a where
     // // OR without Ord
     // isNegative x = signum x == negate one
 
+/// ## Rounded and Scaled Numericals
+
 /// Coercion from Fractionals to Integrals.
 class Rounded a | Ord, Fractional a where
     truncate :: !a -> b | Integral b
@@ -154,13 +153,12 @@ class Rounded a | Ord, Fractional a where
 
     // ADD? fraction :: !a -> a
 
-/*
-class Scaled v a | Num (v a) & Num a where
-    (.* ) infixl 5 :: !a !(v a) -> (v a)
-    ( *.) infixl 5 :: !(v a) !a -> (v a)
+/// Scaling of numericals
+class Scaled v | Num v where
+    (.* ) infixl 5 :: !a !v -> v | Num a
+    ( *.) infixl 5 :: !v !a -> v | Num a
     // ( *.) a v = (.*) v a
-    (.*.) infixr 2 :: !(v a) !(v a) -> a
-*/
+    (.*.) infixr 2 :: !v !v -> a | Num a
 
 /// # Floating point operations
 
