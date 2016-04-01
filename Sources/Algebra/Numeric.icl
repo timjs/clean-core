@@ -5,6 +5,8 @@ import Algebra.Order
 import Data.Nat
 import Data.Int
 
+//TODO these could all be macros...
+
 /// ## Powers
 
 square :: !a -> a | Num a
@@ -31,21 +33,19 @@ square x = x * x
     | n >= 0 = x ^ nat n
     = recip (x ^ nat (negate n))
 
-/// ## Signed
+/// ## Signed Numericals
 
-/*
-abs :: !a -> a
+abs :: !a -> a | Ord, Neg a
 abs x = max x (negate x)
 
-signum :: !a -> a
+signum :: !a -> a | Ord, Neg a
 signum x
     | x <  zero = negate one
     | x == zero = zero
     | otherwise = one
 
-isPositive :: !a -> Bool
+isPositive :: !a -> Bool | Ord, Neg a
 isPositive x = x > zero
 
-isNegative :: !a -> Bool
+isNegative :: !a -> Bool | Ord, Neg a
 isNegative x = x < zero
-*/

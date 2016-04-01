@@ -108,14 +108,15 @@ class Transcendental a | Neg, Fractional a where
     // atanh x = (log (1+x) - log (1-x)) / 2
 	// atanh x = half (log ((one + x) / (one - x)))
 
+/*
 /// ## Unsigned and Signed Numericals
 
 /// Signed numerical types.
 /// This can't be forced by the compiler!
 //TODO maybe we need to add a method to force it, otherwise Signed and Unsigned are not disjunct...
-class Unsigned a | Ord, Num a /*where
+class Unsigned a | Ord, Num a where
     unsigned :: Bool
-    unsigned = True*/
+    unsigned = True
 
 class Signed a | Ord, Neg a where
     abs :: !a -> a
@@ -141,6 +142,7 @@ class Signed a | Ord, Neg a where
     // isNegative x = x < zero
     // // OR without Ord
     // isNegative x = signum x == negate one
+*/
 
 /// ## Rounded and Scaled Numericals
 
@@ -154,14 +156,15 @@ class Rounded a | Ord, Fractional a where
     // ADD? fraction :: !a -> a
 
 /// Scaling of numericals
-class Scaled v | Num v where
+class Scaled v where
     (.* ) infixl 5 :: !a !v -> v | Num a
     ( *.) infixl 5 :: !v !a -> v | Num a
     // ( *.) a v = (.*) v a
-    (.*.) infixr 2 :: !v !v -> a | Num a
+    // (.*.) infixr 2 :: !v !v -> a | Num a
 
 /// # Floating point operations
 
+/*TODO add
 /// Floating point operations.
 /// Operations possible on other types are represented by the Transcendental class.
 class Floating a | Rounded a where
@@ -193,3 +196,4 @@ class Floating a | Rounded a where
     isNegativeZero :: !a -> Bool
     // True if the argument is an IEEE floating point number
     isIEEE :: !a -> Bool
+*/

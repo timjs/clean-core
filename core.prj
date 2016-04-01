@@ -34,14 +34,14 @@ Global
 		GenerateSymbolTable:	False
 		GenerateLinkMap:	False
 		LinkResources:	False
-		ResourceSource:
+		ResourceSource:	
 		GenerateDLL:	False
-		ExportedNames:
+		ExportedNames:	
 	Paths
 		Path:	{Project}/Sources
 		Path:	{Project}/../clean-generics/Sources
-	Precompile:
-	Postlink:
+	Precompile:	
+	Postlink:	
 MainModule
 	Name:	Clean.Core
 	Dir:	{Project}/Sources
