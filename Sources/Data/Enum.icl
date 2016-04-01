@@ -5,9 +5,15 @@ import Algebra.Numeric
 
 import Data.Int
 
+//FIXME maybe move this module to Base, it isn't a system module...
+
+//FIXME use specialized pred and succ on Int instead of inc and dec
+inc x :== x + 1
+dec x :== x - 1
+
 /// # Default implementations
 
-//FIXME move to Enum.succ and Enum.pred when default members are thre
+//FIXME move to Enum.succ and Enum.pred when default members are there
 succ :: !a -> a | Enum a
 succ x = toEnum (inc nx)
 where

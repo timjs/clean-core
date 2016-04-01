@@ -27,8 +27,3 @@ instance Neg Int
 instance Integral Int
 
 instance Enum Int
-
-/// # Helpers
-
-inc :: !Int -> Int
-dec :: !Int -> Int

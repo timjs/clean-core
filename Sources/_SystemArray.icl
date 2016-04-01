@@ -469,7 +469,7 @@ instance Array {} a where
 		code
 		{
 			create_array _ 1 0
-		}		
+		}
 	replace arr index el =
 		code
 		{
@@ -490,3 +490,13 @@ sliceString str (a,b)
 			jsr sliceAC
 		.o 1 0
 	}
+	
+inc :: !Int -> Int
+inc x = code inline {
+    incI
+}
+
+dec :: !Int -> Int
+dec x = code inline {
+    decI
+}

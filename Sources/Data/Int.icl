@@ -135,15 +135,3 @@ instance Enum Int where
     fromEnum n = code inline {
         no_op
     }
-
-/// # Helpers
-
-inc :: !Int -> Int
-inc x = code inline {
-    incI
-}
-
-dec :: !Int -> Int
-dec x = code inline {
-    decI
-}

@@ -47,3 +47,8 @@ unsafeArray size :== _createArray size
 /// ## Workaround for Strings
 
 sliceString :: !{#Char} !(!Int,!Int) -> {#Char}
+
+/// ## Inclusion of `inc` and `dec`
+
+inc :: !Int -> Int
+dec :: !Int -> Int
