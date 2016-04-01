@@ -31,8 +31,6 @@ instance Integral Nat
 
 instance Enum Nat
 
-// instance Enum Nat
-
 /// # Special Algebra
 
 (.-) infixl 6 :: !Nat !Nat -> Nat

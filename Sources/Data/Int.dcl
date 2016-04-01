@@ -1,9 +1,9 @@
 system module Data.Int
 
-from Data.Enum import class Enum
-
 from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
 from Algebra.Numeric import class Num, class Neg, class Integral
+
+from Data.Enum import class Enum
 
 from Text.Show import class Show
 
