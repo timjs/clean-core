@@ -71,7 +71,7 @@ instance LowerBounded Nat where
 
 /// ## Numeric
 
-instance Num Nat where
+instance Seminum Nat where
     (+) x y = code inline {
         addI
     }
@@ -147,6 +147,9 @@ instance Integral Nat where
 	lcm _ 0 = 0
 	lcm 0 _ = 0
 	lcm x y = (x `quot` gcd x y) * y
+
+instance Unsigned Nat where
+    unsigned x = True
 
 /// ## Enum
 

@@ -4,34 +4,36 @@ from Data.Nat import :: Nat
 
 from Algebra.Order import class Eq, class Ord
 
-/// ## Numerical
+/// ## Semi-numerical and Numerical classes
 
 /// A Semiring like class for numerical values.
 ///
-/// Num includes not only Nats, Ints and Reals,
+/// The name is obviously derived from the, in mathematics commonly used, "semiring".
+/// Seminum includes not only Nats, Ints and Reals,
 /// but also Ratios, Decimals, Complex numbers
 /// and Vectors and Matrices (component whise operations).
-class Num a where
+class Seminum a where
     (+) infixl 6 :: !a !a -> a
     zero :: a
     (*) infixl 7 :: !a !a -> a
     one :: a
 
-square :: !a -> a | Num a
-//OR? (^) infixr 8 :: !a !a -> a | Num a & Integral b (can be an Int which is negative...)
-(^) infixr 8 :: !a !Nat -> a | Num a
+square :: !a -> a | Seminum a
+//OR? (^) infixr 8 :: !a !a -> a | Seminum a & Integral b (can be an Int which is negative...)
+(^) infixr 8 :: !a !Nat -> a | Seminum a
 
 /// A Ring like class for numerical values.
 /// Includes numerical values that can be negated.
-class Neg a | Num a where
+class Num a | Seminum a where
     (-) infixl 6 :: !a !a -> a
     // (-) x y = x + negate y
     negate :: !a -> a
     // negate x = zero - x
 
-/// ## Integral
+/// ## Integral class
 
-class Integral a | Num a where
+/// Integral is a subclass from Seminum, not Num, to allow Nat to be an instance.
+class Integral a | Seminum a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a
     quotRem :: !a !a -> (!a,!a)
@@ -48,7 +50,7 @@ class Integral a | Num a where
 
     // `divides` :: !a !a -> Bool
 
-/// ## Fractional
+/// ## Fractional class
 
 /// A Field like class for numerical values.
 class Fractional a | Num a where
@@ -57,10 +59,13 @@ class Fractional a | Num a where
     recip :: !a -> a
     // recip x = one / x
 
-//OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Neg, Integral b
+//OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Num, Integral b
 (^^) infixr 8 :: !a !Int -> a | Fractional a
 
-class Transcendental a | Neg, Fractional a where
+/// ## Transcendental class
+
+/// Transcendental includes both algebraic and trigoniometric operations.
+class Transcendental a | Fractional a where
     e :: a
     pi :: a
 
@@ -108,16 +113,15 @@ class Transcendental a | Neg, Fractional a where
     // atanh x = (log (1+x) - log (1-x)) / 2
 	// atanh x = half (log ((one + x) / (one - x)))
 
-/*
 /// ## Unsigned and Signed Numericals
 
-class Unsigned a | Ord, Num a where
+class Unsigned a | Ord, Seminum a where
     // This class can't be forced by the compiler. We use this method to
     // force it, otherwise Signed and Unsigned are not disjunct...
-    unsigned :: Bool
-    unsigned = True
+    unsigned :: a -> Bool
+    // unsigned = True
 
-class Signed a | Ord, Neg a where
+class Signed a | Ord, Num a where
     abs :: !a -> a
     // abs x = max x (negate x)
 
@@ -141,16 +145,11 @@ class Signed a | Ord, Neg a where
     // isNegative x = x < zero
     // // OR without Ord
     // isNegative x = signum x == negate one
-*/
-
-abs :: !a -> a | Ord, Neg a
-signum :: !a -> a | Ord, Neg a
-isPositive :: !a -> Bool | Ord, Neg a
-isNegative :: !a -> Bool | Ord, Neg a
 
 /// ## Rounded and Scaled Numericals
 
 /// Coercion from Fractionals to Integrals.
+//FIXME should this derive from Ord or Signed?
 class Rounded a | Ord, Fractional a where
     truncate :: !a -> b | Integral b
     round :: !a -> b | Integral b
@@ -161,17 +160,18 @@ class Rounded a | Ord, Fractional a where
 
 /// Scaling of numericals
 class Scaled v where
-    (.* ) infixl 5 :: !a !v -> v | Num a
-    ( *.) infixl 5 :: !v !a -> v | Num a
+    (.* ) infixl 5 :: !a !v -> v | Seminum a
+    ( *.) infixl 5 :: !v !a -> v | Seminum a
     // ( *.) a v = (.*) v a
-    // (.*.) infixr 2 :: !v !v -> a | Num a
+    // (.*.) infixr 2 :: !v !v -> a | Seminum a
 
 /// # Floating point operations
 
 /*TODO add
 /// Floating point operations.
 /// Operations possible on other types are represented by the Transcendental class.
-class Floating a | Rounded a where
+//FIXME should this be a subclass of Ord, or Rounded, or Signed, or...?
+class Floating a | Ord, Transcendental a where
     // a constant function, returning the radix of the representation (often 2)
     floatRadix :: !a -> Int
     // a constant function, returning the number of digits of floatRadix in the significand

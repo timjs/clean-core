@@ -39,7 +39,7 @@ instance Ord Real where
 
 /// ## Algebra
 
-instance Num Real where
+instance Seminum Real where
     (+) x y = code inline {
         addR
     }
@@ -53,7 +53,7 @@ instance Num Real where
         pushR 1.0
     }
 
-instance Neg Real where
+instance Num Real where
     (-) x y = code inline {
         subR
     }
@@ -120,6 +120,20 @@ instance Transcendental Real where
     asinh x = log (sqrt (x * x + 1.0) + x)
     acosh x = log (sqrt (x * x - 1.0) + x)
 	atanh x = log ((1.0 + x) / (1.0 - x)) * 0.5
+
+instance Signed Real where
+    abs x = code inline {
+        absR
+    }
+
+    signum x
+        | x <  0.0 = -1.0
+        | x == 0.0 = 0.0
+        | otherwise = 1.0
+
+    isPositive x = x > 0.0
+
+    isNegative x = x < 0.0
 
 instance Rounded Real where
     truncate r = undefined /*code inline {

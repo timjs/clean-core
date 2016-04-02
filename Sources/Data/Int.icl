@@ -39,7 +39,7 @@ instance LowerBounded Int where
 
 /// ## Algebra
 
-instance Num Int where
+instance Seminum Int where
     (+) x y = code inline {
         addI
     }
@@ -53,13 +53,27 @@ instance Num Int where
         pushI 1
     }
 
-instance Neg Int where
+instance Num Int where
     (-) x y = code inline {
         subI
     }
     negate x = code inline {
         negI
     }
+
+instance Signed Int where
+    abs x
+        | x < 0 = negate x
+        | otherwise = x
+
+    signum x
+        | x <  0 = -1
+        | x == 0 = 0
+        | otherwise = 1
+
+    isPositive x = x > 0
+
+    isNegative x = x < 0
 
 instance Integral Int where
     (`quot`) x y = code inline {

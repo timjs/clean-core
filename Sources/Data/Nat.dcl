@@ -1,7 +1,8 @@
 system module Data.Nat
 
 from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
-from Algebra.Numeric import class Num, class Integral
+from Algebra.Numeric import class Seminum, class Integral
+from Algebra.Numeric import class Unsigned
 
 from Data.Enum import class Enum
 
@@ -26,10 +27,11 @@ instance UpperBounded Nat
 instance LowerBounded Nat
 //IMPLICIT instance Bounded Nat
 
-instance Num Nat
+instance Seminum Nat
 instance Integral Nat
 
 instance Enum Nat
+instance Unsigned Nat
 
 /// # Special Algebra
 

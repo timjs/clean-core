@@ -1,7 +1,8 @@
 system module Data.Int
 
 from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
-from Algebra.Numeric import class Num, class Neg, class Integral
+from Algebra.Numeric import class Seminum, class Num, class Integral
+from Algebra.Numeric import class Signed
 
 from Data.Enum import class Enum
 
@@ -22,8 +23,9 @@ instance UpperBounded Int
 instance LowerBounded Int
 //IMPLICIT instance Bounded Int
 
+instance Seminum Int
 instance Num Int
-instance Neg Int
 instance Integral Int
 
 instance Enum Int
+instance Signed Int
