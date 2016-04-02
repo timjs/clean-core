@@ -33,6 +33,23 @@ square x = x * x
     | n >= 0 = x ^ nat n
     = recip (x ^ nat (negate n))
 
+/// ## GCD and LCM
+
+/*
+gcd :: !a !a -> a | Ord, Integral a
+gcd x y = gcd` (abs x) (abs y)
+where
+    gcd` x y
+        | y == zero = x
+        | otherwise = gcd` y (x `rem` y)
+
+lcm :: !a !a -> a | Ord, Integral a
+lcm x y
+    | x == zero = zero
+    | y == zero = zero
+    | otherwise = abs ((x `quot` gcd x y) * y)
+*/
+
 /// ## Signed Numericals
 
 abs :: !a -> a | Ord, Neg a

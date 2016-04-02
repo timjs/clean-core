@@ -14,20 +14,20 @@ import Algebra.Numeric
 
 nat :: !Int -> Nat
 nat n = code {
-    pushI 0
-    push_b 1
-    ltI
-    jmp_true abort_n
+        pushI 0
+        push_b 1
+        ltI
+        jmp_true abort_n
 
-.d 0 1 i
-    rtn
+    .d 0 1 i
+        rtn
 
-:abort_n
-    buildAC "Data.Nat.nat: negative integer"
-.d 1 0
-    jsr print_string_
-.o 0 0
-    halt
+    :abort_n
+        buildAC "Data.Nat.nat: negative integer"
+    .d 1 0
+        jsr print_string_
+    .o 0 0
+        halt
 }
 // nat n
     // | n < 0     = abort "Data.Nat.nat: negative integer"
@@ -89,10 +89,10 @@ instance Integral Nat where
     (`quot`) x y = code inline {
         divI
     }
-    (`rem`)  x y = code inline {
+    (`rem`) x y = code inline {
         remI
     }
-    quotRem  x y = code inline {
+    quotRem x y = code inline {
         push_b 1
         push_b 1
         divI
@@ -112,7 +112,7 @@ instance Integral Nat where
     (`mod`) x y = undefined /*code inline {
         modI
     }*/
-    divMod  x y = undefined /*code inline {
+    divMod x y = undefined /*code inline {
         push_b 1
         push_b 1
         floordivI
@@ -144,10 +144,9 @@ instance Integral Nat where
 	gcd x 0 = x
     gcd x y = gcd y (x `rem` y)
 
-	lcm _ 0    = 0
-	lcm 0 _    = 0
-	lcm x y    = (x `quot` gcd x y) * y
-
+	lcm _ 0 = 0
+	lcm 0 _ = 0
+	lcm x y = (x `quot` gcd x y) * y
 
 /// ## Enum
 
@@ -163,20 +162,20 @@ instance Enum Nat where
 
 (.-) infixl 6 :: !Nat !Nat -> Nat
 (.-) n m = code {
-    push_b 0
-    push_b 2
-    ltI
-    jmp_false zero_n
+        push_b 0
+        push_b 2
+        ltI
+        jmp_false zero_n
 
-    subI
-.d 0 1 i
-    rtn
+        subI
+    .d 0 1 i
+        rtn
 
-:zero_n
-    pop_b 2
-    pushI 0
-.d 0 1 i
-    rtn
+    :zero_n
+        pop_b 2
+        pushI 0
+    .d 0 1 i
+        rtn
 }
 // (.-) n m
 //     | m < n     = nat (int n - int m)

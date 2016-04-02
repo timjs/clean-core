@@ -65,10 +65,10 @@ instance Integral Int where
     (`quot`) x y = code inline {
         divI
     }
-    (`rem`)  x y = code inline {
+    (`rem`) x y = code inline {
         remI
     }
-    quotRem  x y = code inline {
+    quotRem x y = code inline {
         push_b 1
         push_b 1
         divI
@@ -88,7 +88,7 @@ instance Integral Int where
     (`mod`) x y = undefined /*code inline {
         modI
     }*/
-    divMod  x y = undefined /*code inline {
+    divMod x y = undefined /*code inline {
         push_b 1
         push_b 1
         floordivI
@@ -117,14 +117,14 @@ instance Integral Int where
         notB
     }
 
-	gcd x y = undefined //gcd` (abs x) (abs y)
+	gcd x y = gcd` (abs x) (abs y)
 	where
 		gcd` x 0 = x
 	    gcd` x y = gcd` y (x `rem` y)
 
-	lcm _ 0    = 0
-	lcm 0 _    = 0
-	lcm x y    = undefined //abs ((x `quot` gcd x y) * y)
+	lcm _ 0 = 0
+	lcm 0 _ = 0
+	lcm x y = abs ((x `quot` gcd x y) * y)
 
 /// ## Enum
 

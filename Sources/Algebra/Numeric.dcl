@@ -18,8 +18,8 @@ class Num a where
     one :: a
 
 square :: !a -> a | Num a
-(^) infixr 8 :: !a !Nat -> a | Num a
 //OR? (^) infixr 8 :: !a !a -> a | Num a & Integral b (can be an Int which is negative...)
+(^) infixr 8 :: !a !Nat -> a | Num a
 
 /// A Ring like class for numerical values.
 /// Includes numerical values that can be negated.
@@ -111,10 +111,9 @@ class Transcendental a | Neg, Fractional a where
 /*
 /// ## Unsigned and Signed Numericals
 
-/// Signed numerical types.
-/// This can't be forced by the compiler!
-//TODO maybe we need to add a method to force it, otherwise Signed and Unsigned are not disjunct...
 class Unsigned a | Ord, Num a where
+    // This class can't be forced by the compiler. We use this method to
+    // force it, otherwise Signed and Unsigned are not disjunct...
     unsigned :: Bool
     unsigned = True
 
@@ -143,6 +142,11 @@ class Signed a | Ord, Neg a where
     // // OR without Ord
     // isNegative x = signum x == negate one
 */
+
+abs :: !a -> a | Ord, Neg a
+signum :: !a -> a | Ord, Neg a
+isPositive :: !a -> Bool | Ord, Neg a
+isNegative :: !a -> Bool | Ord, Neg a
 
 /// ## Rounded and Scaled Numericals
 
