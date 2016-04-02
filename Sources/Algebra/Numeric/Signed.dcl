@@ -41,8 +41,8 @@ class Signed a | Ord, Num a where
 /// ## Rounding Operations
 
 /// Coercion from Fractionals to Integrals.
-//FIXME should this derive from Ord or Signed?
-class Rounded a | Signed, Fractional a where
+//FIXME should this derive from Ord or Signed? => Probably Ord, to let `Ratio Nat` be an instance
+class Rounded a | Ord, Fractional a where
     truncate :: !a -> b | Integral b
     round :: !a -> b | Integral b
     ceiling :: !a -> b | Integral b
@@ -56,7 +56,7 @@ class Rounded a | Signed, Fractional a where
 /// Floating point operations.
 /// Operations possible on other types are represented by the Transcendental class.
 //FIXME should this be a subclass of Ord, or Rounded, or Signed, or...?
-class Floating a | Rounded, Transcendental a where
+class Floating a | Ord, Transcendental a where
     // a constant function, returning the radix of the representation (often 2)
     floatRadix :: !a -> Int
     // a constant function, returning the number of digits of floatRadix in the significand

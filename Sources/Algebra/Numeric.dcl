@@ -6,10 +6,11 @@ from Data.Nat import :: Nat
 
 /// A Semiring like class for numerical values.
 ///
-/// The name is obviously derived from the, in mathematics commonly used, "semiring".
-/// Seminum includes not only Nats, Ints and Reals,
-/// but also Ratios, Decimals, Complex numbers
-/// and Vectors and Matrices (component whise operations).
+/// * The name is obviously derived from the, in mathematics commonly used, "semiring".
+/// * Seminum includes not only Nats, Ints and Reals,
+///   but also Ratios, Decimals, Complex numbers
+///   and Vectors and Matrices (component whise operations).
+/// * We have `Semiring a | Seminum a`
 class Seminum a where
     (+) infixl 6 :: !a !a -> a
     zero :: a
@@ -21,7 +22,9 @@ square :: !a -> a | Seminum a
 (^) infixr 8 :: !a !Nat -> a | Seminum a
 
 /// A Ring like class for numerical values.
-/// Includes numerical values that can be negated.
+///
+/// * Includes numerical values that can be negated.
+/// * We have `Ring a | Num a`
 class Num a | Seminum a where
     (-) infixl 6 :: !a !a -> a
     // (-) x y = x + negate y
@@ -30,7 +33,10 @@ class Num a | Seminum a where
 
 /// ## Integral class
 
-/// Integral is a subclass from Seminum, not Num, to allow Nat to be an instance.
+/// A Euclideain Domain like class for numerical values.
+///
+/// * Integral is a subclass from Seminum, not Num, to allow Nat to be an instance.
+/// * We have `Domain a | Num, Integral a`.
 class Integral a | Seminum a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a
@@ -51,7 +57,11 @@ class Integral a | Seminum a where
 /// ## Fractional class
 
 /// A Field like class for numerical values.
-class Fractional a | Num a where
+///
+/// * Is a subclass of Seminum instead of num to allow `Ratio Nat` to be an
+///   instance of the subclass `Rounded`.
+/// * We have `Field a | Num, Fractional a`.
+class Fractional a | Seminum a where
     (/) infixl 7 :: !a !a -> a
     // (/) x y = x * recip y
     recip :: !a -> a
@@ -63,7 +73,9 @@ class Fractional a | Num a where
 /// ## Transcendental class
 
 /// Transcendental includes both algebraic and trigoniometric operations.
-class Transcendental a | Fractional a where
+///
+/// * It needs full Num for default instances!
+class Transcendental a | Num, Fractional a where
     e :: a
     pi :: a
 
