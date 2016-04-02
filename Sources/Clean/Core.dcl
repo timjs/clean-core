@@ -15,6 +15,7 @@ import Data.Array.Strict
 
 import Algebra.Order
 import Algebra.Numeric
+import Algebra.Numeric.Signed
 
 import Text.Show
 

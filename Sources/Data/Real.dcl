@@ -2,7 +2,7 @@ system module Data.Real
 
 from Algebra.Order import class Eq, class Ord
 from Algebra.Numeric import class Seminum, class Num, class Fractional, class Transcendental
-from Algebra.Numeric import class Signed, class Rounded
+from Algebra.Numeric.Signed import class Signed, class Rounded
 
 from Text.Show import class Show
 

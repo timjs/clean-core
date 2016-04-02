@@ -2,7 +2,7 @@ system module Data.Int
 
 from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
 from Algebra.Numeric import class Seminum, class Num, class Integral
-from Algebra.Numeric import class Signed
+from Algebra.Numeric.Signed import class Signed
 
 from Data.Enum import class Enum
 

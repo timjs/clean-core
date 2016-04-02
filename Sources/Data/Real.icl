@@ -4,6 +4,7 @@ import Data.Function
 
 import Algebra.Order
 import Algebra.Numeric
+import Algebra.Numeric.Signed
 
 import Text.Show
 
