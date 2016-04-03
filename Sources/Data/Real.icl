@@ -110,6 +110,8 @@ instance Transcendental Real where
     atan x = code inline {
         atanR
     }
+    
+    atan2 x y = atan (y / x)//FIXME precision
 
     sinh x = (exp x - exp (negate x)) * 0.5
     cosh x = (exp x + exp (negate x)) * 0.5

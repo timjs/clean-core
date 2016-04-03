@@ -10,7 +10,7 @@ from Data.Nat import :: Nat
 /// * Seminum includes not only Nats, Ints and Reals,
 ///   but also Ratios, Decimals, Complex numbers
 ///   and Vectors and Matrices (component whise operations).
-/// * We have `Semiring a | Seminum a`
+/// * We have `Seminum a => Semiring a`
 class Seminum a where
     (+) infixl 6 :: !a !a -> a
     zero :: a
@@ -24,7 +24,7 @@ square :: !a -> a | Seminum a
 /// A Ring like class for numerical values.
 ///
 /// * Includes numerical values that can be negated.
-/// * We have `Ring a | Num a`
+/// * We have `Num a => Ring a`
 class Num a | Seminum a where
     (-) infixl 6 :: !a !a -> a
     // (-) x y = x + negate y
@@ -36,7 +36,7 @@ class Num a | Seminum a where
 /// A Euclideain Domain like class for numerical values.
 ///
 /// * Integral is a subclass from Seminum, not Num, to allow Nat to be an instance.
-/// * We have `Domain a | Num, Integral a`.
+/// * We have `Num, Integral a => Domain a`.
 class Integral a | Seminum a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a
@@ -60,7 +60,7 @@ class Integral a | Seminum a where
 ///
 /// * Is a subclass of Seminum instead of num to allow `Ratio Nat` to be an
 ///   instance of the subclass `Rounded`.
-/// * We have `Field a | Num, Fractional a`.
+/// * We have `Num, Fractional a => Field a`.
 class Fractional a | Seminum a where
     (/) infixl 7 :: !a !a -> a
     // (/) x y = x * recip y
@@ -75,6 +75,7 @@ class Fractional a | Seminum a where
 /// Transcendental includes both algebraic and trigoniometric operations.
 ///
 /// * It needs full Num for default instances!
+/// * This is a Transcendental in the real mathematical sense.
 class Transcendental a | Num, Fractional a where
     e :: a
     pi :: a
@@ -99,6 +100,9 @@ class Transcendental a | Num, Fractional a where
     // acos x = half pi - asin x
     atan :: !a -> a
     // atan x = asin x / acos x
+    
+    atan2 :: !a !a -> a
+    // atan2 x y = atan (y / x)
 
     sinh :: !a -> a
     // sinh x = (exp x - exp (-x)) / 2
