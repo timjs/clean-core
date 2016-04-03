@@ -38,7 +38,7 @@ class Signed a | Ord, Num a where
     // // OR without Ord
     // isNegative x = signum x == negate one
 
-/// ## Rounding Operations
+/// ## Coercion Operations
 
 /// Coercion from Fractionals to Ints.
 //FIXME should this derive from Ord or Signed? => Probably Ord, to let `Ratio Nat` be an instance

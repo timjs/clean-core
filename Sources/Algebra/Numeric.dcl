@@ -18,7 +18,7 @@ class Seminum a where
     one :: a
 
 square :: !a -> a | Seminum a
-//OR? (^) infixr 8 :: !a !a -> a | Seminum a & Integral b (can be an Int which is negative...)
+//OR? (^) infixr 8 :: !a !b -> a | Seminum a & Unsigned b
 (^) infixr 8 :: !a !Nat -> a | Seminum a
 
 /// A Ring like class for numerical values.
@@ -67,7 +67,7 @@ class Fractional a | Seminum a where
     recip :: !a -> a
     // recip x = one / x
 
-//OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Num, Integral b
+//OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Signed b
 (^^) infixr 8 :: !a !Int -> a | Fractional a
 
 /// ## Transcendental class
@@ -100,7 +100,7 @@ class Transcendental a | Num, Fractional a where
     // acos x = half pi - asin x
     atan :: !a -> a
     // atan x = asin x / acos x
-    
+
     atan2 :: !a !a -> a
     // atan2 x y = atan (y / x)
 
