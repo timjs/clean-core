@@ -40,13 +40,14 @@ class Signed a | Ord, Num a where
 
 /// ## Rounding Operations
 
-/// Coercion from Fractionals to Integrals.
+/// Coercion from Fractionals to Ints.
 //FIXME should this derive from Ord or Signed? => Probably Ord, to let `Ratio Nat` be an instance
+//FIXME someday with overloading: use IsInteger class with fromInteger method.
 class Rounded a | Ord, Fractional a where
-    truncate :: !a -> b | Integral b
-    round :: !a -> b | Integral b
-    ceiling :: !a -> b | Integral b
-    floor :: !a -> b | Integral b
+    truncate :: !a -> Int //| IsInteger b
+    round :: !a -> Int //| IsInteger b
+    ceiling :: !a -> Int //| IsInteger b
+    floor :: !a -> Int //| IsInteger b
 
     // ADD? fraction :: !a -> a
 
