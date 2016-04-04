@@ -26,6 +26,6 @@ instance LowerBounded Int
 instance Seminum Int
 instance Num Int
 instance Integral Int
+instance Signed Int
 
 instance Enum Int
-instance Signed Int

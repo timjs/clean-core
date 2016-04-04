@@ -29,9 +29,9 @@ instance LowerBounded Nat
 
 instance Seminum Nat
 instance Integral Nat
+instance Unsigned Nat
 
 instance Enum Nat
-instance Unsigned Nat
 
 /// # Special Algebra
 

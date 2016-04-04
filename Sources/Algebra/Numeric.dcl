@@ -58,8 +58,8 @@ class Integral a | Seminum a where
 
 /// A Field like class for numerical values.
 ///
-/// * Is a subclass of Seminum instead of num to allow `Ratio Nat` to be an
-///   instance of the subclass `Rounded`.
+/// * Is a subclass of Seminum instead of Num to allow `Ratio Nat` to be an
+///   instance.
 /// * We have `Num, Fractional a => Field a`.
 class Fractional a | Seminum a where
     (/) infixl 7 :: !a !a -> a

@@ -15,6 +15,26 @@ real x = code inline {
     ItoR
 }
 
+truncate :: !Real -> Int
+truncate r = undefined /*code inline {
+    truncateR
+}*/
+
+round :: !Real -> Int
+round r = code inline {
+    RtoI
+}
+
+ceiling :: !Real -> Int
+ceiling r = undefined /*code inline {
+    ceilingR
+}*/
+
+floor :: !Real -> Int
+floor r = code inline {
+    entierR
+}
+
 /// # Instances
 
 /// ## Show
@@ -110,7 +130,7 @@ instance Transcendental Real where
     atan x = code inline {
         atanR
     }
-    
+
     atan2 x y = atan (y / x)//FIXME precision
 
     sinh x = (exp x - exp (negate x)) * 0.5
@@ -137,17 +157,3 @@ instance Signed Real where
     isPositive x = x > 0.0
 
     isNegative x = x < 0.0
-
-instance Rounded Real where
-    truncate r = undefined /*code inline {
-        truncateR
-    }*/
-    round r = code inline {
-        RtoI
-    }
-    ceiling r = undefined /*code inline {
-        ceilingR
-    }*/
-    floor r = code inline {
-        entierR
-    }
