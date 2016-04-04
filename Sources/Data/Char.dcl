@@ -2,6 +2,7 @@ system module Data.Char
 
 from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
 
+from Data.Nat import :: Nat
 from Data.Enum import class Enum
 
 from Text.Show import class Show
@@ -11,8 +12,8 @@ from Text.Show import class Show
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
-chr :: !Int -> Char
-ord :: !Char -> Int
+chr :: !Nat -> Char
+ord :: !Char -> Nat
 
 /// # Instances
 
@@ -51,5 +52,5 @@ toLower :: !Char -> Char
 /// # Digit Conversion
 
 //TODO rename?
-digitToInt :: !Char -> Int
-intToDigit :: !Int -> Char
+digitToNat :: !Char -> Nat
+natToDigit :: !Nat -> Char

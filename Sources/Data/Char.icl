@@ -1,7 +1,7 @@
 implementation module Data.Char
 
 import Data.Bool
-import Data.Int
+import Data.Nat
 
 import Data.Function
 
@@ -13,12 +13,12 @@ import Algebra.Numeric
 // :: Char = 'a' | 'b' | 'c' | ... | 'X' | 'Y' | 'Z'
 // BUILTIN
 
-chr :: !Int -> Char
+chr :: !Nat -> Char
 chr i = code inline {
     ItoC
 }
 
-ord :: !Char -> Int
+ord :: !Char -> Nat
 ord c = code inline {
     CtoI
 }
@@ -117,7 +117,7 @@ isSpace c = c == ' ' || c == '\t' || c == '\n' || c ==  '\r' || c == '\f' || c =
 /// # Subranges
 
 isAscii :: !Char -> Bool
-isAscii c = ord c < 128
+isAscii c = ord c < nat 128
 
 /// # Case Conversion
 
@@ -133,8 +133,8 @@ toLower c
 
 /// # Digit Conversion
 
-digitToInt :: !Char -> Int
-digitToInt c = ord c - 48
+digitToNat :: !Char -> Nat
+digitToNat c = ord c .- nat 48
 
-intToDigit :: !Int -> Char
-intToDigit i = chr (i + 48)
+natToDigit :: !Nat -> Char
+natToDigit i = chr (i + nat 48)
