@@ -1,11 +1,15 @@
 definition module Algebra.Order
 
+from Data.Bool import not
+
 /// # Equality
 
 class Eq a where
     (==) infix 4 :: !a !a -> Bool //TODO generic
 
-(/=) infix 4 :: !a !a -> Bool | Eq a
+    (/=) infix 4 :: !a !a -> Bool
+    (/=) x y = not (x == y)
+
 
 /// # Order
 
@@ -21,14 +25,26 @@ Greater :: Ordering
 class Ord a | Eq a where
     (<) infix 4 :: !a !a -> Bool //TODO generic
 
-(>) infix 4 :: !a !a -> Bool | Ord a
-(<=) infix 4 :: !a !a -> Bool | Ord a
-(>=) infix 4 :: !a !a -> Bool | Ord a
+    (>) infix 4 :: !a !a -> Bool
+    (>) x y = y < x
 
-min :: !a !a -> a | Ord a
-max :: !a !a -> a | Ord a
+    (<=) infix 4 :: !a !a -> Bool
+    (<=) x y = not (y < x)
 
-compare :: !a !a -> Ordering | Ord a
+    (>=) infix 4 :: !a !a -> Bool
+    (>=) x y = not (x < y)
+
+    min :: !a !a -> a
+    min x y = if (x < y) x y
+
+    max :: !a !a -> a
+    max x y = if (x < y) y x
+
+    compare :: !a !a -> Ordering
+    compare x y
+        | x <  y    = Lesser
+        | x == y    = Equal
+        | otherwise = Greater
 
 /// ## Helpers
 

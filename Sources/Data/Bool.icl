@@ -2,7 +2,6 @@ implementation module Data.Bool
 
 import Algebra.Order
 
-import Data.Nat
 import Data.Enum
 import Data.Function
 
