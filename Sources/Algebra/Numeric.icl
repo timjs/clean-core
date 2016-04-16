@@ -9,9 +9,6 @@ import Data.Int
 
 /// ## Powers
 
-square :: !a -> a | Seminum a
-square x = x * x
-
 (^) infixr 8 :: !a !Nat -> a | Seminum a
 (^) x n = pow x (int n)
   where

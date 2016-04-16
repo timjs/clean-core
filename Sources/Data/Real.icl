@@ -86,6 +86,9 @@ instance Fractional Real where
     (/) x y = code inline {
         divR
     }
+    half = code inline {
+        pushR 0.5
+    }
 
     //TODO primitive ABC for `recip`?
 
@@ -130,11 +133,6 @@ instance Transcendental Real where
     atan x = code inline {
         atanR
     }
-
-    sinh x = (exp x - exp (negate x)) * 0.5
-    cosh x = (exp x + exp (negate x)) * 0.5
-
-	atanh x = log ((1.0 + x) / (1.0 - x)) * 0.5
 
 instance Signed Real where
     abs x = code inline {

@@ -17,7 +17,9 @@ class Seminum a where
     (*) infixl 7 :: !a !a -> a
     one :: a
 
-square :: !a -> a | Seminum a
+// square :: !a -> a | Seminum a
+square x :== x * x
+
 //OR? (^) infixr 8 :: !a !b -> a | Seminum a & Unsigned b
 (^) infixr 8 :: !a !Nat -> a | Seminum a
 
@@ -69,6 +71,9 @@ class Fractional a | Seminum a where
     recip :: !a -> a
     recip x = one / x
 
+    half :: a
+    half = one / (one + one)
+
 //OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Signed b
 (^^) infixr 8 :: !a !Int -> a | Fractional a
 
@@ -77,6 +82,8 @@ class Fractional a | Seminum a where
 /// Transcendental includes both algebraic and trigoniometric operations.
 ///
 /// * It needs full Num for default instances!
+/// * We need `half` because we don't have overloaded litterals and want to
+///   define default instances for all trigoniometric functions.
 /// * This is a Transcendental in the real mathematical sense.
 class Transcendental a | Num, Fractional a where
     e :: a
@@ -100,7 +107,7 @@ class Transcendental a | Num, Fractional a where
     asin :: !a -> a
     asin x = atan (x / sqrt (one - square x))
     acos :: !a -> a
-    // acos x = half pi - asin x
+    acos x = half * pi - asin x
     atan :: !a -> a
     atan x = asin x / acos x
 
@@ -108,11 +115,9 @@ class Transcendental a | Num, Fractional a where
     atan2 x y = atan (y / x) //FIXME precision
 
     sinh :: !a -> a
-    // sinh x = (exp x - exp (-x)) / 2
-    // sinh x = half (exp x - exp (negate x))
+    sinh x = half * (exp x - exp (negate x))
     cosh :: !a -> a
-    // cosh x = (exp x + exp (-x)) / 2
-    // cosh x = half (exp x + exp (negate x))
+    cosh x = half * (exp x + exp (negate x))
     tanh :: !a -> a
     // tanh x = sinh x / cosh x
     tanh x = (expX - expI) / (expX + expI)
@@ -121,14 +126,11 @@ class Transcendental a | Num, Fractional a where
             expI = exp (negate x)
 
     asinh :: !a -> a
-    // asinh x = log (sqrt (x^2+1) + x)
     asinh x = log (sqrt (square x + one) + x)
     acosh :: !a -> a
-    // acosh x = log (sqrt (x^2-1) + x)
     acosh x = log (sqrt (square x - one) + x)
     atanh :: !a -> a
-    // atanh x = (log (1+x) - log (1-x)) / 2
-  	// atanh x = half (log ((one + x) / (one - x)))
+  	atanh x = half * (log ((one + x) / (one - x)))
 
 /*
 /// A Module like class for numericals.
