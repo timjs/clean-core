@@ -1,6 +1,7 @@
 implementation module Data.Bool
 
 import Algebra.Order
+import Algebra.Order.Bounded
 
 import Data.Enum
 import Data.Function

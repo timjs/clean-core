@@ -1,6 +1,7 @@
 system module Data.Bool
 
-from Algebra.Order import class Eq, class Ord, class LowerBounded, class UpperBounded, class Bounded
+from Algebra.Order import class Eq, class Ord
+from Algebra.Order.Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Data.Enum import class Enum
 

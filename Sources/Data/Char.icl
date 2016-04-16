@@ -6,6 +6,7 @@ import Data.Nat
 import Data.Function
 
 import Algebra.Order
+import Algebra.Order.Bounded
 import Algebra.Numeric
 
 /// # Definition

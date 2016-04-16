@@ -6,6 +6,7 @@ import Data.Int
 import Data.Function
 
 import Algebra.Order
+import Algebra.Order.Bounded
 import Algebra.Numeric
 import Algebra.Numeric.Signed
 

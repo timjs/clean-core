@@ -49,13 +49,3 @@ class Ord a | Eq a where
 /// ## Helpers
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
-
-/// # Bounded
-
-class UpperBounded a | Ord a where
-    maxBound :: a
-
-class LowerBounded a | Ord a where
-    minBound :: a
-
-class Bounded a | UpperBounded a & LowerBounded a
