@@ -12,4 +12,4 @@ undefined :: .a
 undefined = abort "Run-time error! Program evaluated an undefined value!"
 
 unreachable :: .a
-unreachable = abort "Run-time error! Program reached an unreachable branch!"
+unreachable = abort "Run-time error! Program got to an unreachable branch!"

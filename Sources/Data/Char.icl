@@ -136,6 +136,7 @@ toLower c
 
 /// # Digit Conversion
 
+//TODO inlineable ABC code (?)
 digitToNat :: !Char -> Nat
 digitToNat c = ord c .- nat 48
 

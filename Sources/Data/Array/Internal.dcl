@@ -20,7 +20,7 @@ import _SystemArray
 
 /// # Macros
 
-// showArray :: {a} -> String | Show a
+// showArray :: String {a} -> String | Show a
 showArray symbol xs
     | size xs == 0 :== "{" ++ symbol ++ "}"
     | otherwise    :== "{" ++ symbol ++ show xs.[0] ++ go 1

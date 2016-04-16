@@ -2,6 +2,8 @@ definition module Algebra.Numeric
 
 from Data.Nat import :: Nat
 
+//TODO add laws
+
 /// ## Semi-numerical and Numerical classes
 
 /// A Semiring like class for numerical values.

@@ -10,6 +10,7 @@ succ :: !a -> a | Enum a
 pred :: !a -> a | Enum a
 
 //TODO test [n..] for Bounded n
+//TODO move into class
 enumFrom :: !a -> .[a] | Enum a
 enumFromTo :: !a !a -> .[a] | Enum a
 enumFromThen :: !a !a -> .[a] | Enum a

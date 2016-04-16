@@ -2,8 +2,6 @@ implementation module Data.Array.Unboxed
 
 import Data.Array.Internal
 
-import Control.Appendable
-
 /// # Specializations
 
 /// ## Char

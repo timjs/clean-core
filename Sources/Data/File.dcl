@@ -4,6 +4,9 @@ system module Data.File
 ///
 /// Import this module qualified!
 
+//TODO move to System.File
+//TODO add System.File.Shared with shared file operations
+
 /// # Files
 
 // :: File

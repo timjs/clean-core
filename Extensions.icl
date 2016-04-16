@@ -4,6 +4,7 @@
 /// Coercion from Fractionals to Ints.
 //FIXME should this derive from Ord or Signed? => Probably Ord, to let `Ratio Nat` be an instance
 //FIXME someday with overloading: use IsInteger class with fromInteger method.
+//FIXME should be functions :: !a -> a
 class Rounded a | Ord, Fractional a where
     truncate :: !a -> Int //| IsInteger b
     round :: !a -> Int //| IsInteger b
@@ -14,7 +15,6 @@ class Rounded a | Ord, Fractional a where
 
 /// # Floating Point Operations
 
-/*TODO add
 /// Floating point operations.
 /// Operations possible on other types are represented by the Transcendental class.
 //FIXME should this be a subclass of Ord, or Rounded, or Signed, or...?
