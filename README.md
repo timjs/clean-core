@@ -15,3 +15,7 @@ This library also respects the natural hierarchy of Functor, Applicative and Mon
 ## Rules
 
 * Classes should have represent mathematical properties, preferably acompanied by laws.
+
+# Todo
+
+- [ ] Move `Bounded` to Algebra.Order.Bounded

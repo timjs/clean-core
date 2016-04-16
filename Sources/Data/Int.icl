@@ -118,28 +118,20 @@ instance Integral Int where
         notB
     }
 
-	gcd x y = gcd` (abs x) (abs y)
-	where
-		gcd` x 0 = x
-	    gcd` x y = gcd` y (x `rem` y)
+    gcd x y = gcd` (abs x) (abs y)
+    where
+        gcd` x 0 = x
+        gcd` x y = gcd` y (x `rem` y)
 
-	lcm _ 0 = 0
-	lcm 0 _ = 0
-	lcm x y = abs ((x `quot` gcd x y) * y)
+    lcm _ 0 = 0
+    lcm 0 _ = 0
+    lcm x y = abs ((x `quot` gcd x y) * y)
 
 instance Signed Int where
+    //TODO inline ABC code?
     abs x
         | x < 0 = negate x
         | otherwise = x
-
-    signum x
-        | x <  0 = -1
-        | x == 0 = 0
-        | otherwise = 1
-
-    isPositive x = x > 0
-
-    isNegative x = x < 0
 
 /// ## Enum
 

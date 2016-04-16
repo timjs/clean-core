@@ -1,7 +1,7 @@
 definition module Algebra.Numeric.Signed
 
-from Algebra.Order import class Eq, class Ord
-from Algebra.Numeric import class Seminum, class Num, class Integral, class Fractional, class Transcendental
+from Algebra.Order import class Eq(..), class Ord(..), :: Ordering, Lesser, Equal, Greater, not
+from Algebra.Numeric import class Seminum(..), class Num(..)
 
 /// ## Unsigned and Signed Numericals
 
@@ -11,17 +11,17 @@ from Algebra.Numeric import class Seminum, class Num, class Integral, class Frac
 class Unsigned a | Ord, Seminum a where
     // We use this method to force a disjunct set of Signed and Unsigned types.
     unsigned :: a -> Bool
-    // unsigned = True
+    unsigned _ = True
 
 class Signed a | Ord, Num a where
     abs :: !a -> a
-    // abs x = max x (negate x)
+    abs x = max x (negate x)
 
     signum :: !a -> a
-    // signum x
-    //     | x <  zero = negate one
-    //     | x == zero = zero
-    //     | otherwise = one
+    signum x
+        | x <  zero = negate one
+        | x == zero = zero
+        | otherwise = one
     // // OR without Ord
     // signum x
     //     | isPositive x = one
@@ -29,11 +29,11 @@ class Signed a | Ord, Num a where
     //     | otherwise = zero
 
     isPositive :: !a -> Bool
-    // isPositive x = x > zero
+    isPositive x = x > zero
     // // OR without Ord
     // isPositive x = signum x == one
 
     isNegative :: !a -> Bool
-    // isNegative x = x < zero
+    isNegative x = x < zero
     // // OR without Ord
     // isNegative x = signum x == negate one

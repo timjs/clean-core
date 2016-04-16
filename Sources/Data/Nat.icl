@@ -149,8 +149,7 @@ instance Integral Nat where
 	lcm 0 _ = 0
 	lcm x y = (x `quot` gcd x y) * y
 
-instance Unsigned Nat where
-    unsigned x = True
+instance Unsigned Nat
 
 /// ## Enum
 

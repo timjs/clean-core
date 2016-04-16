@@ -27,9 +27,10 @@ square :: !a -> a | Seminum a
 /// * We have `Num a => Ring a`
 class Num a | Seminum a where
     (-) infixl 6 :: !a !a -> a
-    // (-) x y = x + negate y
+    (-) x y = x + negate y
+
     negate :: !a -> a
-    // negate x = zero - x
+    negate x = zero - x
 
 /// ## Integral class
 
@@ -63,9 +64,10 @@ class Integral a | Seminum a where
 /// * We have `Num, Fractional a => Field a`.
 class Fractional a | Seminum a where
     (/) infixl 7 :: !a !a -> a
-    // (/) x y = x * recip y
+    (/) x y = x * recip y
+
     recip :: !a -> a
-    // recip x = one / x
+    recip x = one / x
 
 //OR? (^^) infixr 8 :: !a !b -> a | Fractional a & Signed b
 (^^) infixr 8 :: !a !Int -> a | Fractional a
@@ -85,24 +87,25 @@ class Transcendental a | Num, Fractional a where
     log :: !a -> a
 
     (**) infixr 8 :: !a !a -> a
-    // x ** y = exp (log x * y)
+    (**) x y = exp (log x * y)
+
     logBase :: !a !a -> a
-    // logBase x y = log y / log x
+    logBase x y = log y / log x
 
     sin :: !a -> a
     cos :: !a -> a
     tan :: !a -> a
-    // tan x = sin x / cos x
+    tan x = sin x / cos x
 
     asin :: !a -> a
-    // asin x = atan (x / sqrt (one - square x))
+    asin x = atan (x / sqrt (one - square x))
     acos :: !a -> a
     // acos x = half pi - asin x
     atan :: !a -> a
-    // atan x = asin x / acos x
+    atan x = asin x / acos x
 
     atan2 :: !a !a -> a
-    // atan2 x y = atan (y / x)
+    atan2 x y = atan (y / x) //FIXME precision
 
     sinh :: !a -> a
     // sinh x = (exp x - exp (-x)) / 2
@@ -112,20 +115,20 @@ class Transcendental a | Num, Fractional a where
     // cosh x = half (exp x + exp (negate x))
     tanh :: !a -> a
     // tanh x = sinh x / cosh x
-    // tanh x = (expX - expI) / (expX + expI)
-    //     where
-    //         expX = exp x
-    //         expI = exp (negate x)
+    tanh x = (expX - expI) / (expX + expI)
+        where
+            expX = exp x
+            expI = exp (negate x)
 
     asinh :: !a -> a
     // asinh x = log (sqrt (x^2+1) + x)
-    // asinh x = log (sqrt (square x + one) + x)
+    asinh x = log (sqrt (square x + one) + x)
     acosh :: !a -> a
     // acosh x = log (sqrt (x^2-1) + x)
-    // acosh x = log (sqrt (square x - one) + x)
+    acosh x = log (sqrt (square x - one) + x)
     atanh :: !a -> a
     // atanh x = (log (1+x) - log (1-x)) / 2
-	// atanh x = half (log ((one + x) / (one - x)))
+  	// atanh x = half (log ((one + x) / (one - x)))
 
 /*
 /// A Module like class for numericals.

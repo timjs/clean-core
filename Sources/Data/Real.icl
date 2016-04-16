@@ -86,7 +86,8 @@ instance Fractional Real where
     (/) x y = code inline {
         divR
     }
-    recip x = 1.0 / x //TODO primitive ABC?
+
+    //TODO primitive ABC for `recip`?
 
 instance Transcendental Real where
     e  = code inline {
@@ -109,7 +110,6 @@ instance Transcendental Real where
     (**) x y = code inline {
         powR
     }
-    logBase x y = log y / log x
 
     sin x = code inline {
         sinR
@@ -131,29 +131,12 @@ instance Transcendental Real where
         atanR
     }
 
-    atan2 x y = atan (y / x)//FIXME precision
-
     sinh x = (exp x - exp (negate x)) * 0.5
     cosh x = (exp x + exp (negate x)) * 0.5
-    tanh x = (expX - expI) / (expX + expI)
-        where
-            expX = exp x
-            expI = exp (negate x)
 
-    asinh x = log (sqrt (x * x + 1.0) + x)
-    acosh x = log (sqrt (x * x - 1.0) + x)
 	atanh x = log ((1.0 + x) / (1.0 - x)) * 0.5
 
 instance Signed Real where
     abs x = code inline {
         absR
     }
-
-    signum x
-        | x <  0.0 = -1.0
-        | x == 0.0 = 0.0
-        | otherwise = 1.0
-
-    isPositive x = x > 0.0
-
-    isNegative x = x < 0.0
