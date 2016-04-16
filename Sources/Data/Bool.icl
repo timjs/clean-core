@@ -85,7 +85,6 @@ not x = code inline {
         rtn
 }
 
-
 (||) infixr 2 :: !Bool Bool -> Bool
 (||) x y = code {
         push_b 0

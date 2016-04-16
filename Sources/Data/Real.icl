@@ -15,6 +15,7 @@ real x = code inline {
     ItoR
 }
 
+//TODO other name?
 whole :: !Real -> Int
 whole x = code inline {
     RtoI
