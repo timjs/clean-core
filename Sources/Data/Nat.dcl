@@ -24,9 +24,10 @@ instance Show Nat
 
 instance Eq Nat
 instance Ord Nat
+
 instance UpperBounded Nat
 instance LowerBounded Nat
-//IMPLICIT instance Bounded Nat
+instance Bounded Nat
 
 instance Seminum Nat
 instance Integral Nat

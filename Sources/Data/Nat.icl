@@ -63,6 +63,8 @@ instance Ord Nat where
         ltI
     }
 
+// ## Bounded
+
 instance UpperBounded Nat where
     maxBound = undefined
 
@@ -70,6 +72,8 @@ instance LowerBounded Nat where
     minBound = code inline {
         pushI 0
     }
+
+instance Bounded Nat
 
 /// ## Numeric
 

@@ -22,9 +22,10 @@ instance Show Char
 
 instance Eq Char
 instance Ord Char
+
 instance UpperBounded Char
 instance LowerBounded Char
-//IMPLICIT instance Bounded Char
+instance Bounded Char
 
 instance Enum Char
 

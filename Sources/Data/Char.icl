@@ -45,13 +45,15 @@ instance Ord Char where
         ltC
     }
 
-/// ## Lattices
+/// ## Bounded
 
 instance UpperBounded Char where
     maxBound = undefined
 
 instance LowerBounded Char where
     minBound = undefined
+
+instance Bounded Char
 
 /// ## Enum
 

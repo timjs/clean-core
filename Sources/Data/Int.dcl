@@ -20,9 +20,10 @@ instance Show Int
 
 instance Eq Int
 instance Ord Int
+
 instance UpperBounded Int
 instance LowerBounded Int
-//IMPLICIT instance Bounded Int
+instance Bounded Int
 
 instance Seminum Int
 instance Num Int

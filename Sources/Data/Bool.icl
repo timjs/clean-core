@@ -38,6 +38,8 @@ instance Ord Bool where
     //     ltB
     // }
 
+/// ## Bounded
+
 instance UpperBounded Bool where
     maxBound = code inline {
         pushB TRUE
@@ -47,6 +49,8 @@ instance LowerBounded Bool where
     minBound = code inline {
         pushB FALSE
     }
+
+instance Bounded Bool
 
 /// ## Enum
 

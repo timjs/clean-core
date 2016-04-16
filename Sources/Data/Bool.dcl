@@ -18,9 +18,10 @@ instance Show Bool
 
 instance Eq Bool
 instance Ord Bool
+
 instance UpperBounded Bool
 instance LowerBounded Bool
-// IMPLICIT instance Bounded Bool
+instance Bounded Bool
 
 instance Enum Bool
 

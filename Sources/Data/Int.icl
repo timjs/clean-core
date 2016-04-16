@@ -33,11 +33,15 @@ instance Ord Int where
         ltI
     }
 
+/// ## Bounded
+
 instance UpperBounded Int where
     maxBound = undefined
 
 instance LowerBounded Int where
     minBound = undefined
+
+instance Bounded Int
 
 /// ## Algebra
 
