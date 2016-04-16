@@ -10,10 +10,10 @@ default:
 force:
 	cpm $(PROJECT).prj --force
 
-#FIXME not the way to go...
 inline:
 	cpm $(PROJECT).prj
-	rm -Rvf **/*.o
+	sleep 1
+	touch **/*.dcl
 	cpm $(PROJECT).prj
 
 clean:
