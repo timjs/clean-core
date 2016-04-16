@@ -5,13 +5,11 @@ import Algebra.Order
 import Data.Nat
 import Data.Int
 
-//TODO these could all be macros...
-
 /// ## Powers
 
 (^) infixr 8 :: !a !Nat -> a | Seminum a
 (^) x n = pow x (int n)
-  where
+where
     pow :: !a !Int -> a | Seminum a
     pow x 0 = one
     pow x n = f x (n - 1) x
@@ -29,39 +27,3 @@ import Data.Int
 (^^) x n
     | n >= 0 = x ^ nat n
     = recip (x ^ nat (negate n))
-
-/*
-/// ## GCD and LCM
-
-gcd :: !a !a -> a | Ord, Integral a
-gcd x y = gcd` (abs x) (abs y)
-where
-    gcd` x y
-        | y == zero = x
-        | otherwise = gcd` y (x `rem` y)
-
-lcm :: !a !a -> a | Ord, Integral a
-lcm x y
-    | x == zero = zero
-    | y == zero = zero
-    | otherwise = abs ((x `quot` gcd x y) * y)
-*/
-
-/*
-/// ## Signed Numericals
-
-abs :: !a -> a | Ord, Num a
-abs x = max x (negate x)
-
-signum :: !a -> a | Ord, Num a
-signum x
-    | x <  zero = negate one
-    | x == zero = zero
-    | otherwise = one
-
-isPositive :: !a -> Bool | Ord, Num a
-isPositive x = x > zero
-
-isNegative :: !a -> Bool | Ord, Num a
-isNegative x = x < zero
-*/

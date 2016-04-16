@@ -121,9 +121,9 @@ class Transcendental a | Num, Fractional a where
     tanh :: !a -> a
     // tanh x = sinh x / cosh x
     tanh x = (expX - expI) / (expX + expI)
-        where
-            expX = exp x
-            expI = exp (negate x)
+    where
+        expX = exp x
+        expI = exp (negate x)
 
     asinh :: !a -> a
     asinh x = log (sqrt (square x + one) + x)
