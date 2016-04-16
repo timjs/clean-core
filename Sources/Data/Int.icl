@@ -127,11 +127,7 @@ instance Integral Int where
     lcm 0 _ = 0
     lcm x y = abs ((x `quot` gcd x y) * y)
 
-instance Signed Int where
-    //TODO inline ABC code?
-    abs x
-        | x < 0 = negate x
-        | otherwise = x
+instance Signed Int
 
 /// ## Enum
 

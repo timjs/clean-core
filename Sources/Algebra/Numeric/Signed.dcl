@@ -15,7 +15,7 @@ class Unsigned a | Ord, Seminum a where
 
 class Signed a | Ord, Num a where
     abs :: !a -> a
-    abs x = max x (negate x)
+    abs x = if (x < zero) (negate x) (x)
 
     signum :: !a -> a
     signum x
