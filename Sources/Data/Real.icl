@@ -8,6 +8,8 @@ import Algebra.Numeric.Signed
 
 import Text.Show
 
+/// # Definition
+
 /// ## Conversion
 
 real :: !Int -> Real
@@ -15,33 +17,25 @@ real x = code inline {
     ItoR
 }
 
-//TODO other name?
-whole :: !Real -> Int
-whole x = code inline {
-    RtoI
-}
-
-/// ## Rounding
-
-truncate :: !Real -> Real//TODO use C interface?
+truncate :: !Real -> Int
 truncate r = undefined /*code inline {
     truncateR
 }*/
 
-round :: !Real -> Real
-round r = undefined /*code inline {
+round :: !Real -> Int
+round r = code inline {
     RtoI
-}*/
+}
 
-ceiling :: !Real -> Real
+ceiling :: !Real -> Int
 ceiling r = undefined /*code inline {
     ceilingR
 }*/
 
-floor :: !Real -> Real
-floor r = undefined /*code inline {
+floor :: !Real -> Int
+floor r = code inline {
     entierR
-}*/
+}
 
 /// # Instances
 

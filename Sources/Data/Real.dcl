@@ -11,17 +11,12 @@ from Text.Show import class Show
 // :: Real = ... | 0 | ...
 // BUILTIN
 
-/// ## Conversion
-
 real :: !Int -> Real
-whole :: !Real -> Int
 
-/// ## Rounding
-
-truncate :: !Real -> Real
-round :: !Real -> Real
-ceiling :: !Real -> Real
-floor :: !Real -> Real
+truncate :: !Real -> Int
+round :: !Real -> Int
+ceiling :: !Real -> Int
+floor :: !Real -> Int
 
 /// # Instances
 
