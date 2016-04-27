@@ -2,7 +2,7 @@ implementation module Clean.Core
 
 import Clean.Core
 
-x :: Real
-x = 1.5
+plus :: Int Int -> Int
+plus x y = x + y
 
-Start = (truncate x, round x, ceiling x, floor x)
+Start = if (55 < 66) (11 + 22) (33 - 11)

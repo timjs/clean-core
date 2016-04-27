@@ -23,25 +23,25 @@ whole x = code inline {
 
 /// ## Rounding
 
-truncate :: !Real -> Real
-truncate r = code inline {
-    ccall trunc "R:R"
-}
+truncate :: !Real -> Real//TODO use C interface?
+truncate r = undefined /*code inline {
+    truncateR
+}*/
 
 round :: !Real -> Real
-round r = code inline {
-    ccall round "R:R"
-}
+round r = undefined /*code inline {
+    RtoI
+}*/
 
 ceiling :: !Real -> Real
-ceiling r = code inline {
-    ccall ceil "R:R"
-}
+ceiling r = undefined /*code inline {
+    ceilingR
+}*/
 
 floor :: !Real -> Real
-floor r = code inline {
-    ccall floor "R:R"
-}
+floor r = undefined /*code inline {
+    entierR
+}*/
 
 /// # Instances
 
