@@ -17,6 +17,7 @@ inline:
 	cpm $(PROJECT).prj
 
 clean:
+	rm -Rvf Clean\ System\ Files
 	rm -Rvf **/Clean\ System\ Files
 	rm -Rvf $(PROJECT).exe
 
