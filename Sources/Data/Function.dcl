@@ -10,13 +10,15 @@ const a b :== a
 fix f :== x
     where x = f x
 
-($) infixr 2 //0 :: (a -> b) a -> b
+/// Haskell style:
+
+($) infixr 0 // :: (a -> b) a -> b
 ($) f a :== f a
 
-($$) infixl 3 //1 :: a (a -> b) -> b
+($$) infixl 1 // :: a (a -> b) -> b
 ($$) a f :== f a
 
-(?) infixr 3 //1 :: Bool a a -> a
+(?) infixr 1 // :: Bool a a -> a
 (?) b t f :== if b t f
 
 // (o) infixr 9 // :: (b -> c) (a -> b) a -> c
@@ -24,6 +26,8 @@ fix f :== x
 
 (@) infixr 9 // :: (b -> c) (a -> b) a -> c
 (@) f g x :== f (g x)
+
+/// OCaml Style:
 
 // (<|) infixr 2 //:: (a -> b) a -> b
 // (<|) f a :== f a
