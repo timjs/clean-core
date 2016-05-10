@@ -2,7 +2,13 @@ implementation module Clean.Core
 
 import Clean.Core
 
-plus :: Int Int -> Int
-plus x y = x + y
+a :: {Int}
+a = {1,2,3}
 
-Start = if (55 < 66) (11 + 22) (33 - 11)
+b :: {!Int}
+b = {4,5,6}
+
+c :: {#Int}
+c = {7,8,9}
+
+Start = (a, a ++ a, b, b ++ b, c, c ++ c)

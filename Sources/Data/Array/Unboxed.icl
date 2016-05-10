@@ -2,85 +2,49 @@ implementation module Data.Array.Unboxed
 
 import Data.Array.Internal
 
+/// # Instances
+
+instance Show {#e} | Show, Unboxed e where
+    show xs = showUnboxedArray xs
+
+instance Eq {#e} | Eq, Unboxed e where
+    (==) xs ys = eqUnboxedArray xs ys
+
+instance Ord {#e} | Ord, Unboxed e where
+    (<) xs ys = ltUnboxedArray xs ys
+
+instance Appendable {#e} | Unboxed e where
+    (++) xs ys = concatUnboxedArray xs ys
+    nil = emptyUnboxedArray
+
 /// # Specializations
 
-/// ## Char
-
-instance Show {#Char} where
-    show xs = code inline {
+instance Unboxed Char where
+    showUnboxedArray xs = code inline {
         no_op
     }
-
-instance Eq {#Char} where
-    (==) xs ys = code inline {
+    eqUnboxedArray xs ys = code inline {
         .d 2 0
             jsr eqAC
         .o 0 1 b
     }
-
-instance Ord {#Char} where
-    (<) xs ys = code inline {
+    ltUnboxedArray xs ys = code inline {
         .d 2 0
             jsr cmpAC
         .o 0 1 i
             pushI 0
             gtI
     }
-
-instance Appendable {#Char} where
-    (++) xs ys = code inline {
+    concatUnboxedArray xs ys = code inline {
         .d 2 0
             jsr catAC
         .o 1 0
     }
-    nil = code inline {
+    emptyUnboxedArray = code inline {
     	buildAC ""
     }
 
-/// ## Bool
-
-instance Show {#Bool} where
-    show xs = showArray "#" xs
-instance Eq {#Bool} where
-    (==) xs ys = eqArray xs ys
-instance Ord {#Bool} where
-    (<) xs ys = ltArray xs ys
-instance Appendable {#Bool} where
-    (++) xs ys = concatArray xs ys
-    nil = emptyArray
-
-/// ## Nat
-
-// instance Show {#Nat} where
-//     show xs = showArray "#" xs
-// instance Eq {#Nat} where
-//     (==) xs ys = eqArray xs ys
-// instance Ord {#Nat} where
-//     (<) xs ys = ltArray xs ys
-// instance Appendable {#Nat} where
-//     (++) xs ys = concatArray xs ys
-//     nil = emptyArray
-
-/// ## Int
-
-instance Show {#Int} where
-    show xs = showArray "#" xs
-instance Eq {#Int} where
-    (==) xs ys = eqArray xs ys
-instance Ord {#Int} where
-    (<) xs ys = ltArray xs ys
-instance Appendable {#Int} where
-    (++) xs ys = concatArray xs ys
-    nil = emptyArray
-
-/// ## Real
-
-instance Show {#Real} where
-    show xs = showArray "#" xs
-instance Eq {#Real} where
-    (==) xs ys = eqArray xs ys
-instance Ord {#Real} where
-    (<) xs ys = ltArray xs ys
-instance Appendable {#Real} where
-    (++) xs ys = concatArray xs ys
-    nil = emptyArray
+instance Unboxed Bool
+// instance Unboxed Nat
+instance Unboxed Int
+instance Unboxed Real
