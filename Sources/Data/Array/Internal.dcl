@@ -2,7 +2,7 @@ definition module Data.Array.Internal
 
 import Data.Bool
 import Data.Char
-import Data.Nat
+// import Data.Nat
 import Data.Int
 import Data.Real
 

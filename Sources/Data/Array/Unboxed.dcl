@@ -6,36 +6,45 @@ from Control.Appendable import class Appendable
 
 from Text.Show import class Show
 
-import _SystemArray
+import Data.Array.Internal
 
 /// # Definition
 
-// :: {#}
+// :: {# }
 //BUILTIN
 
 /// # Instances
 
-instance Show {#Bool}
-instance Eq {#Bool}
-instance Ord {#Bool}
-instance Appendable {#Bool}
+instance Show {#e} | Show, Unboxed e
 
-instance Show {#Char}
-instance Eq {#Char}
-instance Ord {#Char}
-instance Appendable {#Char}
+instance Eq {#e} | Eq, Unboxed e
+instance Ord {#e} | Ord, Unboxed e
 
-// instance Show {#Nat}
-// instance Eq {#Nat}
-// instance Ord {#Nat}
-// instance Appendable {#Nat}
+instance Appendable {#e} | Unboxed e
 
-instance Show {#Int}
-instance Eq {#Int}
-instance Ord {#Int}
-instance Appendable {#Int}
+/// # Specializations
 
-instance Show {#Real}
-instance Eq {#Real}
-instance Ord {#Real}
-instance Appendable {#Real}
+/// - Note: these functions *have to be* strict!
+///   Otherwise the compiler can't infer strictness of the default, non-strict
+///   `show` and `(++)`.
+class Unboxed e where
+    showUnboxedArray :: !{#e} -> String | Show e
+    showUnboxedArray xs = showArray "#" xs
+
+    eqUnboxedArray :: !{#e} !{#e} -> Bool | Eq e
+    eqUnboxedArray xs ys = eqArray xs ys
+
+    ltUnboxedArray :: !{#e} !{#e} -> Bool | Ord e
+    ltUnboxedArray xs ys = ltArray xs ys
+
+    concatUnboxedArray :: !{#e} !{#e} -> {#e}
+    concatUnboxedArray xs ys = concatArray xs ys
+
+    emptyUnboxedArray :: {#e}
+    emptyUnboxedArray = emptyArray
+
+instance Unboxed Bool
+instance Unboxed Char
+// instance Unboxed Nat
+instance Unboxed Int
+instance Unboxed Real
