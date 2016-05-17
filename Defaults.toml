@@ -1,0 +1,43 @@
+[package]
+sources = "Sources/"
+
+[executable.main]
+name = "main.exe"
+path = "Sources/Main.icl"
+
+[profile.release]
+
+# Application
+heap-size = 2097152
+intial-heap-size = 204800
+heap-size-multiplier = 4096
+stack-size = 512000
+extra-memory = 8192
+
+collector = "default"
+runtime = "default"
+rts-flags = false
+
+show-execution-time = false
+show-gc = false
+show-stack-size = false
+show-constructors = true
+
+# Linker
+link-method = "static"
+generate-relocations = false
+generate-symbol-table = false
+generate-link-map = false
+link-resources = false
+resource-source = ""
+generate-dll = false
+
+# Generator
+check-stacks = false
+check-indexes = true
+
+# Profiling
+memory-profiling = false
+time-profiling = false
+stack-profiling = false
+memory-minimum-heap-size = 0

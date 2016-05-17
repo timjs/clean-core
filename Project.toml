@@ -1,18 +1,35 @@
-[info]
-name = "clean-base"
-version = "0.0.1"
+[package]
+name = "clean-core"
+version = "0.1.0"
 authors = [ "Tim Steenvoorden <tim.steenvoorden@gmail.com>" ]
+repository = "https://github.com/timjs/clean-core"
 
-[[dependencies]]
-name = "clean-stdenv"
+[dependencies.clean-stdenv]
 version = "2.4.0"
 path = "../clean-stdenv"
 
-[[dependencies]]
-name = "clean-generics"
+[dependencies.clean-generics]
 version = "2.4.0"
 path = "../clean-generics"
 
 [library]
-modules = []
-
+exposed-modules = [
+    "Algebra.Numeric",
+    "Algebra.Numeric.Signed",
+    "Algebra.Order",
+    "Algebra.Order.Bounded",
+    "Clean.Core",
+    "Control.Appendable",
+    "Data.Array",
+    "Data.Array.Strict",
+    "Data.Array.Unboxed",
+    "Data.Bool",
+    "Data.Char",
+    "Data.Enum",
+    "Data.Function",
+    "Data.Int",
+    "Data.Nat",
+    "Data.Real",
+    "System.File",
+    "Text.Show",
+]
