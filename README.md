@@ -1,17 +1,17 @@
-# Clean Base
+# Clean Core
 
-A base library for Clean or a beafed up StdEnv ;-)
+A core library for Clean or a beefed up StdEnv ;-)
 
 ## Goals
 
 The main goal of this package is to provide a modern and flexible base library, where possible, using Haskell conventions and naming.
 
-One main difference between Clean Base and Haskell Base is the number hierarchy. Because the Haskell numeric classes combine operations on numbers and literal conversion, they are overly complicated. Clean doesn't have overloading of number literals, thuse we can leave this feature out. By making use of this property, this package merges the Haskell Semigroup/Monoid and Num classes into one algebraic class hierarchy based on Groups and Rings. They can be found in `Algebra.Group` and `Algebra.Ring`.
+One main difference between Clean Base and Haskell Base is the number hierarchy. Because the Haskell numeric classes combine operations on numbers and literal conversion, they are overly complicated. Clean doesn't have overloading of number literals, thus we can leave this feature out.
 
-Some classes are more fine grained or more mathematically orientated. The `Bounded` class for example, represents effectivly a bounded lattice and is a subclass of `UpperBounded` and `LowerBounded` which are subclasses of `MeetSemilattice` and `JoinSemilattice`.
+We introduce a hierarchy starting with `Seminum` which contains algebraic operations on *positive numbers* only. As the name suggests it is inspired on a *semiring* from abstract algebra. The `Num` class adds negation and subtraction (a mathematical *ring*). From `Seminum` (not `Num`) hereon we add classes `Integral` and `Fractional`, expanding the basic operations on numbers with integer division or real division. `Transcedental` contains power- and trigonometric operations (it is roughly equivalent with Haskell's `Floating` class). All these classes do *not* require `Eq`, `Ord` or `Enum`.
 
-This library also respects the natural hierarchy of Functor, Applicative and Monad.
+The `abs` and `signum` functions are part of the class `Signed`, which has constraints to `Ord` and `Num` and thus is an "ordered ring". `Signed` is complemented by the class `Unsigned` which represents "ordered semirings".
 
 ## Rules
 
-* Classes should have represent mathematical properties, preferably acompanied by laws.
+* Classes should represent mathematical properties, preferably accompanied by laws.
