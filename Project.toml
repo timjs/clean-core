@@ -14,22 +14,31 @@ path = "../clean-generics"
 
 [library]
 exposed-modules = [
-    "Algebra.Numeric",
-    "Algebra.Numeric.Signed",
-    "Algebra.Order",
-    "Algebra.Order.Bounded",
-    "Clean.Core",
-    "Control.Appendable",
-    "Data.Array",
-    "Data.Array.Strict",
-    "Data.Array.Unboxed",
-    "Data.Bool",
-    "Data.Char",
-    "Data.Enum",
-    "Data.Function",
-    "Data.Int",
-    "Data.Nat",
-    "Data.Real",
-    "System.File",
-    "Text.Show",
+    # Basic types
+    "Bool",
+    "Char",
+    "Nat",
+    "Int",
+    "Real",
+    "File",
+
+    # Basic classes
+    "Append",
+    "Compare",
+    "Enum",
+    "Num",
+    "Num.Bounded",
+    "Num.Signed",
+    "Show",
+
+    # Basic macros
+    "Function",
+
+    # Arrays
+    "Array",
+    "Array.Strict",
+    "Array.Unboxed",
+
+    # Prelude
+    "Core",
 ]

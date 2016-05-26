@@ -43,7 +43,7 @@ Global
 	Precompile:	
 	Postlink:	
 MainModule
-	Name:	Clean.Core
+	Name:	Core
 	Dir:	{Project}/Sources
 	Compiler
 		NeverMemoryProfile:	False
@@ -58,7 +58,7 @@ MainModule
 		Fusion:	False
 OtherModules
 	Module
-		Name:	Algebra.Numeric
+		Name:	Append
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -72,7 +72,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Algebra.Numeric.Signed
+		Name:	Array
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -86,7 +86,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Algebra.Order
+		Name:	Array.Internal
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -100,7 +100,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Algebra.Order.Bounded
+		Name:	Array.Strict
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -114,7 +114,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Control.Appendable
+		Name:	Array.Unboxed
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -128,7 +128,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Array
+		Name:	Bool
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -142,7 +142,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Array.Internal
+		Name:	Char
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -156,7 +156,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Array.Strict
+		Name:	Compare
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -170,7 +170,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Array.Unboxed
+		Name:	Enum
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -184,7 +184,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Bool
+		Name:	Function
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -198,7 +198,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Char
+		Name:	Int
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -212,7 +212,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Enum
+		Name:	Nat
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -226,7 +226,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Function
+		Name:	Num
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -240,7 +240,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Int
+		Name:	Num.Bounded
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -254,7 +254,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Nat
+		Name:	Num.Signed
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -268,7 +268,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Data.Real
+		Name:	Real
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -282,7 +282,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Text.Show
+		Name:	Show
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False

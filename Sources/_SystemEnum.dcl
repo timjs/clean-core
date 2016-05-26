@@ -2,7 +2,7 @@ definition module _SystemEnum
 
 /// Legacy module used to satisfy the Clean Compiler.
 
-import Data.Enum
+import Enum
 
 _from n :== enumFrom n
 _from_to n m :== enumFromTo n m
