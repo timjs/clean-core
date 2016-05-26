@@ -15,3 +15,10 @@ The `abs` and `signum` functions are part of the class `Signed`, which has const
 ## Rules
 
 * Classes should represent mathematical properties, preferably accompanied by laws.
+* A fully qualified name of any entity should not be redundant: `User.UserRole.Roles.getRoleForUser` should probably be something like `User.Role.get` [1].
+
+## More tips
+
+- http://fvisser.nl/post/2013/may/28/towards-a-better-haskell-package.html
+
+[1]: https://www.reddit.com/r/haskell/comments/1f70wi/towards_a_better_haskell_package/
