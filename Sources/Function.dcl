@@ -27,6 +27,16 @@ fix f :== x
 (@) infixr 9 // :: (b -> c) (a -> b) a -> c
 (@) f g x :== f (g x)
 
+/// if-then-else:
+
+if` x :== x
+
+(then) infixr 1 // :: Bool a a -> a
+(then) b t f :== if b t f
+
+(else) infixr 0 // :: (a -> b) a -> b
+(else) f a :== f a
+
 /// OCaml Style:
 
 // (<|) infixr 2 //:: (a -> b) a -> b
