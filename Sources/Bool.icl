@@ -22,14 +22,14 @@ instance Showable Bool where
         .o 1 0
     }
 
-/// ## Order
+/// ## Comparable
 
-instance Eq Bool where
+instance Equatable Bool where
     (==) x y = code inline {
         eqB
     }
 
-instance Ord Bool where
+instance Comparable Bool where
     (<) False True = True
     (<) _     _    = False
     // (<) x y = code inline {

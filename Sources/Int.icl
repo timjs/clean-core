@@ -1,14 +1,17 @@
 implementation module Int
 
+import Nat
 import Enum
 import Function
 
+import Equatable
 import Comparable
+import Showable
+import Bounded
+
 import Numeral
 import Numeral.Signed
-import Numeral.Bounded
 
-import Showable
 
 /// # Instances
 
@@ -21,14 +24,14 @@ instance Showable Int where
         .o 1 0
     }
 
-/// ## Order
+/// ## Comparable
 
-instance Eq Int where
+instance Equatable Int where
     (==) x y = code inline {
         eqI
     }
 
-instance Ord Int where
+instance Comparable Int where
     (<) x y = code inline {
         ltI
     }
@@ -133,6 +136,7 @@ instance Integral Int where
     lcm x y = abs ((x `quot` gcd x y) * y)
 
 instance Signed Int
+
 
 /// ## Enum
 

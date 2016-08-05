@@ -7,10 +7,10 @@ import Array.Internal
 instance Showable {#e} | Showable, Unboxed e where
     show xs = showUnboxedArray xs
 
-instance Eq {#e} | Eq, Unboxed e where
+instance Equatable {#e} | Equatable, Unboxed e where
     (==) xs ys = eqUnboxedArray xs ys
 
-instance Ord {#e} | Ord, Unboxed e where
+instance Comparable {#e} | Comparable, Unboxed e where
     (<) xs ys = ltUnboxedArray xs ys
 
 instance Appendable {#e} | Unboxed e where

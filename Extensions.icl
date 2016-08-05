@@ -2,10 +2,10 @@
 /// ## Coercion Operations
 
 /// Coercion from Fractionals to Ints.
-//FIXME should this derive from Ord or Signed? => Probably Ord, to let `Ratio Nat` be an instance
+//FIXME should this derive from Comparable or Signed? => Probably Comparable, to let `Ratio Nat` be an instance
 //FIXME someday with overloading: use IsInteger class with fromInteger method.
 //FIXME should be functions :: !a -> a
-class Rounded a | Ord, Fractional a where
+class Rounded a | Comparable, Fractional a where
     truncate :: !a -> Int //| IsInteger b
     round :: !a -> Int //| IsInteger b
     ceiling :: !a -> Int //| IsInteger b
@@ -17,8 +17,8 @@ class Rounded a | Ord, Fractional a where
 
 /// Floating point operations.
 /// Operations possible on other types are represented by the Transcendental class.
-//FIXME should this be a subclass of Ord, or Rounded, or Signed, or...?
-class Floating a | Ord, Transcendental a where
+//FIXME should this be a subclass of Comparable, or Rounded, or Signed, or...?
+class Floating a | Comparable, Transcendental a where
     // a constant function, returning the radix of the representation (often 2)
     floatRadix :: !a -> Int
     // a constant function, returning the number of digits of floatRadix in the significand

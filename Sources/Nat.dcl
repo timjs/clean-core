@@ -1,9 +1,9 @@
 system module Nat
 
-from Comparable import class Eq, class Ord
+from Comparable import class Equatable, class Comparable
 from Numeral import class Seminumeral, class Integral
 from Numeral.Signed import class Unsigned
-from Numeral.Bounded import class LowerBounded, class UpperBounded, class Bounded
+from Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Enum import class Enum
 
@@ -22,8 +22,8 @@ int :: !Nat -> Int
 
 instance Showable Nat
 
-instance Eq Nat
-instance Ord Nat
+instance Equatable Nat
+instance Comparable Nat
 
 instance UpperBounded Nat
 instance LowerBounded Nat

@@ -4,11 +4,12 @@ from Nat import :: Nat
 
 //TODO add laws
 
-/// ## Semi-numerical and Numeralerical classes
+/// ## Semi-numerical and Numeral classes
 
 /// A Semiring like class for numerical values.
 ///
-/// * The name is obviously derived from the, in mathematics commonly used, "semiring".
+/// * The name is obviously derived from the, in mathematics commonly used,
+//    "semiring".
 /// * Seminumeral includes not only Nats, Ints and Reals,
 ///   but also Ratios, Decimals, Complex numbers
 ///   and Vectors and Matrices (component whise operations).
@@ -40,7 +41,8 @@ class Numeral a | Seminumeral a where
 
 /// A Euclideain Domain like class for numerical values.
 ///
-/// * Integral is a subclass from Seminumeral, not Numeral, to allow Nat to be an instance.
+/// * Integral is a subclass from Seminumeral, not Numeral, to allow Nat to be
+///   an instance.
 /// * We have `Numeral, Integral a => Domain a`.
 class Integral a | Seminumeral a where
     (`quot`) infix 7 :: !a !a -> a
@@ -63,8 +65,8 @@ class Integral a | Seminumeral a where
 
 /// A Field like class for numerical values.
 ///
-/// * Is a subclass of Seminumeral instead of Numeral to allow `Ratio Nat` to be an
-///   instance.
+/// * Is a subclass of Seminumeral instead of Numeral to allow `Ratio Nat` to be
+///   an instance.
 /// * We have `Numeral, Fractional a => Field a`.
 class Fractional a | Seminumeral a where
     (/) infixl 7 :: !a !a -> a

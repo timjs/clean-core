@@ -4,8 +4,8 @@ import Bool
 
 :: Ordering :== Int
 
-Lesser :: Ordering
-Lesser = -1
+Less :: Ordering
+Less = -1
 
 Equal :: Ordering
 Equal = 0
@@ -15,9 +15,9 @@ Greater = 1
 
 /// # Equality
 
-/// # Order
+/// # Comparable
 
 /// # Helpers
 
-comparing :: !(b -> a) b b -> Ordering | Ord a
-comparing p x y = Comparable (p x) (p y)
+comparing :: !(b -> a) b b -> Ordering | Comparable a
+comparing p x y = compare (p x) (p y)

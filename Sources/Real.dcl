@@ -1,6 +1,6 @@
 system module Real
 
-from Comparable import class Eq, class Ord
+from Comparable import class Equatable, class Comparable
 from Numeral import class Seminumeral, class Numeral, class Fractional, class Transcendental
 from Numeral.Signed import class Signed
 
@@ -22,8 +22,8 @@ floor :: !Real -> Int
 
 instance Showable Real
 
-instance Eq Real
-instance Ord Real
+instance Equatable Real
+instance Comparable Real
 
 instance Seminumeral Real
 instance Numeral Real

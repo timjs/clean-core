@@ -1,6 +1,6 @@
 definition module Array
 
-from Comparable import class Eq, class Ord
+from Comparable import class Equatable, class Comparable
 
 from Appendable import class Appendable
 
@@ -17,7 +17,7 @@ import _SystemArray
 
 instance Showable {a} | Showable a
 
-instance Eq {a} | Eq a
-instance Ord {a} | Ord a
+instance Equatable {a} | Equatable a
+instance Comparable {a} | Comparable a
 
 instance Appendable {a}

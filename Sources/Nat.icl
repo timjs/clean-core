@@ -8,7 +8,7 @@ import Function
 import Comparable
 import Numeral
 import Numeral.Signed
-import Numeral.Bounded
+import Bounded
 
 /// # Definition
 
@@ -51,14 +51,14 @@ instance Showable Nat where
         .o 1 0
     }
 
-/// ## Order
+/// ## Comparable
 
-instance Eq Nat where
+instance Equatable Nat where
     (==) x y = code inline {
         eqI
     }
 
-instance Ord Nat where
+instance Comparable Nat where
     (<) x y = code inline {
         ltI
     }

@@ -32,14 +32,14 @@ instance Showable Char where
         CtoAC
     }
 
-/// ## Order
+/// ## Comparable
 
-instance Eq Char where
+instance Equatable Char where
     (==) x y = code inline {
         eqC
     }
 
-instance Ord Char where
+instance Comparable Char where
     (<) x y = code inline {
         ltC
     }

@@ -29,7 +29,7 @@ showArray symbol xs
             | i < size xs = "," ++ show xs.[i] ++ go (succ i)
             | otherwise   = "}"
 
-// eqArray :: {a} {a} -> Bool | Eq a
+// eqArray :: {a} {a} -> Bool | Equatable a
 eqArray xs ys
     | size xs /= size ys :== False
     | size xs == 0       :== True
@@ -39,7 +39,7 @@ eqArray xs ys
             | i < size xs = xs.[i] == ys.[i] && go (succ i)
             | otherwise   = True
 
-// ltArray :: {a} {a} -> Bool | Ord a
+// ltArray :: {a} {a} -> Bool | Comparable a
 ltArray xs ys
     | size xs > size ys :== False
     | otherwise         :== go 0

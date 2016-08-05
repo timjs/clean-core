@@ -17,6 +17,6 @@ import Appendable
 import Comparable
 import Enum
 import Numeral
-import Numeral.Bounded
+import Bounded
 import Numeral.Signed
 import Showable

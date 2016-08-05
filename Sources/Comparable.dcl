@@ -1,17 +1,10 @@
 definition module Comparable
 
+from Equatable import class Equatable(..)
+
 from Bool import not
 
-/// # Equality
-
-class Eq a where
-    (==) infix 4 :: !a !a -> Bool //TODO generic
-
-    (/=) infix 4 :: !a !a -> Bool
-    (/=) x y = not (x == y)
-
-
-/// # Order
+/// # Comparable
 
 //TODO This is a speedup until simple enumerations are automatically optimzed by the compiler
 :: Ordering (:== Int)
@@ -22,7 +15,7 @@ Greater :: Ordering
 
 // :: Ordering = LT | EQ | GT
 
-class Ord a | Eq a where
+class Comparable a | Equatable a where
     (<) infix 4 :: !a !a -> Bool //TODO generic
 
     (>) infix 4 :: !a !a -> Bool
@@ -40,12 +33,12 @@ class Ord a | Eq a where
     max :: !a !a -> a
     max x y = if (x < y) y x
 
-    Comparable :: !a !a -> Ordering
-    Comparable x y
-        | x <  y    = Lesser
+    compare :: !a !a -> Ordering
+    compare x y
+        | x <  y    = Less
         | x == y    = Equal
         | otherwise = Greater
 
 /// ## Helpers
 
-comparing :: !(b -> a) b b -> Ordering | Ord a
+comparing :: !(b -> a) b b -> Ordering | Comparable a

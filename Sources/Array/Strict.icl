@@ -7,10 +7,10 @@ import Array.Internal
 instance Showable {!e} | Showable e where
     show xs = showArray "!" xs
 
-instance Eq {!e} | Eq e where
+instance Equatable {!e} | Equatable e where
     (==) xs ys = eqArray xs ys
 
-instance Ord {!e} | Ord e where
+instance Comparable {!e} | Comparable e where
     (<) xs ys = ltArray xs ys
 
 instance Appendable {!e} where

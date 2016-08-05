@@ -48,14 +48,14 @@ instance Showable Real where
         .o 1 0
     }*/
 
-/// ## Order
+/// ## Comparable
 
-instance Eq Real where
+instance Equatable Real where
     (==) x y = code inline {
         eqR
     }
 
-instance Ord Real where
+instance Comparable Real where
     (<) x y = code inline {
         ltR
     }

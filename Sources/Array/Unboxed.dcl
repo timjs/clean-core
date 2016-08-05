@@ -1,6 +1,6 @@
 system module Array.Unboxed
 
-from Comparable import class Eq, class Ord
+from Comparable import class Equatable, class Comparable
 
 from Appendable import class Appendable
 
@@ -17,8 +17,8 @@ import Array.Internal
 
 instance Showable {#e} | Showable, Unboxed e
 
-instance Eq {#e} | Eq, Unboxed e
-instance Ord {#e} | Ord, Unboxed e
+instance Equatable {#e} | Equatable, Unboxed e
+instance Comparable {#e} | Comparable, Unboxed e
 
 instance Appendable {#e} | Unboxed e
 
@@ -31,10 +31,10 @@ class Unboxed e where
     showUnboxedArray :: !{#e} -> String | Showable e
     showUnboxedArray xs = showArray "#" xs
 
-    eqUnboxedArray :: !{#e} !{#e} -> Bool | Eq e
+    eqUnboxedArray :: !{#e} !{#e} -> Bool | Equatable e
     eqUnboxedArray xs ys = eqArray xs ys
 
-    ltUnboxedArray :: !{#e} !{#e} -> Bool | Ord e
+    ltUnboxedArray :: !{#e} !{#e} -> Bool | Comparable e
     ltUnboxedArray xs ys = ltArray xs ys
 
     concatUnboxedArray :: !{#e} !{#e} -> {#e}

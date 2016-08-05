@@ -1,11 +1,11 @@
 system module Bool
 
-from Comparable import class Eq, class Ord
-from Numeral.Bounded import class LowerBounded, class UpperBounded, class Bounded
+from Equatable import class Equatable
+from Comparable import class Comparable
+from Showable import class Showable
+from Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Enum import class Enum
-
-from Showable import class Showable
 
 /// # Definition
 
@@ -16,8 +16,8 @@ from Showable import class Showable
 
 instance Showable Bool
 
-instance Eq Bool
-instance Ord Bool
+instance Equatable Bool
+instance Comparable Bool
 
 instance Enum Bool
 

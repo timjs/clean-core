@@ -1,13 +1,15 @@
 system module Int
 
-from Comparable import class Eq, class Ord
+from Equatable import class Equatable
+from Comparable import class Comparable
+from Showable import class Showable
+
 from Numeral import class Seminumeral, class Numeral, class Integral
 from Numeral.Signed import class Signed
-from Numeral.Bounded import class LowerBounded, class UpperBounded, class Bounded
+from Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Enum import class Enum
 
-from Showable import class Showable
 
 /// # Definition
 
@@ -18,8 +20,8 @@ from Showable import class Showable
 
 instance Showable Int
 
-instance Eq Int
-instance Ord Int
+instance Equatable Int
+instance Comparable Int
 
 instance UpperBounded Int
 instance LowerBounded Int
