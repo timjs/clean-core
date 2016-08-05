@@ -11,6 +11,7 @@ import Bounded
 
 import Numeral
 import Numeral.Signed
+import Numeral.Fixed
 
 
 /// # Instances
@@ -136,6 +137,32 @@ instance Integral Int where
     lcm x y = abs ((x `quot` gcd x y) * y)
 
 instance Signed Int
+
+instance Fixed Int where
+    bitWidth _ = nat 64 //TODO: or 32
+
+    (`bitwiseAnd`) x y = code inline {
+        and%
+    }
+    (`bitwiseOr`) x y = code inline {
+        or%
+    }
+    (`bitwiseXor`) x y = code inline {
+        xor%
+    }
+    bitwiseNot x = code inline {
+        not%
+    }
+
+    (`shiftL`) x n = code inline {
+        shiftl%
+    }
+    (`shiftR`) x n = code inline {
+        shiftr%
+    }
+
+    (`rotateL`) x n = undefined
+    (`rotateR`) x n = undefined
 
 
 /// ## Enum

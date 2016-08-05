@@ -6,6 +6,7 @@ from Showable import class Showable
 
 from Numeral import class Seminumeral, class Numeral, class Integral
 from Numeral.Signed import class Signed
+from Numeral.Fixed import class Fixed
 from Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Enum import class Enum
@@ -31,5 +32,6 @@ instance Seminumeral Int
 instance Numeral Int
 instance Integral Int
 instance Signed Int
+instance Fixed Int
 
 instance Enum Int
