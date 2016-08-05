@@ -16,7 +16,7 @@ class Eq a where
 //TODO This is a speedup until simple enumerations are automatically optimzed by the compiler
 :: Ordering (:== Int)
 
-Lesser :: Ordering
+Less :: Ordering
 Equal :: Ordering
 Greater :: Ordering
 
