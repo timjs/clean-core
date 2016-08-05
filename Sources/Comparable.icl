@@ -1,4 +1,4 @@
-implementation module Compare
+implementation module Comparable
 
 import Bool
 
@@ -20,4 +20,4 @@ Greater = 1
 /// # Helpers
 
 comparing :: !(b -> a) b b -> Ordering | Ord a
-comparing p x y = compare (p x) (p y)
+comparing p x y = Comparable (p x) (p y)

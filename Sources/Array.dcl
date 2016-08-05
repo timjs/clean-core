@@ -1,10 +1,10 @@
 definition module Array
 
-from Compare import class Eq, class Ord
+from Comparable import class Eq, class Ord
 
-from Append import class Append
+from Appendable import class Appendable
 
-from Show import class Show
+from Showable import class Showable
 
 import _SystemArray
 
@@ -15,9 +15,9 @@ import _SystemArray
 
 /// # Instances
 
-instance Show {a} | Show a
+instance Showable {a} | Showable a
 
 instance Eq {a} | Eq a
 instance Ord {a} | Ord a
 
-instance Append {a}
+instance Appendable {a}

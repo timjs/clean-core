@@ -1,10 +1,10 @@
 system module Array.Unboxed
 
-from Compare import class Eq, class Ord
+from Comparable import class Eq, class Ord
 
-from Append import class Append
+from Appendable import class Appendable
 
-from Show import class Show
+from Showable import class Showable
 
 import Array.Internal
 
@@ -15,12 +15,12 @@ import Array.Internal
 
 /// # Instances
 
-instance Show {#e} | Show, Unboxed e
+instance Showable {#e} | Showable, Unboxed e
 
 instance Eq {#e} | Eq, Unboxed e
 instance Ord {#e} | Ord, Unboxed e
 
-instance Append {#e} | Unboxed e
+instance Appendable {#e} | Unboxed e
 
 /// # Specializations
 
@@ -28,7 +28,7 @@ instance Append {#e} | Unboxed e
 ///   Otherwise the compiler can't infer strictness of the default, non-strict
 ///   `show` and `(++)`.
 class Unboxed e where
-    showUnboxedArray :: !{#e} -> String | Show e
+    showUnboxedArray :: !{#e} -> String | Showable e
     showUnboxedArray xs = showArray "#" xs
 
     eqUnboxedArray :: !{#e} !{#e} -> Bool | Eq e

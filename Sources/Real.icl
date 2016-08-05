@@ -2,11 +2,11 @@ implementation module Real
 
 import Function
 
-import Compare
-import Num
-import Num.Signed
+import Comparable
+import Numeral
+import Numeral.Signed
 
-import Show
+import Showable
 
 /// # Definition
 
@@ -39,9 +39,9 @@ floor r = code inline {
 
 /// # Instances
 
-/// ## Show
+/// ## Showable
 
-instance Show Real where
+instance Showable Real where
     show x = undefined /*code inline {
         .d 0 2 r
             jsr RtoAC
@@ -62,7 +62,7 @@ instance Ord Real where
 
 /// ## Algebra
 
-instance Seminum Real where
+instance Seminumeral Real where
     (+) x y = code inline {
         addR
     }
@@ -76,7 +76,7 @@ instance Seminum Real where
         pushR 1.0
     }
 
-instance Num Real where
+instance Numeral Real where
     (-) x y = code inline {
         subR
     }

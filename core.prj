@@ -58,7 +58,7 @@ MainModule
 		Fusion:	False
 OtherModules
 	Module
-		Name:	Append
+		Name:	Appendable
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -156,7 +156,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Compare
+		Name:	Comparable
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -226,7 +226,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Num
+		Name:	Numeral
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -240,7 +240,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Num.Bounded
+		Name:	Numeral.Bounded
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -254,7 +254,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Num.Signed
+		Name:	Numeral.Signed
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False
@@ -282,7 +282,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	Show
+		Name:	Showable
 		Dir:	{Project}/Sources
 		Compiler
 			NeverMemoryProfile:	False

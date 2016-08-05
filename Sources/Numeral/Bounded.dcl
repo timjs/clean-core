@@ -1,6 +1,6 @@
-definition module Num.Bounded
+definition module Numeral.Bounded
 
-from Compare import class Eq, class Ord
+from Comparable import class Eq, class Ord
 
 /// # Bounded
 

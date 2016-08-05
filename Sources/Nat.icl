@@ -5,10 +5,10 @@ import Int
 
 import Function
 
-import Compare
-import Num
-import Num.Signed
-import Num.Bounded
+import Comparable
+import Numeral
+import Numeral.Signed
+import Numeral.Bounded
 
 /// # Definition
 
@@ -42,9 +42,9 @@ int n = code inline {
 
 /// # Instances
 
-/// ## Show
+/// ## Showable
 
-instance Show Nat where
+instance Showable Nat where
     show x = code inline {
         .d 0 1 i
             jsr ItoAC
@@ -75,9 +75,9 @@ instance LowerBounded Nat where
 
 instance Bounded Nat
 
-/// ## Numeric
+/// ## Numeraleric
 
-instance Seminum Nat where
+instance Seminumeral Nat where
     (+) x y = code inline {
         addI
     }

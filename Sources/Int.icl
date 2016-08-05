@@ -3,18 +3,18 @@ implementation module Int
 import Enum
 import Function
 
-import Compare
-import Num
-import Num.Signed
-import Num.Bounded
+import Comparable
+import Numeral
+import Numeral.Signed
+import Numeral.Bounded
 
-import Show
+import Showable
 
 /// # Instances
 
-/// ## Show
+/// ## Showable
 
-instance Show Int where
+instance Showable Int where
     show x = code inline {
         .d 0 1 i
             jsr ItoAC
@@ -45,7 +45,7 @@ instance Bounded Int
 
 /// ## Algebra
 
-instance Seminum Int where
+instance Seminumeral Int where
     (+) x y = code inline {
         addI
     }
@@ -59,7 +59,7 @@ instance Seminum Int where
         pushI 1
     }
 
-instance Num Int where
+instance Numeral Int where
     (-) x y = code inline {
         subI
     }

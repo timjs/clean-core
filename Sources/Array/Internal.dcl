@@ -9,18 +9,18 @@ import Real
 import Enum
 import Array.Unboxed
 
-import Compare
-import Num
+import Comparable
+import Numeral
 
-import Append
+import Appendable
 
-import Show
+import Showable
 
 import _SystemArray
 
 /// # Macros
 
-// showArray :: String {a} -> String | Show a
+// showArray :: String {a} -> String | Showable a
 showArray symbol xs
     | size xs == 0 :== "{" ++ symbol ++ "}"
     | otherwise    :== "{" ++ symbol ++ show xs.[0] ++ go 1

@@ -1,19 +1,19 @@
-definition module Num.Signed
+definition module Numeral.Signed
 
-from Compare import class Eq(..), class Ord(..), :: Ordering, Lesser, Equal, Greater, not
-from Num import class Seminum(..), class Num(..)
+from Comparable import class Eq(..), class Ord(..), :: Ordering, Lesser, Equal, Greater, not
+from Numeral import class Seminumeral(..), class Numeral(..)
 
-/// ## Unsigned and Signed Numericals
+/// ## Unsigned and Signed Numeralericals
 
 /// Types should be an instance of Unsigned **or** Signed.
 /// This class can't be forced by the compiler and is up to the user.
 
-class Unsigned a | Ord, Seminum a where
+class Unsigned a | Ord, Seminumeral a where
     // We use this method to force a disjunct set of Signed and Unsigned types.
     unsigned :: a -> Bool
     unsigned _ = True
 
-class Signed a | Ord, Num a where
+class Signed a | Ord, Numeral a where
     abs :: !a -> a
     abs x = if (x < zero) (negate x) (x)
 

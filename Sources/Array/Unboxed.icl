@@ -4,7 +4,7 @@ import Array.Internal
 
 /// # Instances
 
-instance Show {#e} | Show, Unboxed e where
+instance Showable {#e} | Showable, Unboxed e where
     show xs = showUnboxedArray xs
 
 instance Eq {#e} | Eq, Unboxed e where
@@ -13,7 +13,7 @@ instance Eq {#e} | Eq, Unboxed e where
 instance Ord {#e} | Ord, Unboxed e where
     (<) xs ys = ltUnboxedArray xs ys
 
-instance Append {#e} | Unboxed e where
+instance Appendable {#e} | Unboxed e where
     (++) xs ys = concatUnboxedArray xs ys
     nil = emptyUnboxedArray
 

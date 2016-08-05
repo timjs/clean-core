@@ -5,9 +5,8 @@ import Nat
 
 import Function
 
-import Compare
-import Num
-import Num
+import Comparable
+import Numeral
 
 /// # Definition
 
@@ -26,9 +25,9 @@ ord c = code inline {
 
 /// # Instances
 
-/// ## Show
+/// ## Showable
 
-instance Show Char where
+instance Showable Char where
     show x = code inline {
         CtoAC
     }

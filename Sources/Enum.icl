@@ -1,7 +1,7 @@
 implementation module Enum
 
-import Compare
-import Num
+import Comparable
+import Numeral
 
 import Int
 

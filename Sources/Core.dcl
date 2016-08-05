@@ -13,10 +13,10 @@ import Array
 import Array.Unboxed
 import Array.Strict
 
-import Append
-import Compare
+import Appendable
+import Comparable
 import Enum
-import Num
-import Num.Bounded
-import Num.Signed
-import Show
+import Numeral
+import Numeral.Bounded
+import Numeral.Signed
+import Showable

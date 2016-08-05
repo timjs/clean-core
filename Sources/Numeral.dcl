@@ -1,35 +1,35 @@
-definition module Num
+definition module Numeral
 
 from Nat import :: Nat
 
 //TODO add laws
 
-/// ## Semi-numerical and Numerical classes
+/// ## Semi-numerical and Numeralerical classes
 
 /// A Semiring like class for numerical values.
 ///
 /// * The name is obviously derived from the, in mathematics commonly used, "semiring".
-/// * Seminum includes not only Nats, Ints and Reals,
+/// * Seminumeral includes not only Nats, Ints and Reals,
 ///   but also Ratios, Decimals, Complex numbers
 ///   and Vectors and Matrices (component whise operations).
-/// * We have `Seminum a => Semiring a`
-class Seminum a where
+/// * We have `Seminumeral a => Semiring a`
+class Seminumeral a where
     (+) infixl 6 :: !a !a -> a
     zero :: a
     (*) infixl 7 :: !a !a -> a
     one :: a
 
-// square :: !a -> a | Seminum a
+// square :: !a -> a | Seminumeral a
 square x :== x * x
 
-//OR? (^) infixr 8 :: !a !b -> a | Seminum a & Unsigned b
-(^) infixr 8 :: !a !Nat -> a | Seminum a
+//OR? (^) infixr 8 :: !a !b -> a | Seminumeral a & Unsigned b
+(^) infixr 8 :: !a !Nat -> a | Seminumeral a
 
 /// A Ring like class for numerical values.
 ///
 /// * Includes numerical values that can be negated.
-/// * We have `Num a => Ring a`
-class Num a | Seminum a where
+/// * We have `Numeral a => Ring a`
+class Numeral a | Seminumeral a where
     (-) infixl 6 :: !a !a -> a
     (-) x y = x + negate y
 
@@ -40,9 +40,9 @@ class Num a | Seminum a where
 
 /// A Euclideain Domain like class for numerical values.
 ///
-/// * Integral is a subclass from Seminum, not Num, to allow Nat to be an instance.
-/// * We have `Num, Integral a => Domain a`.
-class Integral a | Seminum a where
+/// * Integral is a subclass from Seminumeral, not Numeral, to allow Nat to be an instance.
+/// * We have `Numeral, Integral a => Domain a`.
+class Integral a | Seminumeral a where
     (`quot`) infix 7 :: !a !a -> a
     (`rem`) infix 7 :: !a !a -> a
     quotRem :: !a !a -> (!a,!a)
@@ -63,10 +63,10 @@ class Integral a | Seminum a where
 
 /// A Field like class for numerical values.
 ///
-/// * Is a subclass of Seminum instead of Num to allow `Ratio Nat` to be an
+/// * Is a subclass of Seminumeral instead of Numeral to allow `Ratio Nat` to be an
 ///   instance.
-/// * We have `Num, Fractional a => Field a`.
-class Fractional a | Seminum a where
+/// * We have `Numeral, Fractional a => Field a`.
+class Fractional a | Seminumeral a where
     (/) infixl 7 :: !a !a -> a
     (/) x y = x * recip y
 
@@ -83,11 +83,11 @@ class Fractional a | Seminum a where
 
 /// Transcendental includes both algebraic and trigoniometric operations.
 ///
-/// * It needs full Num for default instances!
+/// * It needs full Numeral for default instances!
 /// * We need `half` because we don't have overloaded litterals and want to
 ///   define default instances for all trigoniometric functions.
 /// * This is a Transcendental in the real mathematical sense.
-class Transcendental a | Num, Fractional a where
+class Transcendental a | Numeral, Fractional a where
     e :: a
     pi :: a
 
@@ -139,8 +139,8 @@ class Transcendental a | Num, Fractional a where
 ///
 /// Provides scaling methods.
 class Scaled v where
-    (.* ) infixl 5 :: !a !v -> v | Seminum a
-    ( *.) infixl 5 :: !v !a -> v | Seminum a
+    (.* ) infixl 5 :: !a !v -> v | Seminumeral a
+    ( *.) infixl 5 :: !v !a -> v | Seminumeral a
     // ( *.) a v = (.*) v a
-    // (.*.) infixr 2 :: !v !v -> a | Seminum a
+    // (.*.) infixr 2 :: !v !v -> a | Seminumeral a
 */

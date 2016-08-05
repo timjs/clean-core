@@ -1,4 +1,4 @@
-definition module Compare
+definition module Comparable
 
 from Bool import not
 
@@ -40,8 +40,8 @@ class Ord a | Eq a where
     max :: !a !a -> a
     max x y = if (x < y) y x
 
-    compare :: !a !a -> Ordering
-    compare x y
+    Comparable :: !a !a -> Ordering
+    Comparable x y
         | x <  y    = Lesser
         | x == y    = Equal
         | otherwise = Greater

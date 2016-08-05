@@ -4,7 +4,7 @@ import Array.Internal
 
 /// # Instances
 
-instance Show {!e} | Show e where
+instance Showable {!e} | Showable e where
     show xs = showArray "!" xs
 
 instance Eq {!e} | Eq e where
@@ -13,6 +13,6 @@ instance Eq {!e} | Eq e where
 instance Ord {!e} | Ord e where
     (<) xs ys = ltArray xs ys
 
-instance Append {!e} where
+instance Appendable {!e} where
     (++) xs ys = concatArray xs ys
     nil = emptyArray

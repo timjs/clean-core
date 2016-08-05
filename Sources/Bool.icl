@@ -1,8 +1,8 @@
 implementation module Bool
 
-import Compare
+import Comparable
 import Enum
-import Show
+import Showable
 
 import Function
 
@@ -13,9 +13,9 @@ import Function
 
 /// # Instances
 
-/// ## Show and Parse
+/// ## Showable and Parse
 
-instance Show Bool where
+instance Showable Bool where
     show x = code inline {
         .d 0 1 b
             jsr BtoAC

@@ -1,12 +1,12 @@
 system module Char
 
-from Compare import class Eq, class Ord
-from Num.Bounded import class LowerBounded, class UpperBounded, class Bounded
+from Comparable import class Eq, class Ord
+from Numeral.Bounded import class LowerBounded, class UpperBounded, class Bounded
 
 from Nat import :: Nat
 from Enum import class Enum
 
-from Show import class Show
+from Showable import class Showable
 
 /// # Definition
 
@@ -18,7 +18,7 @@ ord :: !Char -> Nat
 
 /// # Instances
 
-instance Show Char
+instance Showable Char
 
 instance Eq Char
 instance Ord Char
